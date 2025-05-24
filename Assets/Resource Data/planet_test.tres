@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PlanetData" load_steps=7 format=3 uid="uid://dnpuieknwpkft"]
+
+[ext_resource type="Texture2D" uid="uid://dcj1dq4octv5j" path="res://Assets/Planet Colours/planet_terrestrial.tres" id="1_u5a0k"]
+[ext_resource type="Material" uid="uid://dl31udjx1urh2" path="res://Assets/Materials/planet_shader_material.tres" id="2_bpykv"]
+[ext_resource type="Script" path="res://Scripts/Procedural Planet Generation/PlanetNoise.gd" id="2_vuapf"]
+[ext_resource type="Script" path="res://Scripts/Procedural Planet Generation/PlanetData.gd" id="3_ng6e1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rmxxu"]
+frequency = 1.0
+
+[sub_resource type="Resource" id="Resource_dvkbe"]
+script = ExtResource("2_vuapf")
+min_height = 0.3
+amplitude = 0.4
+height_map = SubResource("FastNoiseLite_rmxxu")
+use_first_layer_as_mask = false
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("3_ng6e1")
+seed = 0
+resolution = 256
+radius = 1
+planet_noise = Array[ExtResource("2_vuapf")]([SubResource("Resource_dvkbe")])
+planet_colour = ExtResource("1_u5a0k")
+planet_material = ExtResource("2_bpykv")

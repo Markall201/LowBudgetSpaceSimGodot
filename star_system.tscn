@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfikgse3bnwma"]
+
+[ext_resource type="Script" path="res://StarSystem.gd" id="1_3j614"]
+
+[node name="StarSystem" type="Node3D"]
+script = ExtResource("1_3j614")

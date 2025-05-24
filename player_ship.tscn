@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ukmdoquihnf"]
+
+[ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="1_ltnvr"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
+[ext_resource type="Shader" path="res://Assets/Materials/ship_hull.gdshader" id="3_ytwqi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpd18"]
+size = Vector3(2, 0.5, 1.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pojem"]
+render_priority = 0
+shader = ExtResource("3_ytwqi")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[node name="PlayerShip" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08036, 0, 0)
+
+[node name="PlayerShipPhysics" type="RigidBody3D" parent="."]
+mass = 10.0
+gravity_scale = 0.0
+linear_damp = 0.5
+angular_damp = 0.5
+script = ExtResource("2_68pkh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerShipPhysics"]
+transform = Transform3D(0.999911, -0.0133339, 4.07454e-10, 0.0133329, 0.999833, 0.0125137, -0.000166856, -0.0125126, 0.999922, -0.00334501, 0.250839, 0.733433)
+shape = SubResource("BoxShape3D_wpd18")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerShipPhysics"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 2, -6)
+
+[node name="PlayerShipVisuals" type="Node3D" parent="PlayerShipPhysics"]
+
+[node name="wallbug ship" parent="PlayerShipPhysics/PlayerShipVisuals" instance=ExtResource("1_ltnvr")]
+transform = Transform3D(0.999911, -0.0133339, 0, 0.0133339, 0.999911, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_pojem")
+skeleton = NodePath("../..")

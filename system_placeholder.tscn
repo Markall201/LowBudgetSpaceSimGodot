@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb0iihk7h0oxx"]
+
+[ext_resource type="Script" path="res://Scripts/Galaxy Map/SystemPlaceholder.gd" id="1_uw4cy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpoly"]
+shading_mode = 0
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_bncv7"]
+material = SubResource("StandardMaterial3D_gpoly")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tnmwi"]
+
+[node name="SystemPlaceholder" type="Node3D"]
+script = ExtResource("1_uw4cy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bncv7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 25.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_tnmwi")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

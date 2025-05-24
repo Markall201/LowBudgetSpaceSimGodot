@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b400p236grg6a"]
+
+[ext_resource type="PackedScene" uid="uid://cue5adkqaid33" path="res://asteroid_spawner.tscn" id="1_fevf7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mjg08"]
+sky_top_color = Color(0.0679686, 0.0903384, 0.121446, 1)
+sky_horizon_color = Color(0.536518, 0.538027, 0.54106, 1)
+ground_bottom_color = Color(0.0781027, 0.0617696, 0.0427947, 1)
+ground_horizon_color = Color(0.536518, 0.538027, 0.54106, 1)
+
+[sub_resource type="Sky" id="Sky_fpwix"]
+sky_material = SubResource("ProceduralSkyMaterial_mjg08")
+
+[sub_resource type="Environment" id="Environment_mq5if"]
+background_mode = 2
+sky = SubResource("Sky_fpwix")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mq5if")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="AsteroidSpawner" parent="." instance=ExtResource("1_fevf7")]
+spawn_radius = 200.0
+number_of_asteroids = 500
+min_asteroid_radius = 0.5
+max_asteroid_radius = 3.0
+max_asteroid_amplitude = 2.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.319, 3, 100)

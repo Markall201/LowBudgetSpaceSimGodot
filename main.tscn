@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://b618swd7oamxh"]
+
+[ext_resource type="PackedScene" uid="uid://cd2qx8kqldnwb" path="res://galaxy.tscn" id="1_kbsw4"]
+[ext_resource type="FontFile" uid="uid://780aih6mfcg" path="res://Assets/Fonts/Oxanium-VariableFont_wght.ttf" id="1_ubgmd"]
+[ext_resource type="Script" path="res://Scripts/Galaxy Map/GalMapManager.gd" id="2_jg22p"]
+[ext_resource type="Script" path="res://Scripts/FreeLookCamera.gd" id="3_cn1xk"]
+[ext_resource type="PackedScene" uid="uid://cb0iihk7h0oxx" path="res://system_placeholder.tscn" id="4_1v4nl"]
+
+[sub_resource type="Theme" id="Theme_j5xfp"]
+default_base_scale = 1.0
+default_font = ExtResource("1_ubgmd")
+default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gt82"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_55fxp"]
+
+[sub_resource type="Sky" id="Sky_w0fkf"]
+sky_material = SubResource("PanoramaSkyMaterial_55fxp")
+
+[sub_resource type="Environment" id="Environment_c7pah"]
+background_mode = 1
+sky = SubResource("Sky_w0fkf")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="Main" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -249.5
+offset_bottom = 249.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_j5xfp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8gt82")
+
+[node name="Control" type="Control" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 8
+script = ExtResource("2_jg22p")
+
+[node name="System Label" type="Label" parent="CanvasLayer/Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 20.0
+offset_right = 178.0
+offset_bottom = 43.0
+text = "TEST SYSTEM"
+autowrap_mode = 2
+
+[node name="System Stars" type="Label" parent="CanvasLayer/Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 80.0
+offset_right = 178.0
+offset_bottom = 103.0
+text = "NUMBER OF STARS:"
+
+[node name="System Planets" type="Label" parent="CanvasLayer/Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 140.0
+offset_right = 192.0
+offset_bottom = 163.0
+text = "NUMBER OF PLANETS:   "
+
+[node name="System Coords" type="Label" parent="CanvasLayer/Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 200.0
+offset_right = 178.0
+offset_bottom = 223.0
+text = "COORDINATES: "
+autowrap_mode = 2
+
+[node name="System Seed" type="Label" parent="CanvasLayer/Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 260.0
+offset_right = 178.0
+offset_bottom = 283.0
+text = "SYSTEM SEED: "
+
+[node name="System Faction" type="Label" parent="CanvasLayer/Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 320.0
+offset_right = 178.0
+offset_bottom = 343.0
+text = "FACTION: "
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
+environment = SubResource("Environment_c7pah")
+
+[node name="GalMapCameraController" type="Node3D" parent="CanvasLayer"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15, 200.308, 0)
+script = ExtResource("3_cn1xk")
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/GalMapCameraController"]
+
+[node name="Galaxy" parent="CanvasLayer" instance=ExtResource("1_kbsw4")]
+numberOfSystems = 2000
+
+[node name="SystemPlaceholder" parent="CanvasLayer" instance=ExtResource("4_1v4nl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
+visible = false
+
+[connection signal="highlight" from="CanvasLayer/SystemPlaceholder" to="CanvasLayer/Panel/Control" method="_on_system_placeholder_highlight"]

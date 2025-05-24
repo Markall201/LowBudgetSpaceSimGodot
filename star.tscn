@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceeplx14cj6xg"]
+
+[ext_resource type="Script" path="res://Star.gd" id="1_ch3w4"]
+[ext_resource type="Material" uid="uid://d1t46a2eh74wv" path="res://Assets/Materials/star_material.tres" id="1_ln6wt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f0xqt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gmgkl"]
+
+[node name="Star" type="Node3D"]
+script = ExtResource("1_ch3w4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_f0xqt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+material_override = ExtResource("1_ln6wt")
+mesh = SubResource("SphereMesh_gmgkl")
+skeleton = NodePath("../../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_size = 1.0
