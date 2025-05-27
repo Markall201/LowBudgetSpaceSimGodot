@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0kact46d6k7v"]
+
+[ext_resource type="PackedScene" uid="uid://c2sv8itb6oxj2" path="res://Assets/star dock.glb" id="1_yvek3"]
+
+[node name="Station" type="Node3D"]
+
+[node name="station visuals" type="Node3D" parent="."]
+
+[node name="star dock" parent="station visuals" instance=ExtResource("1_yvek3")]

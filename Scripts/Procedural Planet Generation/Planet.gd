@@ -16,8 +16,8 @@ class_name Planet
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/Node3D/PlayerShip/PlayerShipPhysics")
-	print(player)
+	player = get_node("/root/Node3D/PlayerShip")
+	#print(player)
 	on_data_changed()
 	
 
@@ -42,9 +42,9 @@ func setLODByPlayerDistance(delta):
 		var newResolution: int = round(planet_data.LODCurve.sample(distanceToPlayer_LODInput))
 		
 		# print the details
-		print("distance to player: "+str(distanceToPlayer))
-		print("LODInput: "+str(distanceToPlayer_LODInput))
-		print("new resolution:" +str(newResolution))
+		#print("distance to player: "+str(distanceToPlayer))
+		#print("LODInput: "+str(distanceToPlayer_LODInput))
+		#print("new resolution:" +str(newResolution))
 		# reset the resolution - the setter's designed not to update unless the value's different
 		planet_data.set("resolution", newResolution)
 		

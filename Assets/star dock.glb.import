@@ -29,6 +29,30 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Canopy Domes": {
+"generate/physics": true
+},
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Main Structure": {
+"generate/physics": true
+},
+"PATH:Observation Deck": {
+"generate/physics": true
+},
+"PATH:Station Hull": {
+"generate/physics": true
+},
+"PATH:Support Struts": {
+"generate/physics": true
+},
+"PATH:Support Struts 2": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
