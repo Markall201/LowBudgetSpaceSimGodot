@@ -46,7 +46,7 @@ var mouse_control_toggle: bool = true
 func handle_boosting():
 	
 	is_boosting = (Input.is_action_pressed("Boost"))
-	print("boost amount:" + str(current_boost_amount))
+	#print("boost amount:" + str(current_boost_amount))
 	
 	if (is_boosting && current_boost_amount > 0):
 		current_boost_amount -= boost_deprecation_rate
@@ -90,7 +90,7 @@ func _input(event):
 		pitch1D = clamp(-mouse_input.y * mouse_sensitivity_y, -1.0, 1.0)
 		# clamp the head pitch so you can't look 360
 		
-		print("X: " + str(roll1D) + "\nY: " + str(pitch1D))
+		#print("X: " + str(roll1D) + "\nY: " + str(pitch1D))
 		
 #ship movement systems
 func handle_movement():

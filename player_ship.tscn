@@ -1,25 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1ukmdoquihnf"]
+[gd_scene load_steps=7 format=3 uid="uid://c1ukmdoquihnf"]
 
 [ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="1_ltnvr"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
-[ext_resource type="Shader" path="res://Assets/Materials/ship_hull.gdshader" id="3_ytwqi"]
+[ext_resource type="Texture2D" uid="uid://ctqs8rsocie07" path="res://Assets/UI/bar-of-fun-interior.png" id="3_mqikq"]
+[ext_resource type="Script" path="res://ShipUI.gd" id="3_nqco7"]
+[ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="5_6ccp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpd18"]
 size = Vector3(2, 0.5, 1.2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pojem"]
-render_priority = 0
-shader = ExtResource("3_ytwqi")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 1.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [node name="PlayerShip" type="RigidBody3D"]
 mass = 10.0
@@ -34,13 +22,64 @@ shape = SubResource("BoxShape3D_wpd18")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 2, -6)
+current = true
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 0.318457, 0.487433)
 
 [node name="PlayerShipVisuals" type="Node3D" parent="."]
 
 [node name="wallbug ship" parent="PlayerShipVisuals" instance=ExtResource("1_ltnvr")]
 transform = Transform3D(0.999911, -0.0133339, 0, 0.0133339, 0.999911, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_pojem")
 skeleton = NodePath("../..")
 
 [node name="PlayerData" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08036, 0, 0)
+
+[node name="Ship UI" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.134
+anchor_bottom = 0.308
+offset_left = 186.0
+offset_top = 475.0
+offset_right = 71.632
+offset_bottom = 315.416
+script = ExtResource("3_nqco7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Container" type="Container" parent="Ship UI"]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 720.0
+
+[node name="Label_speed" type="Label" parent="Ship UI/Container"]
+layout_mode = 2
+text = "TEST"
+
+[node name="ProgressBarThrottle" type="TextureProgressBar" parent="Ship UI"]
+layout_mode = 2
+offset_left = 70.0
+offset_top = -87.0
+offset_right = 170.0
+offset_bottom = 13.0
+scale = Vector2(0.4, 2)
+min_value = -100.0
+max_value = 130.0
+fill_mode = 3
+texture_over = ExtResource("5_6ccp3")
+texture_progress = ExtResource("3_mqikq")
+tint_under = Color(0.226707, 0.226707, 0.226707, 1)
+tint_progress = Color(0.870157, 0.880216, 0.870427, 1)
+
+[node name="ProgressBarBoost" type="TextureProgressBar" parent="Ship UI"]
+layout_mode = 2
+offset_left = -166.0
+offset_top = -370.0
+offset_right = -46.0
+offset_bottom = -250.0
+scale = Vector2(2, 0.4)
+max_value = 5.0
+texture_over = ExtResource("5_6ccp3")
+texture_progress = ExtResource("3_mqikq")
+tint_under = Color(0.226707, 0.226707, 0.226707, 1)
+tint_progress = Color(0.950539, 0.659485, 0.173974, 1)
