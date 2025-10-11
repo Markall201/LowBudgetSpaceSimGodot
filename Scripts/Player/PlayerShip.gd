@@ -16,9 +16,9 @@ extends RigidBody3D
 
 @export var current_boost_amount: float
 @export var is_boosting: bool
-@export var max_boost_amount: float = 2.0
+@export var max_boost_amount: float = 5.0
 @export var boost_deprecation_rate: float = 0.25
-@export var boost_recharge_rate: float = 0.5
+@export var boost_recharge_rate: float = 0.25
 
 @export var boost_multiplier: float = 5
 
@@ -44,15 +44,19 @@ var mouse_control_toggle: bool = true
 # boost tank logic
 # (near copy and paste from Unity project)
 func handle_boosting():
+	
+	is_boosting = (Input.is_action_pressed("Boost"))
+	print("boost amount:" + str(current_boost_amount))
+	
 	if (is_boosting && current_boost_amount > 0):
 		current_boost_amount -= boost_deprecation_rate
-		if (current_boost_amount <= 0):
+		if (current_boost_amount <= 0.0):
 			is_boosting = false
 			
 		
-		else:
-			if (current_boost_amount < max_boost_amount):
-				current_boost_amount += boost_recharge_rate
+	else:
+		if (current_boost_amount < max_boost_amount):
+			current_boost_amount += boost_recharge_rate
 				
 				
 func handle_throttle():
@@ -70,16 +74,24 @@ func handle_throttle():
 func _input(event):
 	var mouse_sensitivity_x: float = 0.002
 	var mouse_sensitivity_y: float = 0.002
+	
 	# added condition for mouse control toggle
 	if event is InputEventMouseMotion && mouse_control_toggle:
+		
+		var viewport_transform: Transform2D = get_tree().root.get_final_transform()
+		# get relative mouse input
+		var mouse_input = event.xformed_by(viewport_transform).relative
+		
 		# rotate the player on the 3D y-axis by mouse x-axis movement (i.e. left and right mouse movement rotates the player left and right)
-		# we also need it in radians (otherwise it will rotate too quickly) and inverted (hence the -)
-		roll1D = clamp(-event.relative.x * mouse_sensitivity_x, -1, 1)
+		# we also need it inverted (hence the -)
+		roll1D = clamp(-mouse_input.x * mouse_sensitivity_x, -1.0, 1.0)
 		
 		# only rotate head up and down
-		pitch1D = clamp(-event.relative.y * mouse_sensitivity_y, -1, 1)
+		pitch1D = clamp(-mouse_input.y * mouse_sensitivity_y, -1.0, 1.0)
 		# clamp the head pitch so you can't look 360
-
+		
+		print("X: " + str(roll1D) + "\nY: " + str(pitch1D))
+		
 #ship movement systems
 func handle_movement():
 	

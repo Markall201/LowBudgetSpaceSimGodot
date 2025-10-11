@@ -29,6 +29,46 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Canopy": {
+"generate/physics": true
+},
+"PATH:Canopy_001": {
+"generate/physics": true
+},
+"PATH:Canopy_002": {
+"generate/physics": true
+},
+"PATH:Canopy_003": {
+"generate/physics": true
+},
+"PATH:Connector Walkway": {
+"generate/physics": true
+},
+"PATH:Connector Walkway_001": {
+"generate/physics": true
+},
+"PATH:Connector Walkway_002": {
+"generate/physics": true
+},
+"PATH:Connector Walkway_003": {
+"generate/physics": true
+},
+"PATH:Hull": {
+"generate/physics": true
+},
+"PATH:Hull_001": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Landing Pad": {
+"generate/physics": true
+},
+"PATH:Landing Pad_001": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

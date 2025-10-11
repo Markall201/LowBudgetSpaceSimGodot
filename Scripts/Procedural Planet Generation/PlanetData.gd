@@ -22,6 +22,11 @@ enum AtmosphereType {
 
 @export var atmosphere_type: AtmosphereType
 
+@export var atmosphere_height: int = 4:
+	set(val):
+		atmosphere_height = val
+		emit_signal("changed")
+
 
 # basic settings
 # the setters are primarily for making the planet change in the editor

@@ -29,7 +29,7 @@ angular_damp = 0.5
 script = ExtResource("2_68pkh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999911, -0.0133339, 4.07454e-10, 0.0133329, 0.999833, 0.0125137, -0.000166856, -0.0125126, 0.999922, -0.00334501, 0.250839, 0.733433)
+transform = Transform3D(0.999911, -0.0133339, 4.07454e-10, 0.0133329, 0.999833, 0.0125137, -0.000166856, -0.0125126, 0.999922, -0.00615644, 0.250839, 0.733433)
 shape = SubResource("BoxShape3D_wpd18")
 
 [node name="Camera3D" type="Camera3D" parent="."]

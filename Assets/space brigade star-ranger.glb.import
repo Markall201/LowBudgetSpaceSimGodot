@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4lld0nvcdfgy"
-path="res://.godot/imported/wallbug ship.glb-b4dfd3cf7fde8434b50830f13f7d32c0.scn"
+uid="uid://dw2u20gii53r0"
+path="res://.godot/imported/space brigade star-ranger.glb-34ebfd602e017bdd254c7baa23a793ff.scn"
 
 [deps]
 
-source_file="res://Assets/wallbug ship.glb"
-dest_files=["res://.godot/imported/wallbug ship.glb-b4dfd3cf7fde8434b50830f13f7d32c0.scn"]
+source_file="res://Assets/space brigade star-ranger.glb"
+dest_files=["res://.godot/imported/space brigade star-ranger.glb-34ebfd602e017bdd254c7baa23a793ff.scn"]
 
 [params]
 
-nodes/root_type="MeshInstance3D"
+nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -29,21 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"Hull": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/ship_hull_metal.tres"
-}
-},
-"nodes": {
-"PATH:cockpit": {
-"physics/body_type": 1
-},
-"PATH:hull": {
-"physics/body_type": 1
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
