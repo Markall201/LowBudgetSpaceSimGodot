@@ -3,6 +3,7 @@ extends RigidBody3D
 @export var current_throttle: float = 0.0
 @export var max_throttle: float = 100.0
 @export var min_throttle: float = -100.0
+@export var throttle_change_rate:float = 50.0
 
 @export var forward_thrust: float = 100.0
 @export var up_thrust: float = 50.0
@@ -16,14 +17,20 @@ extends RigidBody3D
 
 @export var current_boost_amount: float
 @export var is_boosting: bool
+@export var can_boost: bool
 @export var max_boost_amount: float = 5.0
-@export var boost_deprecation_rate: float = 0.25
-@export var boost_recharge_rate: float = 0.25
+@export var boost_deprecation_rate: float = 2.0
+@export var boost_recharge_rate: float = 0.5
 
 @export var boost_multiplier: float = 5
 
-@export var pitch1D: float
-@export var roll1D: float
+@export var pitch1D: float = 0.0
+@export var roll1D: float = 0.0
+
+
+@export var mouse_curve: Curve
+@export var mouse_sensitivity_x: float = 0.001
+@export var mouse_sensitivity_y: float = 0.001
 
 # multipliers to scale (down) acceleration and torque rotation
 # set to 1 for no effect
@@ -43,54 +50,62 @@ var mouse_control_toggle: bool = true
 
 # boost tank logic
 # (near copy and paste from Unity project)
-func handle_boosting():
-	
-	is_boosting = (Input.is_action_pressed("Boost"))
+func handle_boosting(delta):
+	# can_boost is controlled by how much boost is in the tank
+	# is_boosting is controlled by can_boost and the boost button
+	is_boosting = (Input.is_action_pressed("Boost") && can_boost)
 	#print("boost amount:" + str(current_boost_amount))
-	
-	if (is_boosting && current_boost_amount > 0):
-		current_boost_amount -= boost_deprecation_rate
-		if (current_boost_amount <= 0.0):
-			is_boosting = false
+	# when boosting, it can keep boosting until empty tank
+	if (is_boosting && (current_boost_amount)> 0):
+		current_boost_amount -= boost_deprecation_rate * delta
+		can_boost = true
+
 			
 		
 	else:
+		can_boost = false
 		if (current_boost_amount < max_boost_amount):
-			current_boost_amount += boost_recharge_rate
+			current_boost_amount += boost_recharge_rate * delta
+		
+		# if tank drained, must have a minimum amount (one second's worth of boost) in the tank to reatart boosting
+		if (!can_boost && current_boost_amount - boost_deprecation_rate >= 0):
+			can_boost = true
 				
 				
-func handle_throttle():
+func handle_throttle(delta):
 	# if positive thrust (and not max already)
 	if (Input.is_action_pressed("Throttle Up") && current_throttle < max_throttle):
 				# increase throttle
-				current_throttle += 1
-				print(current_throttle)
+				current_throttle += (throttle_change_rate * delta)
+				#print(current_throttle)
 				
 	# if negative thrust but not min
 	elif (Input.is_action_pressed("Throttle Down") && current_throttle > min_throttle):
-				current_throttle -= 1
-				print(current_throttle)
+				current_throttle -= (throttle_change_rate * delta)
+				#print(current_throttle)
+				
+var mouse_input:Vector2 = Vector2.ZERO
 				
 func _input(event):
-	var mouse_sensitivity_x: float = 0.002
-	var mouse_sensitivity_y: float = 0.002
+
 	
 	# added condition for mouse control toggle
 	if event is InputEventMouseMotion && mouse_control_toggle:
 		
 		var viewport_transform: Transform2D = get_tree().root.get_final_transform()
 		# get relative mouse input
-		var mouse_input = event.xformed_by(viewport_transform).relative
+		mouse_input += event.xformed_by(viewport_transform).relative * Vector2(mouse_sensitivity_x, mouse_sensitivity_y)
 		
 		# rotate the player on the 3D y-axis by mouse x-axis movement (i.e. left and right mouse movement rotates the player left and right)
 		# we also need it inverted (hence the -)
-		roll1D = clamp(-mouse_input.x * mouse_sensitivity_x, -1.0, 1.0)
-		
+		mouse_input.x = clamp(mouse_input.x, -1.0, 1.0)
+		roll1D = -mouse_input.x
 		# only rotate head up and down
-		pitch1D = clamp(-mouse_input.y * mouse_sensitivity_y, -1.0, 1.0)
+		mouse_input.y = clamp(mouse_input.y, -1.0, 1.0)
+		pitch1D = -mouse_input.y
 		# clamp the head pitch so you can't look 360
 		
-		#print("X: " + str(roll1D) + "\nY: " + str(pitch1D))
+		#print("mouse_input:" + str(mouse_input) + "\nX: " + str(roll1D) + "\nY: " + str(pitch1D))
 		
 #ship movement systems
 func handle_movement():
@@ -99,11 +114,11 @@ func handle_movement():
 	
 	# rotation movement first
 	# roll
-	if (roll1D > 0.1 || roll1D < -0.1):
+	if (roll1D > 0.01 and roll1D <= 1.0 || roll1D < -0.01 and roll1D >= -1.0):
 		var roll: Vector3 = get_global_transform().basis.z * -roll1D * roll_torque * rotation_dampener
 		apply_torque_impulse(roll)
 	# pitch
-	if (pitch1D > 0.1 || pitch1D < -0.1):
+	if (pitch1D > 0.1 and pitch1D <= 1.0 || pitch1D < -0.1 and pitch1D >= -1.0):
 		var pitch: Vector3 = get_global_transform().basis.x * pitch1D * pitch_torque  * rotation_dampener
 		apply_torque_impulse(pitch)
 	# yaw
@@ -168,7 +183,7 @@ func handle_mouse_control():
 	if (mouse_control_toggle):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED )
 
 
 # Called when the node enters the scene tree for the first time.
@@ -178,8 +193,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	handle_boosting()
-	handle_throttle()
+	handle_boosting(delta)
+	handle_throttle(delta)
 	handle_movement()
 	handle_mouse_control()
 	
@@ -187,21 +202,21 @@ func _physics_process(delta):
 func glide_ship_x():
 		# otherwise glide
 	if (glide.x != 0.0):
-		print("X glide:" + str(glide.x))
+		#print("X glide:" + str(glide.x))
 		apply_central_impulse(get_global_transform().basis.x * glide.x);
 		glide.x *= thrustGlideReduction;
 	
 func glide_ship_y():
 		# otherwise glide
 	if (glide.y != 0.0):
-		print("Y glide:" + str(glide.y))
+		#print("Y glide:" + str(glide.y))
 		apply_central_impulse(get_global_transform().basis.y * glide.y);
 		glide.y *= thrustGlideReduction;
 		
 func glide_ship_z():
 		# otherwise glide
 	if (glide.z != 0.0):
-		print("Z glide:" + str(glide.z))
+		#print("Z glide:" + str(glide.z))
 		apply_central_impulse(get_global_transform().basis.z * glide.z);
 		glide.z *= thrustGlideReduction;
 	

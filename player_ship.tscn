@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1ukmdoquihnf"]
+[gd_scene load_steps=8 format=3 uid="uid://c1ukmdoquihnf"]
 
 [ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="1_ltnvr"]
-[ext_resource type="Script" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
+[ext_resource type="Script" uid="uid://dcxxct3kqc6jx" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
 [ext_resource type="Texture2D" uid="uid://ctqs8rsocie07" path="res://Assets/UI/bar-of-fun-interior.png" id="3_mqikq"]
-[ext_resource type="Script" path="res://ShipUI.gd" id="3_nqco7"]
+[ext_resource type="Script" uid="uid://bsmgrk1n7puro" path="res://ShipUI.gd" id="3_nqco7"]
 [ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="5_6ccp3"]
+
+[sub_resource type="Curve" id="Curve_gk68h"]
+_limits = [0.0, 1.0, -1.0, 1.0]
+_data = [Vector2(-0.9782609, 0.011235952), 0.0, 0.49903142, 0, 1, Vector2(0.010869622, 0.50561804), 0.4998148, 0.5081916, 1, 1, Vector2(0.9836956, 1), 0.5081916, 0.0, 1, 0]
+point_count = 3
+metadata/_snap_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpd18"]
 size = Vector3(2, 0.5, 1.2)
@@ -15,6 +21,8 @@ gravity_scale = 0.0
 linear_damp = 0.5
 angular_damp = 0.5
 script = ExtResource("2_68pkh")
+current_boost_amount = 5.0
+mouse_curve = SubResource("Curve_gk68h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.999911, -0.0133339, 4.07454e-10, 0.0133329, 0.999833, 0.0125137, -0.000166856, -0.0125126, 0.999922, -0.00615644, 0.250839, 0.733433)
@@ -57,7 +65,7 @@ layout_mode = 2
 text = "TEST"
 
 [node name="ProgressBarThrottle" type="TextureProgressBar" parent="Ship UI"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 70.0
 offset_top = -87.0
 offset_right = 170.0
@@ -72,14 +80,16 @@ tint_under = Color(0.226707, 0.226707, 0.226707, 1)
 tint_progress = Color(0.870157, 0.880216, 0.870427, 1)
 
 [node name="ProgressBarBoost" type="TextureProgressBar" parent="Ship UI"]
-layout_mode = 2
+layout_mode = 0
 offset_left = -166.0
 offset_top = -370.0
 offset_right = -46.0
 offset_bottom = -250.0
 scale = Vector2(2, 0.4)
 max_value = 5.0
+step = 0.01
+allow_lesser = true
 texture_over = ExtResource("5_6ccp3")
 texture_progress = ExtResource("3_mqikq")
 tint_under = Color(0.226707, 0.226707, 0.226707, 1)
-tint_progress = Color(0.950539, 0.659485, 0.173974, 1)
+tint_progress = Color(0.9490196, 0.65882355, 0.17254902, 1)

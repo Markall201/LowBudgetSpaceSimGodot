@@ -127,7 +127,7 @@ func _update_mesh(mesh_data_array : Array, planet_data):
 	if (planet_data.planet_material != null):
 		# update the surface materials - make sure this propagates to the meshes
 		var surface_index:int = _mesh.get_surface_count() -1
-		print("updating material!")
+		#print("updating material!")
 		# ensure materials and shaders are unique - they'll actually be copies of the referenced material
 		var surface_material: ShaderMaterial = planet_data.planet_material.duplicate()
 		var surface_shader: Shader = planet_data.planet_material.get_shader().duplicate()
