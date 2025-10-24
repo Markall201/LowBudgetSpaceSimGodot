@@ -562,7 +562,6 @@ shape = SubResource("ConcavePolygonShape3D_glxhu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 641)
 
 [node name="PlayerShip" parent="." instance=ExtResource("5_k5gf6")]
-current_boost_amount = 5.0
 
 [node name="basic station" parent="." instance=ExtResource("8_akawr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3845, -72.6272, 641)

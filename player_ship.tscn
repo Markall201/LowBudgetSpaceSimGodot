@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="1_ltnvr"]
 [ext_resource type="Script" uid="uid://dcxxct3kqc6jx" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
 [ext_resource type="Texture2D" uid="uid://ctqs8rsocie07" path="res://Assets/UI/bar-of-fun-interior.png" id="3_mqikq"]
-[ext_resource type="Script" uid="uid://bsmgrk1n7puro" path="res://ShipUI.gd" id="3_nqco7"]
+[ext_resource type="Script" uid="uid://bsmgrk1n7puro" path="res://Scripts/Player/ShipUI.gd" id="3_nqco7"]
 [ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="5_6ccp3"]
 
 [sub_resource type="Curve" id="Curve_gk68h"]
