@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://j24m6bf3xtgt"]
+[gd_scene load_steps=48 format=4 uid="uid://j24m6bf3xtgt"]
 
 [ext_resource type="Texture2D" uid="uid://bkjskdmju6t8e" path="res://Assets/Skyboxes/blue-nebula-panorama.png" id="1_13pva"]
 [ext_resource type="PackedScene" uid="uid://7m4dqlk8r5y6" path="res://planet.tscn" id="2_vr651"]
@@ -491,6 +491,8 @@ _surfaces = [{
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_glxhu"]
 data = PackedVector3Array(0, -353.5534, 353.5534, 0, 0, 509.06638, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 353.5534, 0, 353.5534, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 0, 353.5534, 353.5534, 353.5534, 0, 353.5534, 0, 353.5534, 353.5534, 288.67508, 288.67508, 288.67508, 353.5534, 0, 353.5534, -322.73648, -322.73648, 322.73648, -385.28748, 0, 385.28748, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, 0, 0, 509.06638, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, -328.53308, 328.53308, 328.53308, 0, 0, 509.06638, -328.53308, 328.53308, 328.53308, 0, 353.5534, 353.5534, 0, 0, 509.06638)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xrtdi"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -562,6 +564,11 @@ shape = SubResource("ConcavePolygonShape3D_glxhu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 641)
 
 [node name="PlayerShip" parent="." instance=ExtResource("5_k5gf6")]
+
+[node name="playerscalecapsule" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.291565, -71.08255, 641)
+mesh = SubResource("CapsuleMesh_xrtdi")
+skeleton = NodePath("../basic station")
 
 [node name="basic station" parent="." instance=ExtResource("8_akawr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3845, -72.6272, 641)
