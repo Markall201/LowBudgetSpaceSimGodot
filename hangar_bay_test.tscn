@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://rarl1soagyqe"]
+
+[ext_resource type="PackedScene" uid="uid://cxki12x0nxpmf" path="res://Assets/hangar-backdrop.glb" id="1_83atj"]
+[ext_resource type="PackedScene" uid="uid://cjd5o54g6cmpg" path="res://Assets/hangar-pad.glb" id="2_27p3e"]
+[ext_resource type="PackedScene" uid="uid://cq8lyns0gewpj" path="res://Assets/space brigade starbird classic.glb" id="3_m570n"]
+[ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="4_m570n"]
+[ext_resource type="PackedScene" uid="uid://do207dq50eghy" path="res://Assets/space brigade starbird 2.glb" id="5_46vei"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 6, -17)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="hangar-backdrop" parent="." instance=ExtResource("1_83atj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="hangar-pad" parent="." instance=ExtResource("2_27p3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -32)
+
+[node name="space brigade starbird classic" parent="hangar-pad" instance=ExtResource("3_m570n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 2)
+
+[node name="hangar-pad3" parent="." instance=ExtResource("2_27p3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
+
+[node name="wallbug ship" parent="hangar-pad3" instance=ExtResource("4_m570n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.7, -1)
+skeleton = NodePath("../..")
+
+[node name="hangar-pad2" parent="." instance=ExtResource("2_27p3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -32)
+
+[node name="space brigade starbird 2" parent="hangar-pad2" instance=ExtResource("5_46vei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 2)
