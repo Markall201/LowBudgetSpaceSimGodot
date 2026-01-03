@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlanetNoise" load_steps=3 format=3 uid="uid://v7153c83wpc3"]
+
+[ext_resource type="Script" uid="uid://dqpjojp8k1ghw" path="res://Scripts/Procedural Planet Generation/PlanetNoise.gd" id="1_khwh8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_26qf8"]
+frequency = 1.0
+
+[resource]
+script = ExtResource("1_khwh8")
+min_height = 0.2
+amplitude = 0.4
+height_map = SubResource("FastNoiseLite_26qf8")

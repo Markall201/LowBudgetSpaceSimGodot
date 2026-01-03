@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://c24oqgh3nyvde"]
+
+[ext_resource type="PackedScene" uid="uid://dfikgse3bnwma" path="res://star_system.tscn" id="1_oypg7"]
+[ext_resource type="PackedScene" uid="uid://c1ukmdoquihnf" path="res://player_ship.tscn" id="2_bhnl7"]
+[ext_resource type="Texture2D" uid="uid://c7jcka3wxruh5" path="res://Assets/Skyboxes/blue-skies-white-clouds-panorama.png" id="3_oypg7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7clvv"]
+panorama = ExtResource("3_oypg7")
+
+[sub_resource type="Sky" id="Sky_l4d75"]
+sky_material = SubResource("PanoramaSkyMaterial_7clvv")
+
+[sub_resource type="Environment" id="Environment_mek8t"]
+background_mode = 2
+sky = SubResource("Sky_l4d75")
+ambient_light_sky_contribution = 0.2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_sky_affect = 0.3
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="PlayerShip" parent="." instance=ExtResource("2_bhnl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mek8t")
+
+[node name="StarSystem" parent="." instance=ExtResource("1_oypg7")]
+number_of_stars = 0
+number_of_planets = 4
+planet_min_size = 2
+planet_max_size = 4
+system_radius = 10

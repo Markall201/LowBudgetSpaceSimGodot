@@ -44,10 +44,13 @@ enum AtmosphereType {
 		# set the seed for all noise layers
 		for n in planet_noise:
 				if n != null and n.height_map != null:
+					print("setting seed to " + str(val))
 					n.height_map.set_seed(val)
 					print(n.height_map.get_seed())
 					if not n.is_connected("changed", on_data_changed):
 						n.connect("changed", on_data_changed)
+				else:
+					print("noise map null")
 					
 		emit_signal("changed")
 		

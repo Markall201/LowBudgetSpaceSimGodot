@@ -6,6 +6,9 @@ class_name StarSystem
 @export var number_of_stars: int = 1
 @export var number_of_planets: int = 0
 
+@export var planet_min_size: int = 50
+@export var planet_max_size: int = 75
+
 
 # set radius to generate things in
 @export var system_radius: int = 3000
@@ -64,22 +67,24 @@ func create_planets():
 func generate_planet_data():
 	
 		var planet = prefab_planet.instantiate()
-		#planet.planet_data = planet.planet_data.duplicate()
 		planet.position = get_random_pos_in_cube(system_radius)
-		planet.planet_data.seed = rng.randi()
-		planet.planet_data.radius = rng.randi_range(50, 75)
 		
+		# make a duplicate copy of any noise layers to make planet terrain unique
+		var new_planet_noise:Array[PlanetNoise]
+		var new_planet_noise_layer:PlanetNoise = load("res://Assets/Resource Data/planet_noise_default.tres").duplicate()
+		new_planet_noise_layer.height_map = load("res://Assets/Resource Data/planet_noise_default.tres").height_map.duplicate()
+		new_planet_noise.append(new_planet_noise_layer)
+		planet.planet_data.planet_noise = new_planet_noise
+		
+		planet.planet_data.seed = rng.randi()
+		#planet.planet_data.radius = rng.randi_range(50, 75)
+		planet.planet_data.radius = rng.randi_range(planet_min_size, planet_max_size)
 		# set planet type
 		planet.planet_data.planet_type = rng.randi_range(0, 7)
 		
 		# set planet colour
 		planet.planet_data.terrain_type = rng.randi_range(0, 4)
-		
-		# set the planet with a new material and existing shader
-		#var surface_material: ShaderMaterial = planet.planet_data.planet_material.duplicate()
-		#var surface_shader: Shader = planet.planet_data.planet_material.get_shader().duplicate()
-		#surface_material.set_shader(surface_shader)
-		#planet.planet_data.planet_material = surface_material
+		planet.planet_data.on_data_changed()
 		return planet
 
 	
