@@ -53,12 +53,7 @@ func create_planets():
 	# iterate through and create each planet
 	for i in number_of_planets:
 		
-		var current_planet = prefab_planet.instantiate()
-		current_planet.position = get_random_pos_in_cube(system_radius)
-		
-		generate_planet_data(current_planet)
-		# i'm fairly sure the terrain's different, still to do: colour differences
-		
+		var current_planet = generate_planet_data()
 		# record planet data (array of dictionaries)
 		planets.append(current_planet.to_dictionary)
 		# add planet as a child of the system
@@ -66,14 +61,26 @@ func create_planets():
 
 		
 # method to procedurally set planet data
-func generate_planet_data(planet: Planet):
+func generate_planet_data():
+	
+		var planet = prefab_planet.instantiate()
+		#planet.planet_data = planet.planet_data.duplicate()
+		planet.position = get_random_pos_in_cube(system_radius)
 		planet.planet_data.seed = rng.randi()
 		planet.planet_data.radius = rng.randi_range(50, 75)
 		
-		# set the planet with a new material and existing shader
-		planet.planet_data.planet_material = ShaderMaterial.new()
-		planet.planet_data.planet_material.set_shader(planet_shader)
+		# set planet type
+		planet.planet_data.planet_type = rng.randi_range(0, 7)
 		
+		# set planet colour
+		planet.planet_data.terrain_type = rng.randi_range(0, 4)
+		
+		# set the planet with a new material and existing shader
+		#var surface_material: ShaderMaterial = planet.planet_data.planet_material.duplicate()
+		#var surface_shader: Shader = planet.planet_data.planet_material.get_shader().duplicate()
+		#surface_material.set_shader(surface_shader)
+		#planet.planet_data.planet_material = surface_material
+		return planet
 
 	
 	

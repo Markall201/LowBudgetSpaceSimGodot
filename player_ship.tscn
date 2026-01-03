@@ -38,16 +38,18 @@ shape = SubResource("BoxShape3D_wpd18")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 5, -19)
 cull_mask = 1048573
 current = true
+far = 1000000.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, -0.14379466, -0.36451674)
 cull_mask = 1048573
+far = 1000000.0
 
 [node name="Camera3D_radar" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, -0.37346113, -0.82497406)
 cull_mask = 3
 environment = SubResource("Environment_sod33")
-far = 10000.0
+far = 1000000.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D_radar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90367e-08, 0, -0.78968775)

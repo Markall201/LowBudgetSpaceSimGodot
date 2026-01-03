@@ -10,15 +10,23 @@ class_name PlanetData
 enum PlanetType {
 	Terrestrial, Desert, Oceanic, Jungle, Lava, Rocky, Ice, Gas}
 
-enum TerrainColour {
+enum TerrainType {
 	Terrestrial, Arid, Sand, Ice, Lush}
 	
 enum AtmosphereType {
 	None, Terrestrial, Thin, Sulphurous, Red, Neon}
 	
-@export var planet_type: PlanetType
+@export var planet_type: PlanetType:
+	set(val):
+		planet_type = val
+		
+		if planet_type == PlanetType.Lava:
+			planet_colour = load("res://Assets/Planet Colours/planet_lava.tres")
+		elif planet_type == PlanetType.Oceanic:
+			planet_colour = load("res://Assets/Planet Colours/planet_sandy.tres")
+		emit_signal("changed")
 
-@export var terrain_colour: TerrainColour
+@export var terrain_type: TerrainType
 
 @export var atmosphere_type: AtmosphereType
 
@@ -99,7 +107,7 @@ func _ready():
 	
 # dictionary converter function
 func to_dictionary():
-	var planet_dictionary = {"name": name, "seed": seed, "radius": radius, "planet_type": planet_type, "terrain_colour": terrain_colour, "atmosphere_type": atmosphere_type}
+	var planet_dictionary = {"name": name, "seed": seed, "radius": radius, "planet_type": planet_type, "terrain_colour": terrain_type, "atmosphere_type": atmosphere_type}
 	return planet_dictionary
 
 # string converter

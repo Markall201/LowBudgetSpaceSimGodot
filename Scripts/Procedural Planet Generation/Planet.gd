@@ -71,7 +71,7 @@ func on_data_changed():
 			if face is TerrainFace:
 
 				face.construct_mesh(planet_data)
-				face.update_textures(planet_data)
+				#face.update_textures(planet_data)
 				
 # dictionary converter function
 func to_dictionary():
@@ -85,7 +85,7 @@ func _to_string():
 # Constructor equivalent - returns a new instance of the planet
 # currently not used but working on it
 # mirrors the to_dictionary() data from PlanetData
-static func new_planet(name: String, seed: int, radius: int, planet_type: PlanetData.PlanetType, terrain_colour: PlanetData.TerrainColour, atmosphere_type: PlanetData.AtmosphereType) -> Planet:
+static func new_planet(name: String, seed: int, radius: int, planet_type: PlanetData.PlanetType, terrain_type: PlanetData.TerrainType, atmosphere_type: PlanetData.AtmosphereType) -> Planet:
 	# load the prefab
 	var planet_prefab: PackedScene = load("res://planet.tscn")
 	# instantiate the prefab
@@ -94,8 +94,13 @@ static func new_planet(name: String, seed: int, radius: int, planet_type: Planet
 	new_planet.seed = seed
 	new_planet.radius = radius
 	new_planet.planet_type = planet_type
-	new_planet.terrain_colour = terrain_colour
+	new_planet.terrain_type = terrain_type
 	new_planet.atmosphere_type = atmosphere_type
+	# get existing material and shader and duplicate
+	var surface_material: ShaderMaterial = new_planet.planet_data.planet_material.duplicate()
+	var surface_shader: Shader = new_planet.planet_data.planet_material.get_shader().duplicate()
+	surface_material.set_shader(surface_shader)
+	new_planet.planet_data.planet_material = surface_material 
 	
 	return new_planet
 	

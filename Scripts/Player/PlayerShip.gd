@@ -133,9 +133,9 @@ func _input(event):
 			roll1D = -Input.get_action_strength("Roll Right")
 
 		
-	print("pitch: " + str(pitch1D))
-	print("yaw: " + str(yaw1D))
-	print("roll: " + str(roll1D))
+	#print("pitch: " + str(pitch1D))
+	#print("yaw: " + str(yaw1D))
+	#print("roll: " + str(roll1D))
 		
 #ship movement systems
 func handle_movement():
@@ -206,7 +206,7 @@ func handle_mouse_control():
 	# toggle mouse control
 	if (Input.is_action_just_pressed("Mouse Lock Toggle")):
 		mouse_control_toggle = !mouse_control_toggle
-		print(mouse_control_toggle)
+		#print(mouse_control_toggle)
 	
 	if (mouse_control_toggle):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

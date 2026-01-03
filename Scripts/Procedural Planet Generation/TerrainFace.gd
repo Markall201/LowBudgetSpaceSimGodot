@@ -122,17 +122,23 @@ func _update_mesh(mesh_data_array : Array, planet_data):
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, mesh_data_array)
 	self.mesh = _mesh
 	
+	
+	
 	# material shader update
 	# update material for the surface (if we can)
 	if (planet_data.planet_material != null):
 		# update the surface materials - make sure this propagates to the meshes
 		var surface_index:int = _mesh.get_surface_count() -1
-		#print("updating material!")
+		print("updating material!")
 		# ensure materials and shaders are unique - they'll actually be copies of the referenced material
-		var surface_material: ShaderMaterial = planet_data.planet_material.duplicate()
-		var surface_shader: Shader = planet_data.planet_material.get_shader().duplicate()
-		surface_material.set_shader(surface_shader)
-		
+		#var surface_material: ShaderMaterial = planet_data.planet_material.duplicate()
+		#var surface_shader: Shader = planet_data.planet_material.get_shader().duplicate()
+		#surface_material.set_shader(surface_shader)
+		var surface_material: ShaderMaterial = planet_data.planet_material
+		# turns out surface override and material override are different 
+		# so need to set both to be the planetdata material
+		# this fixed instantiated planet colours
+		material_override = planet_data.planet_material
 		self.set_surface_override_material(surface_index, surface_material)
 		_mesh.surface_set_material(surface_index, surface_material)
 		# create collider
@@ -212,9 +218,9 @@ func calculate_vertex_point_on_planet(planet: PlanetData, pointOnUnitSphere: Vec
 	
 	
 # todo: get this to actually show the texture on the planet's surface
-func update_textures(planet: PlanetData):
+#func update_textures(planet: PlanetData):
 	
-	planet_data = planet
+#	planet_data = planet
 	#self.set_material_override(preload("res://Assets/Art/earth_material.tres"))
 	#var planetTexture:Texture2D = planet_data.colourmap
 	#var mesh_data_array := []
