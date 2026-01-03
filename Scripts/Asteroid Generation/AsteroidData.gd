@@ -35,4 +35,3 @@ func set_seed(val: int):
 
 
 # colour settings
-

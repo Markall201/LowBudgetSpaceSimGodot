@@ -1,14 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceeplx14cj6xg"]
 
-[ext_resource type="Script" path="res://Star.gd" id="1_ch3w4"]
+[ext_resource type="Script" uid="uid://cyaju4ab0e40y" path="res://Scripts/Star.gd" id="1_ch3w4"]
 [ext_resource type="Material" uid="uid://d1t46a2eh74wv" path="res://Assets/Materials/star_material.tres" id="1_ln6wt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f0xqt"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_gmgkl"]
+material = ExtResource("1_ln6wt")
 
 [node name="Star" type="Node3D"]
 script = ExtResource("1_ch3w4")
+radius = 300.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -21,4 +23,9 @@ mesh = SubResource("SphereMesh_gmgkl")
 skeleton = NodePath("../../..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_volumetric_fog_energy = 50.0
 light_size = 1.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 100000000.0
+omni_attenuation = 0.0

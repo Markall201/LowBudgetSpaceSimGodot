@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AsteroidData" load_steps=3 format=3 uid="uid://bakbdoqlvgrgc"]
 
-[ext_resource type="Script" path="res://Scripts/Asteroid Generation/AsteroidData.gd" id="1_qpqbq"]
+[ext_resource type="Script" uid="uid://b0j54w4jklbdu" path="res://Scripts/Asteroid Generation/AsteroidData.gd" id="1_qpqbq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_a2a47"]
 noise_type = 3
@@ -8,9 +8,5 @@ frequency = 0.8
 
 [resource]
 script = ExtResource("1_qpqbq")
-seed = 0
-radius = 1.0
-height_multiplier = 0.05
 resolution = 16
-amplitude = 1.0
 height_map = SubResource("FastNoiseLite_a2a47")

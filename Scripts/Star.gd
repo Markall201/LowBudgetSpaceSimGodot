@@ -6,4 +6,3 @@ class_name Star
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scale = Vector3(radius, radius, radius)
-
