@@ -9,7 +9,7 @@ extends RigidBody3D
 @export var up_thrust: float = 50.0
 @export var strafe_thrust: float = 50.0
 
-@export var yaw_torque: float = 10.0
+@export var yaw_torque: float = 20.0
 @export var pitch_torque: float = 20.0
 @export var roll_torque: float = 50.0
 
@@ -26,11 +26,12 @@ extends RigidBody3D
 
 @export var pitch1D: float = 0.0
 @export var roll1D: float = 0.0
+@export var yaw1D: float = 0.0
 
 
-@export var mouse_curve: Curve
-@export var mouse_sensitivity_x: float = 0.001
-@export var mouse_sensitivity_y: float = 0.001
+#@export var mouse_curve: Curve
+@export var mouse_sensitivity_x: float = 0.005
+@export var mouse_sensitivity_y: float = 0.005
 
 # multipliers to scale (down) acceleration and torque rotation
 # set to 1 for no effect
@@ -87,7 +88,11 @@ func handle_throttle(delta):
 var mouse_input:Vector2 = Vector2.ZERO
 				
 func _input(event):
-
+	# reset values
+	mouse_input = Vector2.ZERO
+	roll1D = 0.0
+	pitch1D = 0.0
+	yaw1D = 0.0
 	
 	# added condition for mouse control toggle
 	if event is InputEventMouseMotion && mouse_control_toggle:
@@ -107,6 +112,31 @@ func _input(event):
 		
 		#print("mouse_input:" + str(mouse_input) + "\nX: " + str(roll1D) + "\nY: " + str(pitch1D))
 		
+	# controller support too
+	elif (event != null):
+		if (Input.is_action_pressed("Pitch Up")):
+			pitch1D = -Input.get_action_strength("Pitch Up")
+		
+		if (Input.is_action_pressed("Pitch Down")):
+			pitch1D = Input.get_action_strength("Pitch Down")
+			
+		if (Input.is_action_pressed("Yaw Left")):
+			yaw1D = Input.get_action_strength("Yaw Left")
+		
+		if (Input.is_action_pressed("Yaw Right")):
+			yaw1D = -Input.get_action_strength("Yaw Right")
+			
+		if (Input.is_action_pressed("Roll Left")):
+			roll1D = Input.get_action_strength("Roll Left")
+		
+		if (Input.is_action_pressed("Roll Right")):
+			roll1D = -Input.get_action_strength("Roll Right")
+
+		
+	print("pitch: " + str(pitch1D))
+	print("yaw: " + str(yaw1D))
+	print("roll: " + str(roll1D))
+		
 #ship movement systems
 func handle_movement():
 	
@@ -122,10 +152,8 @@ func handle_movement():
 		var pitch: Vector3 = get_global_transform().basis.x * pitch1D * pitch_torque  * rotation_dampener
 		apply_torque_impulse(pitch)
 	# yaw
-	if (Input.is_action_pressed("Yaw Left")):
-		apply_torque_impulse(get_global_transform().basis.y * yaw_torque  * rotation_dampener) 
-	if (Input.is_action_pressed("Yaw Right")):
-		apply_torque_impulse(get_global_transform().basis.y * -yaw_torque  * rotation_dampener)
+	if (yaw1D > 0.1 and yaw1D <= 1.0 || yaw1D < -0.1 and yaw1D >= -1.0):
+		apply_torque_impulse(get_global_transform().basis.y * yaw_torque * yaw1D * rotation_dampener) 
 	# forward thrust
 	# if we need to accelerate
 	if (current_throttle >= 0):

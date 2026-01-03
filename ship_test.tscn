@@ -561,28 +561,28 @@ planet_data = SubResource("Resource_8n7bn")
 shape = SubResource("ConcavePolygonShape3D_glxhu")
 
 [node name="Station" parent="." instance=ExtResource("7_3pfx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 15, 641)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -423.03503, 15, 641)
 
 [node name="PlayerShip" parent="." instance=ExtResource("5_k5gf6")]
 
 [node name="playerscalecapsule" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.291565, -71.08255, 641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318.90958, -69.6179, 658.06525)
 mesh = SubResource("CapsuleMesh_xrtdi")
 skeleton = NodePath("../basic station")
 
 [node name="basic station" parent="." instance=ExtResource("8_akawr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3845, -72.6272, 641)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 292.29172, -72.6272, 641)
 
 [node name="space brigade starbird 2" parent="." instance=ExtResource("9_2bue7")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 86.3453, -71.9169, 646.408)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 326.07043, -70.25452, 693.18414)
 
 [node name="space brigade starbird classic" parent="." instance=ExtResource("10_18t8f")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 86.45, -71.9977, 664.908)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 322.37195, -69.9859, 707.40314)
 
 [node name="wallbug ship" parent="." instance=ExtResource("11_pe6qr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.4712, -72.0952, 666.128)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 307.9606, -70.8342, 693.08295)
 
 [node name="space brigade star-ranger" parent="." instance=ExtResource("12_wftjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.468, -71.0264, 640.872)
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 322.41092, -65.81696, 650.5393)
 
 [editable path="Planet2"]

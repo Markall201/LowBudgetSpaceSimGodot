@@ -26,6 +26,12 @@ tonemap_mode = 2
 
 [node name="Node3D" type="Node3D"]
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+shadow_enabled = true
+omni_range = 1000.0
+omni_attenuation = 2.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_frnu1")
 
@@ -40,6 +46,7 @@ current = true
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 light_energy = 0.4
 shadow_enabled = true
+shadow_opacity = 0.0
 
 [node name="hangar-backdrop" parent="." instance=ExtResource("1_83atj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
