@@ -4,3 +4,5 @@
 
 [node name="StarSystem" type="Node3D"]
 script = ExtResource("1_3j614")
+
+[connection signal="data_changed" from="." to="." method="_on_data_changed"]

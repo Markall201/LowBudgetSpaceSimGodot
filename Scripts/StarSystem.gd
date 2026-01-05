@@ -1,17 +1,40 @@
+@tool
 extends Node3D
 class_name StarSystem
 
 
-@export var seed: int = 0
-@export var number_of_stars: int = 1
-@export var number_of_planets: int = 0
+@export var seed: int = 0:
+	set(val):
+		seed = val
+		emit_signal("data_changed")
+		
+		
+@export var number_of_stars: int = 1:
+	set(val):
+		number_of_stars = val
+		emit_signal("data_changed")
+		
+@export var number_of_planets: int = 0:
+	set(val):
+		number_of_planets = val
+		emit_signal("data_changed")
 
-@export var planet_min_size: int = 50
-@export var planet_max_size: int = 75
+@export var planet_min_size: int = 50:
+	set(val):
+			planet_min_size = val
+			emit_signal("data_changed")
+
+@export var planet_max_size: int = 75:
+	set(val):
+			planet_max_size = val
+			emit_signal("data_changed")
 
 
 # set radius to generate things in
-@export var system_radius: int = 3000
+@export var system_radius: int = 3000:
+	set(val):
+		system_radius = val
+		emit_signal("data_changed")
 
 # arrays of the system's celestial objects
 var stars: Array
@@ -100,6 +123,20 @@ func get_random_pos_in_cube(radius : float) -> Vector3:
 
 	return random_pos_on_unit_sphere
 	
+# a function to remove Planet and Star nodes when rebuilding system
+func clear_system():
+	for child in get_children():
+			# particularly concerned with Planets and Stars
+			if (child is Planet) || (child is Star):
+				# remove from scene
+				child.queue_free()
+
+signal data_changed()
+
+func _on_data_changed():
+	print("data changed")
+	clear_system()
+	generate_system()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -109,3 +146,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+# Replace with function body.

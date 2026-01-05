@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 light_energy = 0.0
 
 [node name="StarSystem" parent="." instance=ExtResource("1_ju6wf")]
-number_of_planets = 4
+number_of_planets = 5
 
 [node name="PlayerShip" parent="." instance=ExtResource("2_duhnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)

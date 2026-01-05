@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dqpjojp8k1ghw" path="res://Scripts/Procedural Planet Generation/PlanetNoise.gd" id="1_khwh8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_26qf8"]
+seed = 56
 frequency = 1.0
 
 [resource]
