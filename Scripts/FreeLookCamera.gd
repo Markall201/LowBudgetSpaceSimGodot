@@ -1,5 +1,8 @@
 extends Node3D
 
+# reference to Camera3D - though the movement will be handled by self
+@onready var camera_3d: Camera3D = $Camera3D
+
 @export var acceleration: float = 50.0
 @export var move_speed: float = 50.0
 @export var sensitivity: float = 0.001
@@ -11,9 +14,11 @@ var look_angles = Vector2(-(PI), - (PI / 2))
 var mouse_look_toggle: bool = false
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_rotation(Vector3(-90.0, -180, 0))
+	camera_3d.make_current()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

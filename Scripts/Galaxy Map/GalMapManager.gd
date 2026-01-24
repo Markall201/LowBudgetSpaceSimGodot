@@ -16,6 +16,8 @@ func _ready():
 func _process(delta):
 	pass
 
+signal on_hyperspace_target_system_select(seed)
+
 # method to clear the UI text
 func setLabelsEmpty():
 	system_label.text = ""
@@ -40,3 +42,4 @@ func setLabels(systemName, numberOfPlanets, numberOfStars, location, seed, facti
 func _on_system_placeholder_highlight(systemName, numberOfPlanets, numberOfStars, location, seed, faction):
 	# pass details to UI
 	setLabels(systemName, numberOfPlanets, numberOfStars, location, seed, faction)
+	on_hyperspace_target_system_select.emit(seed)

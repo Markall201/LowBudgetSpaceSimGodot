@@ -16,16 +16,15 @@ extends Node3D
 
 @onready var sphereMesh = $MeshInstance3D
 
-var uiControls
-
 # signal to communicate the data when mouse over
 signal highlight(systemName, numberOfPlanets, numberOfStars, location, seed, faction)
 
 #when node is instantiated, connect the "highlight" signal up to the UI controls
 func _ready():
+	
 	# get the UI controls node
-	uiControls = get_node("/root/Main/CanvasLayer/Panel/Control")
-	#print(uiControls)
+	var uiControls: Control = get_node("../../%Control")
+	
 	# connect our signal to it
 	#object_producing_signal.signal_name.connect(object_with_receiving_method.receiving_method_name)
 	self.highlight.connect(uiControls._on_system_placeholder_highlight)

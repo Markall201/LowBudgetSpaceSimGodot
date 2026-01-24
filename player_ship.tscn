@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1ukmdoquihnf"]
+[gd_scene load_steps=14 format=3 uid="uid://c1ukmdoquihnf"]
 
 [ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="1_ltnvr"]
 [ext_resource type="Script" uid="uid://dcxxct3kqc6jx" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://bfw18kpm47wak" path="res://Scripts/Player/WeaponsSystem.gd" id="4_noyhe"]
 [ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="5_6ccp3"]
 [ext_resource type="PackedScene" uid="uid://bvx45ex4yvvhx" path="res://beam_laser_weapon.tscn" id="5_txo0d"]
+[ext_resource type="Script" uid="uid://vpeo8iqj0vwr" path="res://Scripts/Player/ShipCameraController.gd" id="9_5mroa"]
+[ext_resource type="Script" uid="uid://dfpt5tjworki" path="res://Scripts/Player/ShipHyperdriveSystem.gd" id="10_xqmbi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpd18"]
 size = Vector3(8, 2, 4.8)
@@ -36,13 +38,13 @@ shape = SubResource("BoxShape3D_wpd18")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 5, -19)
-cull_mask = 1048573
+cull_mask = 1048557
 current = true
 far = 1000000.0
 
-[node name="Camera3D2" type="Camera3D" parent="."]
+[node name="Camera3D_cockpit" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, -0.14379466, -0.36451674)
-cull_mask = 1048573
+cull_mask = 1048557
 far = 1000000.0
 
 [node name="Camera3D_radar" type="Camera3D" parent="."]
@@ -122,3 +124,9 @@ texture_over = ExtResource("5_6ccp3")
 texture_progress = ExtResource("3_mqikq")
 tint_under = Color(0.226707, 0.226707, 0.226707, 1)
 tint_progress = Color(0.9490196, 0.65882355, 0.17254902, 1)
+
+[node name="CameraController" type="Node3D" parent="."]
+script = ExtResource("9_5mroa")
+
+[node name="Hyperdrive" type="Node3D" parent="."]
+script = ExtResource("10_xqmbi")

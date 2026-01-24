@@ -54,6 +54,7 @@ unique_name_in_owner = true
 anchors_preset = 0
 size_flags_horizontal = 8
 script = ExtResource("2_jg22p")
+metadata/_edit_use_anchors_ = true
 
 [node name="System Label" type="Label" parent="CanvasLayer/Panel/Control"]
 unique_name_in_owner = true

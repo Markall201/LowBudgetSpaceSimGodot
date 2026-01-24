@@ -8,7 +8,9 @@ extends Node3D
 # the parent node (the ship object itself)
 @onready var player_ship: RigidBody3D = $".."
 
+var is_active = true
+
 
 func _input(event):
-	if (Input.is_action_pressed("Weapons Fire")):
+	if (Input.is_action_pressed("Weapons Fire") && is_active && player_ship.is_controllable):
 		print("weapon firing")

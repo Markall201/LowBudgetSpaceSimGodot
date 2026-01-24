@@ -35,7 +35,6 @@ extends RigidBody3D
 
 @export var is_controllable: bool = true
 
-@export var can_jump: bool = true
 
 # multipliers to scale (down) acceleration and torque rotation
 # set to 1 for no effect
@@ -79,13 +78,13 @@ func handle_boosting(delta):
 				
 func handle_throttle(delta):
 	# if positive thrust (and not max already)
-	if (Input.is_action_pressed("Throttle Up") && current_throttle < max_throttle):
+	if (Input.is_action_pressed("Throttle Up") && current_throttle < max_throttle && is_controllable):
 				# increase throttle
 				current_throttle += (throttle_change_rate * delta)
 				#print(current_throttle)
 				
 	# if negative thrust but not min
-	elif (Input.is_action_pressed("Throttle Down") && current_throttle > min_throttle):
+	elif (Input.is_action_pressed("Throttle Down") && current_throttle > min_throttle && is_controllable):
 				current_throttle -= (throttle_change_rate * delta)
 				#print(current_throttle)
 				
@@ -145,21 +144,21 @@ func _input(event):
 func handle_movement():
 	
 	#current_speed = self.linear_velocity
-	
-	# rotation movement first
-	# roll
-	if (roll1D > 0.01 and roll1D <= 1.0 || roll1D < -0.01 and roll1D >= -1.0):
-		var roll: Vector3 = get_global_transform().basis.z * -roll1D * roll_torque * rotation_dampener
-		apply_torque_impulse(roll)
-	# pitch
-	if (pitch1D > 0.1 and pitch1D <= 1.0 || pitch1D < -0.1 and pitch1D >= -1.0):
-		var pitch: Vector3 = get_global_transform().basis.x * pitch1D * pitch_torque  * rotation_dampener
-		apply_torque_impulse(pitch)
-	# yaw
-	if (yaw1D > 0.1 and yaw1D <= 1.0 || yaw1D < -0.1 and yaw1D >= -1.0):
-		apply_torque_impulse(get_global_transform().basis.y * yaw_torque * yaw1D * rotation_dampener) 
-	# forward thrust
-	# if we need to accelerate
+	if (is_controllable):
+		# rotation movement first
+		# roll
+		if (roll1D > 0.01 and roll1D <= 1.0 || roll1D < -0.01 and roll1D >= -1.0):
+			var roll: Vector3 = get_global_transform().basis.z * -roll1D * roll_torque * rotation_dampener
+			apply_torque_impulse(roll)
+		# pitch
+		if (pitch1D > 0.1 and pitch1D <= 1.0 || pitch1D < -0.1 and pitch1D >= -1.0):
+			var pitch: Vector3 = get_global_transform().basis.x * pitch1D * pitch_torque  * rotation_dampener
+			apply_torque_impulse(pitch)
+		# yaw
+		if (yaw1D > 0.1 and yaw1D <= 1.0 || yaw1D < -0.1 and yaw1D >= -1.0):
+			apply_torque_impulse(get_global_transform().basis.y * yaw_torque * yaw1D * rotation_dampener) 
+		# forward thrust
+		# if we need to accelerate
 	if (current_throttle >= 0):
 		var current_thrust: float = forward_thrust * (current_throttle/max_throttle) * dampener
 		# apply boost
@@ -177,7 +176,7 @@ func handle_movement():
 		glide_ship_z()
 	
 	# up and down
-	if (Input.is_action_pressed("Translate Up") ||  Input.is_action_pressed("Translate Down")):
+	if (Input.is_action_pressed("Translate Up") ||  Input.is_action_pressed("Translate Down") && is_controllable):
 		if (Input.is_action_pressed("Translate Up")):
 			var current_thrust = up_thrust * dampener
 			apply_central_impulse(get_global_transform().basis.y * current_thrust)
@@ -206,16 +205,18 @@ func handle_movement():
 		glide_ship_x()
 
 func handle_mouse_control():
+	if (is_controllable):
+		# toggle mouse control
+		if (Input.is_action_just_pressed("Mouse Lock Toggle")):
+			mouse_control_toggle = !mouse_control_toggle
+			#print(mouse_control_toggle)
 	
-	# toggle mouse control
-	if (Input.is_action_just_pressed("Mouse Lock Toggle")):
-		mouse_control_toggle = !mouse_control_toggle
-		#print(mouse_control_toggle)
-	
-	if (mouse_control_toggle):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if (mouse_control_toggle):
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED )
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 
 # Called when the node enters the scene tree for the first time.
