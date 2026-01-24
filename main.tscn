@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cd2qx8kqldnwb" path="res://galaxy.tscn" id="1_kbsw4"]
 [ext_resource type="FontFile" uid="uid://780aih6mfcg" path="res://Assets/Fonts/Oxanium-VariableFont_wght.ttf" id="1_ubgmd"]
-[ext_resource type="Script" path="res://Scripts/Galaxy Map/GalMapManager.gd" id="2_jg22p"]
-[ext_resource type="Script" path="res://Scripts/FreeLookCamera.gd" id="3_cn1xk"]
+[ext_resource type="Script" uid="uid://uhxxdy4g6f5a" path="res://Scripts/Galaxy Map/GalMapManager.gd" id="2_jg22p"]
+[ext_resource type="Script" uid="uid://viah3csy45i5" path="res://Scripts/FreeLookCamera.gd" id="3_cn1xk"]
 [ext_resource type="PackedScene" uid="uid://cb0iihk7h0oxx" path="res://system_placeholder.tscn" id="4_1v4nl"]
 
 [sub_resource type="Theme" id="Theme_j5xfp"]
@@ -26,6 +26,7 @@ sky_material = SubResource("PanoramaSkyMaterial_55fxp")
 [sub_resource type="Environment" id="Environment_c7pah"]
 background_mode = 1
 sky = SubResource("Sky_w0fkf")
+glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
@@ -50,7 +51,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8gt82")
 
 [node name="Control" type="Control" parent="CanvasLayer/Panel"]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 8
 script = ExtResource("2_jg22p")

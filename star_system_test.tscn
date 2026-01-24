@@ -13,9 +13,12 @@ sky_material = SubResource("PanoramaSkyMaterial_7clvv")
 
 [sub_resource type="Environment" id="Environment_mek8t"]
 background_mode = 2
-background_energy_multiplier = 4.2
+background_energy_multiplier = 16.0
 sky = SubResource("Sky_l4d75")
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.2
+ambient_light_energy = 0.05
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
@@ -26,6 +29,7 @@ script = ExtResource("1_03vcy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
 
 [node name="StarSystem" parent="." instance=ExtResource("1_ju6wf")]
 number_of_planets = 5

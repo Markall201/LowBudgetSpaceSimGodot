@@ -9,6 +9,7 @@
 material = ExtResource("1_ln6wt")
 
 [node name="Star" type="Node3D"]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
 script = ExtResource("1_ch3w4")
 radius = 300.0
 
@@ -27,5 +28,8 @@ light_volumetric_fog_energy = 50.0
 light_size = 1.0
 shadow_enabled = true
 shadow_reverse_cull_face = true
+distance_fade_begin = 1000.0
+distance_fade_shadow = 1000.0
+distance_fade_length = 300000.0
 omni_range = 100000000.0
 omni_attenuation = 0.0

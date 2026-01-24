@@ -22,7 +22,20 @@ func _ready():
 	#save_systems_to_file()
 	#load_and_generate_systems_from_file()
 
+# a function to get the current system (by unique identifier seed) on the galmap
 
+# WIP - pass in current player's system and show it on galaxy map (e.g. highlighted colour)
+#func highlight_player_current_system():
+	#var system = get_system_placeholder_by_seed(1234)
+	pass
+
+
+func get_system_placeholder_by_seed(system_seed:int):
+	var path = str(system_seed)
+	var system = get_node(path)
+	print("node found! " + path)
+	return system
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -48,6 +61,8 @@ func procedurally_generate_systems_map():
 		var location = Vector3(diskXY.x, rng.randf_range(-10,10), diskXY.y);
 		# generate system details
 		currentSystem.seed = rng.randi();
+		#set node name to seed for easy search
+		currentSystem.set_name(str(currentSystem.seed))
 		currentSystem.numberOfStars = rng.randi_range(1,5)
 		currentSystem.numberOfPlanets = rng.randi_range(0,11)
 		currentSystem.faction = "NONE"
