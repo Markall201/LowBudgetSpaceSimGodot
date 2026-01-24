@@ -69,7 +69,6 @@ func on_data_changed():
 			# particularly concerned with TerrainFaces
 			var face := child as TerrainFace
 			if face is TerrainFace:
-
 				face.construct_mesh(planet_data)
 				#face.update_textures(planet_data)
 				

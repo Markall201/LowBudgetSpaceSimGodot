@@ -3,6 +3,7 @@ extends Node3D
 class_name StarSystem
 
 
+
 @export var seed: int = 0:
 	set(val):
 		seed = val
@@ -19,12 +20,12 @@ class_name StarSystem
 		number_of_planets = val
 		emit_signal("data_changed")
 
-@export var planet_min_size: int = 50:
+@export var planet_min_size: int = 100:
 	set(val):
 			planet_min_size = val
 			emit_signal("data_changed")
 
-@export var planet_max_size: int = 75:
+@export var planet_max_size: int = 150:
 	set(val):
 			planet_max_size = val
 			emit_signal("data_changed")
@@ -42,9 +43,12 @@ var planets: Array
 
 var skybox
 
-# prefabs to load in and modify
+# prefabs to load in, instantiate and modify
 var prefab_star = preload("res://star.tscn")
 var prefab_planet = preload("res://planet.tscn")
+
+# constant reference to prefab of this, for constructor
+const system_prefab: PackedScene = preload("res://star_system.tscn")
 
 var planet_shader = load("res://Assets/Shaders/planet_shader.gdshader")
 
@@ -141,6 +145,18 @@ func _on_data_changed():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_system()
+	
+#	
+static func new_system(new_seed):
+
+
+	var new_system = system_prefab.instantiate()
+	new_system.seed = new_seed
+	new_system.rng.seed = new_seed
+	new_system.number_of_stars = new_system.rng.randi_range(1,5)
+	new_system.number_of_planets = new_system.rng.randi_range(0,11)
+	
+	return new_system
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

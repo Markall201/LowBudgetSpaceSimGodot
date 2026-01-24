@@ -33,6 +33,10 @@ extends RigidBody3D
 @export var mouse_sensitivity_x: float = 0.005
 @export var mouse_sensitivity_y: float = 0.005
 
+@export var is_controllable: bool = true
+
+@export var can_jump: bool = true
+
 # multipliers to scale (down) acceleration and torque rotation
 # set to 1 for no effect
 var dampener: float = 0.05
@@ -95,7 +99,7 @@ func _input(event):
 	yaw1D = 0.0
 	
 	# added condition for mouse control toggle
-	if event is InputEventMouseMotion && mouse_control_toggle:
+	if event is InputEventMouseMotion && mouse_control_toggle && is_controllable:
 		
 		var viewport_transform: Transform2D = get_tree().root.get_final_transform()
 		# get relative mouse input
@@ -113,7 +117,7 @@ func _input(event):
 		#print("mouse_input:" + str(mouse_input) + "\nX: " + str(roll1D) + "\nY: " + str(pitch1D))
 		
 	# controller support too
-	elif (event != null):
+	elif (event != null && is_controllable):
 		if (Input.is_action_pressed("Pitch Up")):
 			pitch1D = -Input.get_action_strength("Pitch Up")
 		
