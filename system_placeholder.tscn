@@ -15,12 +15,16 @@ material = SubResource("StandardMaterial3D_gpoly")
 script = ExtResource("1_uw4cy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 16
 mesh = SubResource("SphereMesh_bncv7")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+layers = 16
 omni_range = 25.0
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
