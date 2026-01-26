@@ -10,7 +10,7 @@ var jump_range: float = 7.5
 
 
 var target_system_seed: int
-var target_system_dict: Dictionary
+var target_system_scene_path: String = ""
 
 # for now jump opens galaxy map
 func _input(event):
@@ -24,6 +24,7 @@ func _input(event):
 		galaxy_map_manager.on_hyperspace_target_system_select.connect(self._on_jump_ready)
 		
 		
-func _on_jump_ready(seed):
+func _on_jump_ready(seed:int, scene_path:String):
 	target_system_seed = seed
-	print("system selected:" + str(seed))
+	target_system_scene_path = scene_path
+	print("system selected:" + str(seed) + " scene path:" + scene_path)

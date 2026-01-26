@@ -37,7 +37,7 @@ func _on_area_3d_mouse_entered():
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
-		highlight.emit(systemName, numberOfPlanets, numberOfStars, location, seed, faction)
+		highlight.emit(systemName, numberOfPlanets, numberOfStars, location, seed, faction, scene_path)
 
 
 func _on_area_3d_mouse_exited():

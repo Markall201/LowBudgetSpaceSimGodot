@@ -41,6 +41,7 @@ func _input(event):
 func funny_jump():
 	current_system_seed = current_system_seed + 1
 	change_system(current_system_seed)
+	#change_system(current_system_seed, "res://Systems/Providence.tscn")
 	print("Currently in system:" + str(current_system_seed))
 	print("Number of planets:" + str(current_system_data.number_of_planets))
 	print("Number of stars:" + str(current_system_data.number_of_stars))

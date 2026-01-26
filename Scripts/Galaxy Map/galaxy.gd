@@ -70,7 +70,7 @@ func procedurally_generate_systems_map():
 		# position is built-in, location I added
 		currentSystem.position = location;
 		currentSystem.location = location;
-		
+		currentSystem.scene_path = "res://Systems/Providence.tscn"
 		# convert to dictionary and add to array
 		systems_dictionaries_array.append(currentSystem.to_dictionary())
 		

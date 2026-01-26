@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp2ngaf6j5ej3"]
+
+[ext_resource type="Script" uid="uid://cb6twvck50l3y" path="res://Scripts/StarSystem.gd" id="1_wy3ld"]
+
+[node name="StarSystem" type="Node3D"]
+script = ExtResource("1_wy3ld")
+seed = 578
+number_of_stars = 2
+number_of_planets = 7
+system_radius = 1500
+
+[connection signal="data_changed" from="." to="." method="_on_data_changed"]

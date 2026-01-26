@@ -39,7 +39,7 @@ func setLabels(systemName, numberOfPlanets, numberOfStars, location, seed, facti
 	return
 
 # custom signal "highlight" emitted by SystemPlaceholder
-func _on_system_placeholder_highlight(systemName, numberOfPlanets, numberOfStars, location, seed, faction):
+func _on_system_placeholder_highlight(systemName, numberOfPlanets, numberOfStars, location, seed, faction, scene_path):
 	# pass details to UI
 	setLabels(systemName, numberOfPlanets, numberOfStars, location, seed, faction)
-	on_hyperspace_target_system_select.emit(seed)
+	on_hyperspace_target_system_select.emit(seed, scene_path)

@@ -163,7 +163,7 @@ static func new_system(new_seed = 0, scene_path = ""):
 	
 	# updated to allow scene loading instead of outright procedural generation	
 	else:
-		var new_system = load(scene_path)
+		var new_system = load(scene_path).instantiate()
 		return new_system
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
