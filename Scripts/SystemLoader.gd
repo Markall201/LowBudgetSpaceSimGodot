@@ -33,11 +33,11 @@ func build_new_system(new_seed:int, scene_path = ""):
 	add_child(new_system)
 	current_system_data = new_system
 
-# for now jump increments seed
-func _input(event):
-	if (Input.is_action_just_pressed("Hyperspace Jump")):
-		funny_jump()
-	
+
+func _on_hyperspace_jump(target_system_seed:int, target_scene_path:String=""):
+	change_system(target_system_seed, target_scene_path)
+
+# this jump increments seed haha
 func funny_jump():
 	current_system_seed = current_system_seed + 1
 	change_system(current_system_seed)
