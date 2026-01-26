@@ -37,11 +37,8 @@ func build_new_system(new_seed:int, scene_path = ""):
 func _on_hyperspace_jump(target_system_seed:int, target_scene_path:String=""):
 	change_system(target_system_seed, target_scene_path)
 
+
 # this jump increments seed haha
 func funny_jump():
 	current_system_seed = current_system_seed + 1
 	change_system(current_system_seed)
-	#change_system(current_system_seed, "res://Systems/Providence.tscn")
-	print("Currently in system:" + str(current_system_seed))
-	print("Number of planets:" + str(current_system_data.number_of_planets))
-	print("Number of stars:" + str(current_system_data.number_of_stars))

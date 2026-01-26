@@ -76,6 +76,12 @@ func procedurally_generate_systems_map():
 		# add instance as child of galaxy node
 		add_child(currentSystem)
 		
+		# We have a problem here - the random number generator uses seeds differently
+		# and is generating different numbers of planets and stars in system
+		# when we hyperjump there
+		# either align the rng seeds (possibly using a constructor instead)
+		# or pass more data through when generating the system
+		
 	return
 	
 # A method to convert the systems data to JSON and save it to file

@@ -158,6 +158,10 @@ static func new_system(new_seed = 0, scene_path = ""):
 		new_system.rng.seed = new_seed
 		new_system.number_of_stars = new_system.rng.randi_range(1,5)
 		new_system.number_of_planets = new_system.rng.randi_range(0,11)
+		
+		print("Currently in system:" + str(new_system.seed))
+		print("Number of planets:" + str(new_system.number_of_planets))
+		print("Number of stars:" + str(new_system.number_of_stars))
 	
 		return new_system
 	
