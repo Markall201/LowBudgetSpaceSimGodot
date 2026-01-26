@@ -147,17 +147,24 @@ func _ready():
 	generate_system()
 	
 #	
-static func new_system(new_seed):
-
-
-	var new_system = system_prefab.instantiate()
-	new_system.seed = new_seed
-	new_system.rng.seed = new_seed
-	new_system.number_of_stars = new_system.rng.randi_range(1,5)
-	new_system.number_of_planets = new_system.rng.randi_range(0,11)
+# Costructor for a new system
+# scene_path can be blank, in which it defaults to procedural generation
+# if scene_path parameter is set, it will load the scene instead
+static func new_system(new_seed = 0, scene_path = ""):
 	
-	return new_system
-
+	if (scene_path == ""):
+		var new_system = system_prefab.instantiate()
+		new_system.seed = new_seed
+		new_system.rng.seed = new_seed
+		new_system.number_of_stars = new_system.rng.randi_range(1,5)
+		new_system.number_of_planets = new_system.rng.randi_range(0,11)
+	
+		return new_system
+	
+	# updated to allow scene loading instead of outright procedural generation	
+	else:
+		var new_system = load(scene_path)
+		return new_system
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

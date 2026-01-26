@@ -1,16 +1,20 @@
 extends Node3D
-
+class_name SystemLoader
 
 
 var current_system_seed: int
 # object reference to current system
 var current_system_data
 
-# function to handle moving to a new system of which the seed is known
-func change_system(new_seed: int):
+# function to handle moving to a new system
+# the seed is known but the scene path is optional
+# if the scene path is known the alternative constructor will be used
+# and the system will be loaded from a scene
+func change_system(new_seed: int, scene_path = ""):
 	current_system_seed = new_seed
 	clear_current_system()
-	build_new_system(new_seed)
+	build_new_system(new_seed, scene_path)
+	
 
 # a function to remove Planet and Star nodes when rebuilding system
 func clear_current_system():
@@ -23,9 +27,9 @@ func clear_current_system():
 # a function to call the constructor for the new system
 # using the new seed
 # and add the instance to the scene tree		
-func build_new_system(new_seed):
+func build_new_system(new_seed:int, scene_path = ""):
 # 	instantiate a new StarSystem using constructor
-	var new_system = StarSystem.new_system(new_seed)
+	var new_system = StarSystem.new_system(new_seed, scene_path)
 	add_child(new_system)
 	current_system_data = new_system
 

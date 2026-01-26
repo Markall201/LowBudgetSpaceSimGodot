@@ -13,6 +13,8 @@ extends Node3D
 @export var location: Vector3 = Vector3(0,0,0);
 
 @export var faction:= "NONE";
+# for hand-crafted systems, use scene path instead
+@export var scene_path:String = "";
 
 @onready var sphereMesh = $MeshInstance3D
 
@@ -42,5 +44,5 @@ func _on_area_3d_mouse_exited():
 	sphereMesh.scale = Vector3(1,1,1)
 	
 func to_dictionary():
-	var system_dictionary = {"systemName": systemName, "numberOfPlanets" :numberOfPlanets, "numberOfStars" : numberOfStars, "location_x": location.x, "location_y": location.y, "location_z": location.z, "seed": seed, "faction": faction}
+	var system_dictionary = {"systemName": systemName, "numberOfPlanets" :numberOfPlanets, "numberOfStars" : numberOfStars, "location_x": location.x, "location_y": location.y, "location_z": location.z, "seed": seed, "faction": faction, "scene_path": scene_path}
 	return system_dictionary

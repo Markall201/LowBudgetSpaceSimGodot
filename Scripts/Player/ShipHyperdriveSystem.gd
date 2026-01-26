@@ -10,7 +10,7 @@ var jump_range: float = 7.5
 
 
 var target_system_seed: int
-
+var target_system_dict: Dictionary
 
 # for now jump opens galaxy map
 func _input(event):
