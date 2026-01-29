@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	pass
 
-signal on_hyperspace_target_system_select(seed)
+signal on_hyperspace_target_system_select(system_placeholder:SystemPlaceholder)
 
 # method to clear the UI text
 func setLabelsEmpty():
@@ -28,18 +28,18 @@ func setLabelsEmpty():
 	system_faction.text = ""
 	return
 
-# method to set label data
-func setLabels(systemName, numberOfPlanets, numberOfStars, location, seed, faction):
-	system_label.text = systemName
-	system_stars.text = "NUMBER OF STARS: " + str(numberOfStars)
-	system_planets.text = "NUMBER OF PLANETS: " + str(numberOfPlanets)
-	system_coords.text = "COORDINATES: " + str(location)
-	system_seed.text = "SEED: "  + str(seed)
-	system_faction.text = "FACTION: "  + faction
+# method to set label data from a system placeholder
+func setLabels(system_placeholder:SystemPlaceholder):
+	system_label.text = system_placeholder.systemName
+	system_stars.text = "NUMBER OF STARS: " + str(system_placeholder.numberOfStars)
+	system_planets.text = "NUMBER OF PLANETS: " + str(system_placeholder.numberOfPlanets)
+	system_coords.text = "COORDINATES: " + str(system_placeholder.location)
+	system_seed.text = "SEED: "  + str(system_placeholder.seed)
+	system_faction.text = "FACTION: "  + system_placeholder.faction
 	return
 
 # custom signal "highlight" emitted by SystemPlaceholder
-func _on_system_placeholder_highlight(systemName, numberOfPlanets, numberOfStars, location, seed, faction, scene_path):
+func _on_system_placeholder_highlight(system_placeholder:SystemPlaceholder):
 	# pass details to UI
-	setLabels(systemName, numberOfPlanets, numberOfStars, location, seed, faction)
-	on_hyperspace_target_system_select.emit(seed, scene_path)
+	setLabels(system_placeholder)
+	on_hyperspace_target_system_select.emit(system_placeholder)

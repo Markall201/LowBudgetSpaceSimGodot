@@ -144,30 +144,31 @@ func _on_data_changed():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_system()
-	
+	# on_data_changed triggers the system generation so we don't need it here
+	#generate_system()
+	print("Currently in system:" + str(seed))
+	print("Number of planets:" + str(number_of_planets))
+	print("Number of stars:" + str(number_of_stars))
 #	
-# Costructor for a new system
+# Costructor for a new system from system placeholder data
 # scene_path can be blank, in which it defaults to procedural generation
-# if scene_path parameter is set, it will load the scene instead
-static func new_system(new_seed = 0, scene_path = ""):
+# if scene_path attribute is set, it will load the scene instead
+static func new_system(system_placeholder:SystemPlaceholder):
 	
-	if (scene_path == ""):
+	if (system_placeholder.scene_path == ""):
 		var new_system = system_prefab.instantiate()
-		new_system.seed = new_seed
-		new_system.rng.seed = new_seed
-		new_system.number_of_stars = new_system.rng.randi_range(1,5)
-		new_system.number_of_planets = new_system.rng.randi_range(0,11)
+		new_system.seed = system_placeholder.seed
+		new_system.rng.seed = system_placeholder.seed
+		new_system.number_of_stars = system_placeholder.numberOfStars
+		new_system.number_of_planets = system_placeholder.numberOfPlanets
 		
-		print("Currently in system:" + str(new_system.seed))
-		print("Number of planets:" + str(new_system.number_of_planets))
-		print("Number of stars:" + str(new_system.number_of_stars))
+		
 	
 		return new_system
 	
 	# updated to allow scene loading instead of outright procedural generation	
 	else:
-		var new_system = load(scene_path).instantiate()
+		var new_system = load(system_placeholder.scene_path).instantiate()
 		return new_system
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

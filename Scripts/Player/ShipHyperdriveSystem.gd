@@ -10,13 +10,13 @@ var jump_range: float = 7.5
 
 var system_loader: SystemLoader
 
-var target_system_seed: int
+var target_system_placeholder:SystemPlaceholder
 var target_system_scene_path: String = ""
 
 # reference to the galaxy map, used to ensure we only have one!
 var galaxy_map: Node3D
 
-signal hyperspace_jump(target_system_seed:int, target_scene_path)
+signal hyperspace_jump(target_system_placeholder:SystemPlaceholder)
 
 
 func _ready():
@@ -45,18 +45,18 @@ func _input(event):
 	
 
 	if (Input.is_action_just_pressed("Hyperspace Jump") && is_active):
-		if (target_system_seed || target_system_scene_path != null):
+		if (target_system_placeholder || target_system_scene_path != null):
 			close_galaxy_map()
 			# send signal to SystemLoader
-			hyperspace_jump.emit(target_system_seed, target_system_scene_path)
+			hyperspace_jump.emit(target_system_placeholder)
 	
 	if (Input.is_action_just_pressed("Close Galaxy Map") && is_active):
 		close_galaxy_map()
 	
 
-func _on_jump_ready(seed:int, scene_path:String):
-	target_system_seed = seed
-	target_system_scene_path = scene_path
-	print("system selected:" + str(seed) + " scene path:" + scene_path)
+func _on_jump_ready(system:SystemPlaceholder):
+	target_system_placeholder = system
+	target_system_scene_path = system.scene_path
+	print("system selected:" + str(target_system_placeholder.name) + " scene path:" + system.scene_path)
 
 			

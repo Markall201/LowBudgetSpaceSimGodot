@@ -19,7 +19,7 @@ extends Node3D
 @onready var sphereMesh = $MeshInstance3D
 
 # signal to communicate the data when mouse over
-signal highlight(systemName, numberOfPlanets, numberOfStars, location, seed, faction)
+signal highlight(system_placeholder)
 
 #when node is instantiated, connect the "highlight" signal up to the UI controls
 func _ready():
@@ -37,7 +37,7 @@ func _on_area_3d_mouse_entered():
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
-		highlight.emit(systemName, numberOfPlanets, numberOfStars, location, seed, faction, scene_path)
+		highlight.emit(self)
 
 
 func _on_area_3d_mouse_exited():
