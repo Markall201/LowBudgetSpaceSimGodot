@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://3jfawtgt2xsg"
-path="res://.godot/imported/spaceman attempt rig.glb-9c1b1ad083328724dd4b5a724679e60c.scn"
+uid="uid://cq8lyns0gewpj"
+path="res://.godot/imported/space brigade starbird classic.glb-1364a04d9f22dacab31b7d4e3b9e47ca.scn"
 
 [deps]
 
-source_file="res://Assets/spaceman attempt rig.glb"
-dest_files=["res://.godot/imported/spaceman attempt rig.glb-9c1b1ad083328724dd4b5a724679e60c.scn"]
+source_file="res://Assets/Models/space brigade starbird classic.glb"
+dest_files=["res://.godot/imported/space brigade starbird classic.glb-1364a04d9f22dacab31b7d4e3b9e47ca.scn"]
 
 [params]
 

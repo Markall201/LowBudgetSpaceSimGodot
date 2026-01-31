@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cjd5o54g6cmpg"
-path="res://.godot/imported/hangar-pad.glb-0c9e21a20ffa182e366732b5ddb37234.scn"
+uid="uid://cxki12x0nxpmf"
+path="res://.godot/imported/hangar-backdrop.glb-a6cd0ca2ec7022c42879838aa6dd934e.scn"
 
 [deps]
 
-source_file="res://Assets/hangar-pad.glb"
-dest_files=["res://.godot/imported/hangar-pad.glb-0c9e21a20ffa182e366732b5ddb37234.scn"]
+source_file="res://Assets/Models/hangar-backdrop.glb"
+dest_files=["res://.godot/imported/hangar-backdrop.glb-a6cd0ca2ec7022c42879838aa6dd934e.scn"]
 
 [params]
 

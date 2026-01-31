@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cnigafvmirw7t"
-path="res://.godot/imported/monitor.glb-ac43abf3e36d4bf51b3d422522dcd411.scn"
+uid="uid://dfmjuo72fv2lu"
+path="res://.godot/imported/spaceman armband.glb-f64967742e964edb43dd3de8bc12e4b4.scn"
 
 [deps]
 
-source_file="res://Assets/monitor.glb"
-dest_files=["res://.godot/imported/monitor.glb-ac43abf3e36d4bf51b3d422522dcd411.scn"]
+source_file="res://Assets/Models/spaceman armband.glb"
+dest_files=["res://.godot/imported/spaceman armband.glb-f64967742e964edb43dd3de8bc12e4b4.scn"]
 
 [params]
 

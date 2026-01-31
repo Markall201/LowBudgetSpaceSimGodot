@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dw2u20gii53r0"
-path="res://.godot/imported/space brigade star-ranger.glb-34ebfd602e017bdd254c7baa23a793ff.scn"
+uid="uid://3jfawtgt2xsg"
+path="res://.godot/imported/spaceman attempt rig.glb-b9685d368e97af7d19a3335270ab497d.scn"
 
 [deps]
 
-source_file="res://Assets/space brigade star-ranger.glb"
-dest_files=["res://.godot/imported/space brigade star-ranger.glb-34ebfd602e017bdd254c7baa23a793ff.scn"]
+source_file="res://Assets/Models/spaceman attempt rig.glb"
+dest_files=["res://.godot/imported/spaceman attempt rig.glb-b9685d368e97af7d19a3335270ab497d.scn"]
 
 [params]
 

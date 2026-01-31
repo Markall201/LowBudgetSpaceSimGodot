@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxki12x0nxpmf"
-path="res://.godot/imported/hangar-backdrop.glb-0b1692c91dd374055ddc6ae3b7de022c.scn"
+uid="uid://c2sv8itb6oxj2"
+path="res://.godot/imported/star dock.glb-8d5620ec5aee343773a5a6c780d8387f.scn"
 
 [deps]
 
-source_file="res://Assets/hangar-backdrop.glb"
-dest_files=["res://.godot/imported/hangar-backdrop.glb-0b1692c91dd374055ddc6ae3b7de022c.scn"]
+source_file="res://Assets/Models/star dock.glb"
+dest_files=["res://.godot/imported/star dock.glb-8d5620ec5aee343773a5a6c780d8387f.scn"]
 
 [params]
 
@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=3.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -37,6 +37,30 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
-gltf/naming_version=2
+_subresources={
+"nodes": {
+"PATH:Canopy Domes": {
+"generate/physics": true
+},
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Main Structure": {
+"generate/physics": true
+},
+"PATH:Observation Deck": {
+"generate/physics": true
+},
+"PATH:Station Hull": {
+"generate/physics": true
+},
+"PATH:Support Struts": {
+"generate/physics": true
+},
+"PATH:Support Struts 2": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

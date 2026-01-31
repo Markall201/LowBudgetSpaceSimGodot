@@ -272,6 +272,7 @@ void fragment() {
 	float normEdges = min(detectEdgesNormalReconstructed(n, DEPTH_TEXTURE, model_view_matrix, INV_PROJECTION_MATRIX, SCREEN_UV, MODEL_MATRIX, INV_VIEW_MATRIX, VIEWPORT_SIZE.xy), 1.0);
 #endif
 
+	ALBEDO.rgb = vec3(0,0,0);
 	ALBEDO.rgb = outlineColor.rgb;
 	ALPHA = max(depthEdges, normEdges) * outlineColor.a * fade_a;
 }

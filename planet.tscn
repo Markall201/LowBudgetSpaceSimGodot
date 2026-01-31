@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://7m4dqlk8r5y6"]
+[gd_scene format=4 uid="uid://7m4dqlk8r5y6"]
 
 [ext_resource type="Script" uid="uid://vxvuo02egeai" path="res://Scripts/Procedural Planet Generation/Planet.gd" id="1_6vnuc"]
-[ext_resource type="Curve" uid="uid://c2gpbjcjln5ht" path="res://Assets/planet_LOD_Curve.tres" id="2_3w4t4"]
+[ext_resource type="Curve" uid="uid://c2gpbjcjln5ht" path="res://Assets/Resource Data/planet_LOD_Curve.tres" id="2_3w4t4"]
 [ext_resource type="Script" uid="uid://dqlui2ho0sr6j" path="res://Scripts/Procedural Planet Generation/TerrainFace.gd" id="2_4jp6r"]
 [ext_resource type="Script" uid="uid://dqpjojp8k1ghw" path="res://Scripts/Procedural Planet Generation/PlanetNoise.gd" id="2_b1fwg"]
 [ext_resource type="Texture2D" uid="uid://dcj1dq4octv5j" path="res://Assets/Planet Colours/planet_terrestrial.tres" id="2_k0a6c"]

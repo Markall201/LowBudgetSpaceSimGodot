@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnj6dgsrefcio"
-path="res://.godot/imported/spaceman helmet.glb-35c289419e7bcd50608b2f27a89b4015.scn"
+uid="uid://cjd5o54g6cmpg"
+path="res://.godot/imported/hangar-pad.glb-c0702c19acde009f029c9dfd30c82486.scn"
 
 [deps]
 
-source_file="res://Assets/spaceman helmet.glb"
-dest_files=["res://.godot/imported/spaceman helmet.glb-35c289419e7bcd50608b2f27a89b4015.scn"]
+source_file="res://Assets/Models/hangar-pad.glb"
+dest_files=["res://.godot/imported/hangar-pad.glb-c0702c19acde009f029c9dfd30c82486.scn"]
 
 [params]
 
@@ -38,5 +38,5 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=2
 gltf/embedded_image_handling=1

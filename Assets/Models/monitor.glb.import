@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://do207dq50eghy"
-path="res://.godot/imported/space brigade starbird 2.glb-7a9601ac1d79ac0a5b7422e26b746573.scn"
+uid="uid://cnigafvmirw7t"
+path="res://.godot/imported/monitor.glb-6bd8e9f0738212cefde15d4faaea0079.scn"
 
 [deps]
 
-source_file="res://Assets/space brigade starbird 2.glb"
-dest_files=["res://.godot/imported/space brigade starbird 2.glb-7a9601ac1d79ac0a5b7422e26b746573.scn"]
+source_file="res://Assets/Models/monitor.glb"
+dest_files=["res://.godot/imported/monitor.glb-6bd8e9f0738212cefde15d4faaea0079.scn"]
 
 [params]
 

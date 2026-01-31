@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bfqxyh2c51qpr"
-path="res://.godot/imported/beam blaster.glb-f946faf4504f045e304eeaeea757c40d.scn"
+uid="uid://dnj6dgsrefcio"
+path="res://.godot/imported/spaceman helmet.glb-eadc998a5ea0b86036ac67fd1bec11c0.scn"
 
 [deps]
 
-source_file="res://Assets/beam blaster.glb"
-dest_files=["res://.godot/imported/beam blaster.glb-f946faf4504f045e304eeaeea757c40d.scn"]
+source_file="res://Assets/Models/spaceman helmet.glb"
+dest_files=["res://.godot/imported/spaceman helmet.glb-eadc998a5ea0b86036ac67fd1bec11c0.scn"]
 
 [params]
 

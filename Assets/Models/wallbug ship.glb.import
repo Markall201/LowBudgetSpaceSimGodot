@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dfmjuo72fv2lu"
-path="res://.godot/imported/spaceman armband.glb-22e939d2a530e44407784ded5eea8344.scn"
+uid="uid://4lld0nvcdfgy"
+path="res://.godot/imported/wallbug ship.glb-0b03e7be881fac782c0a17e03d169c0c.scn"
 
 [deps]
 
-source_file="res://Assets/spaceman armband.glb"
-dest_files=["res://.godot/imported/spaceman armband.glb-22e939d2a530e44407784ded5eea8344.scn"]
+source_file="res://Assets/Models/wallbug ship.glb"
+dest_files=["res://.godot/imported/wallbug ship.glb-0b03e7be881fac782c0a17e03d169c0c.scn"]
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="MeshInstance3D"
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
@@ -37,6 +37,22 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Hull": {
+"use_external/enabled": false,
+"use_external/fallback_path": "",
+"use_external/path": "res://Assets/Materials/ship_hull_metal.tres"
+}
+},
+"nodes": {
+"PATH:cockpit": {
+"physics/body_type": 1
+},
+"PATH:hull": {
+"physics/body_type": 1
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://rarl1soagyqe"]
+[gd_scene format=3 uid="uid://rarl1soagyqe"]
 
 [ext_resource type="Texture2D" uid="uid://dgj4r0ty8ghe8" path="res://Assets/Skyboxes/empty-space-panorama.png" id="1_46vei"]
-[ext_resource type="PackedScene" uid="uid://cxki12x0nxpmf" path="res://Assets/hangar-backdrop.glb" id="1_83atj"]
-[ext_resource type="PackedScene" uid="uid://cjd5o54g6cmpg" path="res://Assets/hangar-pad.glb" id="2_27p3e"]
-[ext_resource type="PackedScene" uid="uid://cq8lyns0gewpj" path="res://Assets/space brigade starbird classic.glb" id="3_m570n"]
-[ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="4_m570n"]
-[ext_resource type="PackedScene" uid="uid://do207dq50eghy" path="res://Assets/space brigade starbird 2.glb" id="5_46vei"]
-[ext_resource type="PackedScene" uid="uid://dw2u20gii53r0" path="res://Assets/space brigade star-ranger.glb" id="7_frnu1"]
+[ext_resource type="PackedScene" uid="uid://cxki12x0nxpmf" path="res://Assets/Models/hangar-backdrop.glb" id="1_83atj"]
+[ext_resource type="PackedScene" uid="uid://cjd5o54g6cmpg" path="res://Assets/Models/hangar-pad.glb" id="2_27p3e"]
+[ext_resource type="PackedScene" uid="uid://cq8lyns0gewpj" path="res://Assets/Models/space brigade starbird classic.glb" id="3_m570n"]
+[ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/Models/wallbug ship.glb" id="4_m570n"]
+[ext_resource type="PackedScene" uid="uid://do207dq50eghy" path="res://Assets/Models/space brigade starbird 2.glb" id="5_46vei"]
+[ext_resource type="PackedScene" uid="uid://dw2u20gii53r0" path="res://Assets/Models/space brigade star-ranger.glb" id="7_frnu1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_frnu1"]
 panorama = ExtResource("1_46vei")
