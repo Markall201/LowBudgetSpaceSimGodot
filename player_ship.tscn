@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1ukmdoquihnf"]
+[gd_scene format=3 uid="uid://c1ukmdoquihnf"]
 
 [ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/wallbug ship.glb" id="1_ltnvr"]
 [ext_resource type="Script" uid="uid://dcxxct3kqc6jx" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
@@ -21,7 +21,7 @@ background_mode = 1
 material = ExtResource("2_sod33")
 size = Vector2(2, 2)
 
-[node name="PlayerShip" type="RigidBody3D"]
+[node name="PlayerShip" type="RigidBody3D" unique_id=2091884607]
 mass = 10.0
 gravity_scale = 0.0
 linear_damp = 0.5
@@ -32,50 +32,51 @@ pitch_torque = 250.0
 roll_torque = 250.0
 current_boost_amount = 5.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=136123990]
 transform = Transform3D(0.999911, -0.0133339, 4.07454e-10, 0.0133329, 0.999833, 0.0125137, -0.000166856, -0.0125126, 0.999922, 0, 0, 0)
 shape = SubResource("BoxShape3D_wpd18")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1852783551]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 5, -19)
 cull_mask = 1048557
 current = true
 far = 1000000.0
 
-[node name="Camera3D_cockpit" type="Camera3D" parent="."]
+[node name="Camera3D_cockpit" type="Camera3D" parent="." unique_id=1934113661]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, -0.14379466, -0.36451674)
 cull_mask = 1048557
 far = 1000000.0
 
-[node name="Camera3D_radar" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, -0.37346113, -0.82497406)
+[node name="Camera3D_radar" type="Camera3D" parent="." unique_id=673656017]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -1.19209e-07, -0.48608017, -0.82497406)
 cull_mask = 3
 environment = SubResource("Environment_sod33")
+near = 2.8
 far = 1000000.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D_radar"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90367e-08, 0, -0.78968775)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D_radar" unique_id=375796089]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -4)
 layers = 2
 mesh = SubResource("QuadMesh_noyhe")
 
-[node name="PlayerShipVisuals" type="Node3D" parent="."]
+[node name="PlayerShipVisuals" type="Node3D" parent="." unique_id=1599592071]
 
-[node name="wallbug ship" parent="PlayerShipVisuals" instance=ExtResource("1_ltnvr")]
+[node name="wallbug ship" parent="PlayerShipVisuals" unique_id=1509284825 instance=ExtResource("1_ltnvr")]
 transform = Transform3D(0.99991107, -0.013333903, 0, 0.013333903, 0.99991107, 0, 0, 0, 1, 0, -1, -3)
 skeleton = NodePath("../..")
 
-[node name="PlayerData" type="Node3D" parent="."]
+[node name="PlayerData" type="Node3D" parent="." unique_id=1038798416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08036, 0, 0)
 
-[node name="WeaponsSystem" type="Node3D" parent="."]
+[node name="WeaponsSystem" type="Node3D" parent="." unique_id=1983684041]
 script = ExtResource("4_noyhe")
 
-[node name="Hardpoint" type="Node3D" parent="WeaponsSystem"]
+[node name="Hardpoint" type="Node3D" parent="WeaponsSystem" unique_id=866597410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -1)
 
-[node name="BeamLaserWeapon" parent="WeaponsSystem/Hardpoint" instance=ExtResource("5_txo0d")]
+[node name="BeamLaserWeapon" parent="WeaponsSystem/Hardpoint" unique_id=1457308042 instance=ExtResource("5_txo0d")]
 
-[node name="Ship UI" type="Control" parent="."]
+[node name="Ship UI" type="Control" parent="." unique_id=27198598]
 layout_mode = 3
 anchor_right = 0.134
 anchor_bottom = 0.308
@@ -86,16 +87,16 @@ offset_bottom = 315.416
 script = ExtResource("3_nqco7")
 metadata/_edit_use_anchors_ = true
 
-[node name="Container" type="Container" parent="Ship UI"]
+[node name="Container" type="Container" parent="Ship UI" unique_id=1415028236]
 layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 720.0
 
-[node name="Label_speed" type="Label" parent="Ship UI/Container"]
+[node name="Label_speed" type="Label" parent="Ship UI/Container" unique_id=1266719486]
 layout_mode = 2
 text = "TEST"
 
-[node name="ProgressBarThrottle" type="TextureProgressBar" parent="Ship UI"]
+[node name="ProgressBarThrottle" type="TextureProgressBar" parent="Ship UI" unique_id=660113045]
 layout_mode = 0
 offset_left = 70.0
 offset_top = -87.0
@@ -110,7 +111,7 @@ texture_progress = ExtResource("3_mqikq")
 tint_under = Color(0.226707, 0.226707, 0.226707, 1)
 tint_progress = Color(0.870157, 0.880216, 0.870427, 1)
 
-[node name="ProgressBarBoost" type="TextureProgressBar" parent="Ship UI"]
+[node name="ProgressBarBoost" type="TextureProgressBar" parent="Ship UI" unique_id=1951463496]
 layout_mode = 0
 offset_left = -166.0
 offset_top = -370.0
@@ -125,8 +126,8 @@ texture_progress = ExtResource("3_mqikq")
 tint_under = Color(0.226707, 0.226707, 0.226707, 1)
 tint_progress = Color(0.9490196, 0.65882355, 0.17254902, 1)
 
-[node name="CameraController" type="Node3D" parent="."]
+[node name="CameraController" type="Node3D" parent="." unique_id=63628779]
 script = ExtResource("9_5mroa")
 
-[node name="Hyperdrive" type="Node3D" parent="."]
+[node name="Hyperdrive" type="Node3D" parent="." unique_id=664349613]
 script = ExtResource("10_xqmbi")

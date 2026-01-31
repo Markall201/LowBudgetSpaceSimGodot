@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqxipqitsbdq6"]
+[gd_scene format=3 uid="uid://cqxipqitsbdq6"]
 
 [ext_resource type="Script" uid="uid://o4kvg3626o74" path="res://Scripts/SystemLoader.gd" id="1_03vcy"]
 [ext_resource type="PackedScene" uid="uid://dfikgse3bnwma" path="res://star_system.tscn" id="1_ju6wf"]
@@ -24,17 +24,17 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_sky_affect = 0.3
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=955941020]
 script = ExtResource("1_03vcy")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1794404814]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="StarSystem" parent="." instance=ExtResource("1_ju6wf")]
+[node name="StarSystem" parent="." unique_id=1929025052 instance=ExtResource("1_ju6wf")]
 number_of_planets = 5
 
-[node name="PlayerShip" parent="." instance=ExtResource("2_duhnr")]
+[node name="PlayerShip" parent="." unique_id=626802510 instance=ExtResource("2_duhnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857020510]
 environment = SubResource("Environment_mek8t")

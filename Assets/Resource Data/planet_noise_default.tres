@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlanetNoise" load_steps=3 format=3 uid="uid://v7153c83wpc3"]
+[gd_resource type="Resource" script_class="PlanetNoise" format=3 uid="uid://v7153c83wpc3"]
 
 [ext_resource type="Script" uid="uid://dqpjojp8k1ghw" path="res://Scripts/Procedural Planet Generation/PlanetNoise.gd" id="1_khwh8"]
 

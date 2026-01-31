@@ -32,6 +32,9 @@ func build_new_system(system_placeholder: SystemPlaceholder):
 	var new_system = StarSystem.new_system(system_placeholder)
 	add_child(new_system)
 	current_system_node = new_system
+	
+func get_current_system_data():
+	return current_system_data
 
 
 func _on_hyperspace_jump(system_placeholder: SystemPlaceholder):

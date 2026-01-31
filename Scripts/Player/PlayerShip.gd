@@ -57,7 +57,7 @@ var mouse_control_toggle: bool = true
 func handle_boosting(delta):
 	# can_boost is controlled by how much boost is in the tank
 	# is_boosting is controlled by can_boost and the boost button
-	is_boosting = (Input.is_action_pressed("Boost") && can_boost)
+	is_boosting = (Input.is_action_pressed("Boost") && can_boost && is_controllable)
 	#print("boost amount:" + str(current_boost_amount))
 	# when boosting, it can keep boosting until empty tank
 	if (is_boosting && (current_boost_amount)> 0):

@@ -39,7 +39,8 @@ func setLabels(system_placeholder:SystemPlaceholder):
 	return
 
 # custom signal "highlight" emitted by SystemPlaceholder
-func _on_system_placeholder_highlight(system_placeholder:SystemPlaceholder):
+func _on_system_placeholder_select(system_placeholder:SystemPlaceholder):
 	# pass details to UI
 	setLabels(system_placeholder)
 	on_hyperspace_target_system_select.emit(system_placeholder)
+	
