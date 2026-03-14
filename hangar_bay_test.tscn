@@ -24,58 +24,58 @@ tonemap_mode = 2
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_frnu1"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1423368771]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1096639936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 shadow_enabled = true
 omni_range = 1000.0
 omni_attenuation = 2.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1749943150]
 environment = SubResource("Environment_frnu1")
 
-[node name="CameraPosition1" type="Node3D" parent="."]
+[node name="CameraPosition1" type="Node3D" parent="." unique_id=1251622161]
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, -9, 6, -17)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=503388875]
 transform = Transform3D(0.70710677, 0.18301272, -0.6830127, 9.44696e-09, 0.9659259, 0.25881907, 0.7071068, -0.18301274, 0.68301266, 1, 8, 2)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1582216009]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 light_energy = 0.4
 shadow_enabled = true
 shadow_opacity = 0.0
 
-[node name="hangar-backdrop" parent="." instance=ExtResource("1_83atj")]
+[node name="hangar-backdrop" parent="." unique_id=1701271784 instance=ExtResource("1_83atj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="hangar-backdrop"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hangar-backdrop" unique_id=1643725972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -6, -11)
 mesh = SubResource("CapsuleMesh_frnu1")
 
-[node name="hangar-pad" parent="." instance=ExtResource("2_27p3e")]
+[node name="hangar-pad" parent="." unique_id=1243229553 instance=ExtResource("2_27p3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -32)
 
-[node name="space brigade starbird classic" parent="hangar-pad" instance=ExtResource("3_m570n")]
+[node name="space brigade starbird classic" parent="hangar-pad" unique_id=1790546681 instance=ExtResource("3_m570n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 2)
 
-[node name="hangar-pad3" parent="." instance=ExtResource("2_27p3e")]
+[node name="hangar-pad3" parent="." unique_id=868826055 instance=ExtResource("2_27p3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
 
-[node name="wallbug ship" parent="hangar-pad3" instance=ExtResource("4_m570n")]
+[node name="wallbug ship" parent="hangar-pad3" unique_id=129142117 instance=ExtResource("4_m570n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -1)
 skeleton = NodePath("../..")
 
-[node name="hangar-pad2" parent="." instance=ExtResource("2_27p3e")]
+[node name="hangar-pad2" parent="." unique_id=935364881 instance=ExtResource("2_27p3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -32)
 
-[node name="space brigade starbird 2" parent="hangar-pad2" instance=ExtResource("5_46vei")]
+[node name="space brigade starbird 2" parent="hangar-pad2" unique_id=1097300698 instance=ExtResource("5_46vei")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -2, 0.72, 2)
 
-[node name="hangar-pad4" parent="." instance=ExtResource("2_27p3e")]
+[node name="hangar-pad4" parent="." unique_id=75368685 instance=ExtResource("2_27p3e")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 25, 0, 0)
 
-[node name="space brigade star-ranger" parent="hangar-pad4" instance=ExtResource("7_frnu1")]
+[node name="space brigade star-ranger" parent="hangar-pad4" unique_id=714317596 instance=ExtResource("7_frnu1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.362255e-08, 5, -0.9979687)

@@ -13,7 +13,7 @@ var systems_dictionaries_array: Array
 var rng = RandomNumberGenerator.new()
 
 # load SystemPlaceholder prefab from resources
-var systemPlaceholder = preload("res://system_placeholder.tscn")
+var systemPlaceholder = preload("res://Objects/system_placeholder.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

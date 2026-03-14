@@ -1,6 +1,6 @@
 extends Node3D
 
-const GALAXY_MAP = preload("res://galaxy_map.tscn")
+const GALAXY_MAP = preload("res://Objects/galaxy_map.tscn")
 
 var is_active = true
 

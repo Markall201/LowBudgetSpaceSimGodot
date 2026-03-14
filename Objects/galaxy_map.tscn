@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b618swd7oamxh"]
+[gd_scene format=3 uid="uid://b618swd7oamxh"]
 
-[ext_resource type="PackedScene" uid="uid://cd2qx8kqldnwb" path="res://galaxy.tscn" id="1_kbsw4"]
+[ext_resource type="PackedScene" uid="uid://cd2qx8kqldnwb" path="res://Objects/galaxy.tscn" id="1_kbsw4"]
 [ext_resource type="FontFile" uid="uid://780aih6mfcg" path="res://Assets/Fonts/Oxanium-VariableFont_wght.ttf" id="1_ubgmd"]
 [ext_resource type="Script" uid="uid://uhxxdy4g6f5a" path="res://Scripts/Galaxy Map/GalMapManager.gd" id="2_jg22p"]
 [ext_resource type="Script" uid="uid://viah3csy45i5" path="res://Scripts/FreeLookCamera.gd" id="3_cn1xk"]
-[ext_resource type="PackedScene" uid="uid://cb0iihk7h0oxx" path="res://system_placeholder.tscn" id="4_1v4nl"]
+[ext_resource type="PackedScene" uid="uid://cb0iihk7h0oxx" path="res://Objects/system_placeholder.tscn" id="4_1v4nl"]
 
 [sub_resource type="Theme" id="Theme_j5xfp"]
 default_base_scale = 1.0

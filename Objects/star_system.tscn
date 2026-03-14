@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dfikgse3bnwma"]
+
+[ext_resource type="Script" uid="uid://cb6twvck50l3y" path="res://Scripts/Star System/StarSystem.gd" id="1_3j614"]
+
+[node name="StarSystem" type="Node3D"]
+script = ExtResource("1_3j614")
+
+[connection signal="data_changed" from="." to="." method="_on_data_changed"]

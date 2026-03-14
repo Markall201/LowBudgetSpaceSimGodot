@@ -44,11 +44,11 @@ var planets: Array
 var skybox
 
 # prefabs to load in, instantiate and modify
-var prefab_star = preload("res://star.tscn")
-var prefab_planet = preload("res://planet.tscn")
+var prefab_star = preload("res://Objects/SystemObjects/star.tscn")
+var prefab_planet = preload("res://Objects/SystemObjects/planet.tscn")
 
 # constant reference to prefab of this, for constructor
-const system_prefab: PackedScene = preload("res://star_system.tscn")
+const system_prefab: PackedScene = preload("res://Objects/star_system.tscn")
 
 var planet_shader = load("res://Assets/Shaders/planet_shader.gdshader")
 

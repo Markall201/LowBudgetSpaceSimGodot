@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://bvx45ex4yvvhx"]
+[gd_scene format=4 uid="uid://bvx45ex4yvvhx"]
+
+[ext_resource type="Script" uid="uid://bow3ijae8d7yf" path="res://Scripts/Weapons/BeamLaserWeapon.gd" id="1_qntvb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nslhi"]
 resource_name = "Material.001"
@@ -39,12 +41,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b1lay")
 
-[node name="BeamLaserWeapon" type="Node3D"]
+[node name="BeamLaserWeapon" type="Node3D" unique_id=922363930]
+script = ExtResource("1_qntvb")
 
-[node name="BeamLaser" type="MeshInstance3D" parent="."]
+[node name="WeaponModel" type="MeshInstance3D" parent="." unique_id=1892266058]
 transform = Transform3D(-0.2, 0, -3.774895e-08, 0, 0.2, 0, 3.019916e-08, 0, -0.25, 0, -0.64366275, 0)
 mesh = SubResource("ArrayMesh_etup8")
 skeleton = NodePath("")
 
-[node name="WeaponBarrel" type="Node3D" parent="BeamLaser"]
+[node name="WeaponBarrel" type="Node3D" parent="WeaponModel" unique_id=347460541]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, -1.4210855e-14, 0, 1, 0, 0, 0)

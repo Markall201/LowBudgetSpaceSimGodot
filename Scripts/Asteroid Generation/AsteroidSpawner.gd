@@ -18,7 +18,7 @@ var rng = RandomNumberGenerator.new()
 var seed: int = 1
 
 # load SystemPlaceholder prefab from resources
-var asteroid = preload("res://Asteroid.tscn")
+var asteroid = preload("res://Objects/SystemObjects/Asteroid.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

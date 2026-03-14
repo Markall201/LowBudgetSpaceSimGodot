@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b400p236grg6a"]
+[gd_scene format=3 uid="uid://b400p236grg6a"]
 
-[ext_resource type="PackedScene" uid="uid://cue5adkqaid33" path="res://asteroid_spawner.tscn" id="1_fevf7"]
+[ext_resource type="PackedScene" uid="uid://cue5adkqaid33" path="res://Objects/asteroid_spawner.tscn" id="1_fevf7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mjg08"]
 sky_top_color = Color(0.0679686, 0.0903384, 0.121446, 1)
