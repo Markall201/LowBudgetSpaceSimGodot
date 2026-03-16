@@ -1,20 +1,17 @@
-[gd_scene format=3 uid="uid://bwx1020360q0d"]
+[gd_scene format=3 uid="uid://dos5q0mqjrup1"]
 
-[ext_resource type="Script" uid="uid://hgifk7g7w0ga" path="res://Scripts/Weapons/Projectile.gd" id="1_qkvp0"]
-[ext_resource type="Material" uid="uid://bv10fobb2t3qf" path="res://Assets/Materials/ship_hull_metal.tres" id="2_qkvp0"]
+[ext_resource type="Script" uid="uid://hgifk7g7w0ga" path="res://Scripts/Weapons/Projectile.gd" id="1_by1wx"]
+[ext_resource type="Material" uid="uid://bmvfgpywmmod2" path="res://Assets/Materials/plasma_material.tres" id="2_f7lmy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w4l0r"]
-radius = 0.05
 
 [sub_resource type="SphereMesh" id="SphereMesh_qkvp0"]
-material = ExtResource("2_qkvp0")
-radius = 0.05
-height = 0.1
+material = ExtResource("2_f7lmy")
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=544688371]
 mass = 0.1
 gravity_scale = 0.0
-script = ExtResource("1_qkvp0")
+script = ExtResource("1_by1wx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=440915337]
 shape = SubResource("SphereShape3D_w4l0r")

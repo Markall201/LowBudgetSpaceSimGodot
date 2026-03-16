@@ -8,22 +8,22 @@
 [sub_resource type="SphereMesh" id="SphereMesh_gmgkl"]
 material = ExtResource("1_ln6wt")
 
-[node name="Star" type="Node3D"]
+[node name="Star" type="Node3D" unique_id=459382873]
 transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
 script = ExtResource("1_ch3w4")
 radius = 300.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=377583422]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=222374135]
 shape = SubResource("SphereShape3D_f0xqt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=1133247969]
 material_override = ExtResource("1_ln6wt")
 mesh = SubResource("SphereMesh_gmgkl")
 skeleton = NodePath("../../..")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=879174131]
 light_volumetric_fog_energy = 50.0
 light_size = 1.0
 shadow_enabled = true

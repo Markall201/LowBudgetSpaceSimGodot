@@ -43,6 +43,7 @@ shadow_mesh = SubResource("ArrayMesh_b1lay")
 
 [node name="ProjectileWeapon" type="Node3D" unique_id=922363930]
 script = ExtResource("1_wf2lq")
+refire_rate = 10.0
 
 [node name="WeaponModel" type="MeshInstance3D" parent="." unique_id=1892266058]
 transform = Transform3D(-0.2, 0, -3.774895e-08, 0, 0.2, 0, 3.019916e-08, 0, -0.25, 0, -0.64366275, 0)
