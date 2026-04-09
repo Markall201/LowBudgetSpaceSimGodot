@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bg55fpcd370ke"]
+
+[ext_resource type="Texture2D" uid="uid://qbhirssxlvhl" path="res://Assets/Models/space brigade starbird classic_snowman test palette.png" id="1_16yrx"]
+
+[resource]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_16yrx")
+roughness = 0.5
+texture_filter = 2

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b7ccpfr0v5o14"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.5149382, 0.84840107, 0.9063318, 1)
+roughness = 0.5

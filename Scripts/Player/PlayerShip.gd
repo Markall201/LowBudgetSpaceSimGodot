@@ -255,8 +255,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	ship_model = find_ship_model()
 
-	var starbird: PackedScene = load("res://Objects/Ships/Starbird Classic.tscn")
-	replace_ship_model_from_packed_scene(starbird)
+	#var starbird: PackedScene = load("res://Objects/Ships/Orthani Fighter.tscn")
+	#replace_ship_model_from_packed_scene(starbird)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

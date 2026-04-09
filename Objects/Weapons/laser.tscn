@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmh40xkorky17"]
 
-[ext_resource type="Script" uid="uid://ump3q2cgec3r" path="res://Laser.gd" id="1_chfug"]
+[ext_resource type="Script" uid="uid://ump3q2cgec3r" path="res://Scripts/Weapons/Laser.gd" id="1_chfug"]
 [ext_resource type="Material" uid="uid://cr2fka5kvp0tl" path="res://Assets/Materials/laser_material.tres" id="2_83gn8"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_83gn8"]

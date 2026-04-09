@@ -45,6 +45,44 @@ _subresources={
 "use_external/path": "res://Assets/Materials/ship_hull_metal.tres"
 }
 },
+"meshes": {
+"wallbug ship_Icosphere": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Assets/Models/Wallbug Ship Parts/wallbug ship_Icosphere.res",
+"save_to_file/path": "uid://dvpbnc6cd67j2"
+},
+"wallbug ship_hull": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Assets/Models/Wallbug Ship Parts/wallbug ship_hull.res",
+"save_to_file/path": "uid://dneryqd86bs8m"
+},
+"wallbug ship_hull_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Assets/Models/Wallbug Ship Parts/wallbug ship_hull_001.res",
+"save_to_file/path": "uid://b6mr353enwpvg"
+},
+"wallbug ship_hull_002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Assets/Models/Wallbug Ship Parts/wallbug ship_hull_002.res",
+"save_to_file/path": "uid://bkd7r4p52bjwt"
+}
+},
 "nodes": {
 "PATH:cockpit": {
 "physics/body_type": 1

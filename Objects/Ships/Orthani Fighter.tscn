@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c0jmol4jk846h"]
+
+[ext_resource type="Script" uid="uid://d4ht4wxiwhuhs" path="res://Scripts/Player/ShipModel.gd" id="1_jlodw"]
+[ext_resource type="Script" uid="uid://cqpfenoeteecp" path="res://Scripts/Player/Hardpoint.gd" id="2_pwrdf"]
+[ext_resource type="PackedScene" uid="uid://c104a0qeqe0oq" path="res://Assets/Models/orthani-fighter.glb" id="4_pwrdf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlodw"]
+size = Vector3(13, 3.5, 12)
+
+[node name="Orthani Fighter" type="CollisionShape3D" unique_id=920745549]
+shape = SubResource("BoxShape3D_jlodw")
+script = ExtResource("1_jlodw")
+
+[node name="HardpointL" type="Node3D" parent="." unique_id=952017701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.8, 0.1)
+script = ExtResource("2_pwrdf")
+
+[node name="HardpointR" type="Node3D" parent="." unique_id=1752975708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -0.8, 0.1)
+script = ExtResource("2_pwrdf")
+
+[node name="orthani-fighter" parent="." unique_id=1909583580 instance=ExtResource("4_pwrdf")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)

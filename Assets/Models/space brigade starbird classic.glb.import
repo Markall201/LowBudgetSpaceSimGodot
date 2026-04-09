@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/space brigade starbird classic.glb-1364a04d9f
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="Node3D"
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
@@ -36,23 +36,110 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=0
 materials/extract_format=0
-materials/extract_path=""
+materials/extract_path="res://Assets/Materials"
 _subresources={
-"nodes": {
-"PATH:Canopy": {
-"physics/body_type": 1
+"materials": {
+"Material.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "",
+"use_external/path": ""
 },
-"PATH:Engine": {
-"physics/body_type": 1
+"Material.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "",
+"use_external/path": ""
+}
 },
-"PATH:Engine_L": {
-"physics/body_type": 1
+"meshes": {
+"space brigade starbird classic_Cube": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
 },
-"PATH:Hull": {
-"physics/body_type": 1
+"space brigade starbird classic_Cube_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
 },
-"PATH:Wings": {
-"physics/body_type": 1
+"space brigade starbird classic_Cube_002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Cube_003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Cylinder": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Cylinder_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Cylinder_003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Cylinder_005": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Cylinder_006": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+},
+"space brigade starbird classic_Icosphere": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
 }
 }
 }

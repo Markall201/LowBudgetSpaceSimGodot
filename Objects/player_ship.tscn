@@ -10,9 +10,6 @@
 [ext_resource type="Script" uid="uid://vpeo8iqj0vwr" path="res://Scripts/Player/ShipCameraController.gd" id="9_5mroa"]
 [ext_resource type="Script" uid="uid://dfpt5tjworki" path="res://Scripts/Player/ShipHyperdriveSystem.gd" id="10_xqmbi"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wpd18"]
-size = Vector3(8, 2, 4.8)
-
 [sub_resource type="Environment" id="Environment_sod33"]
 background_mode = 1
 
@@ -30,10 +27,6 @@ yaw_torque = 200.0
 pitch_torque = 250.0
 roll_torque = 250.0
 current_boost_amount = 5.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=136123990]
-transform = Transform3D(0.999911, -0.0133339, 4.07454e-10, 0.0133329, 0.999833, 0.0125137, -0.000166856, -0.0125126, 0.999922, 0, 0, 0)
-shape = SubResource("BoxShape3D_wpd18")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1852783551]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.19209e-07, 5, -19)
