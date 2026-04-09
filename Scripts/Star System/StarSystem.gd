@@ -36,6 +36,8 @@ class_name StarSystem
 	set(val):
 		system_radius = val
 		emit_signal("data_changed")
+		
+@export var handcrafted: bool = false
 
 # arrays of the system's celestial objects
 var stars: Array
@@ -138,9 +140,10 @@ func clear_system():
 signal data_changed()
 
 func _on_data_changed():
-	print("data changed")
-	clear_system()
-	generate_system()
+	if (!handcrafted):
+		print("data changed")
+		clear_system()
+		generate_system()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
