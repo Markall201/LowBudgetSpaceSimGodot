@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name PlayerShip
 
 @export var current_throttle: float = 0.0
 @export var max_throttle: float = 100.0
@@ -34,6 +35,7 @@ extends RigidBody3D
 @export var mouse_sensitivity_y: float = 0.005
 
 @export var is_controllable: bool = true
+var engines_online: bool = false
 
 
 # multipliers to scale (down) acceleration and torque rotation
@@ -53,6 +55,8 @@ var mouse_control_toggle: bool = true
 
 
 @onready var weapons_system: WeaponsSystem = $WeaponsSystem
+
+@export var is_landing_gear_deployed: bool = true
 
 var ship_model: ShipModel:
 	set(val):
@@ -82,6 +86,20 @@ func replace_ship_model(new_ship_model: ShipModel):
 func replace_ship_model_from_packed_scene(new_ship_model_scene: PackedScene):
 	var new_ship_model:ShipModel = new_ship_model_scene.instantiate()
 	replace_ship_model(new_ship_model)
+
+
+func dock():
+	power_down()
+	print("docked")
+	
+
+func power_down():
+	is_controllable = false
+	current_throttle = 0.0
+	
+func power_up():
+	is_controllable = true
+	current_throttle = 0.0
 
 # boost tank logic
 # (near copy and paste from Unity project)
@@ -168,7 +186,10 @@ func _input(event):
 		if (Input.is_action_pressed("Roll Right")):
 			roll1D = -Input.get_action_strength("Roll Right")
 
-		
+	elif (event != null):
+		# if deactivated, use Translate Up to fire up engines
+		if (Input.is_action_pressed("Translate Up") && !is_controllable):
+			power_up()
 	#print("pitch: " + str(pitch1D))
 	#print("yaw: " + str(yaw1D))
 	#print("roll: " + str(roll1D))
@@ -209,7 +230,7 @@ func handle_movement():
 		glide_ship_z()
 	
 	# up and down
-	if (Input.is_action_pressed("Translate Up") ||  Input.is_action_pressed("Translate Down") && is_controllable):
+	if ((Input.is_action_pressed("Translate Up") ||  Input.is_action_pressed("Translate Down")) && is_controllable):
 		if (Input.is_action_pressed("Translate Up")):
 			var current_thrust = up_thrust * dampener
 			apply_central_impulse(get_global_transform().basis.y * current_thrust)
@@ -223,7 +244,7 @@ func handle_movement():
 		glide_ship_y()
 		
 		
-	if (Input.is_action_pressed("Strafe Left") ||  Input.is_action_pressed("Strafe Right")):
+	if ((Input.is_action_pressed("Strafe Left") ||  Input.is_action_pressed("Strafe Right")) && is_controllable):
 		# left and right strafes
 		if (Input.is_action_pressed("Strafe Left")):
 			var current_thrust = strafe_thrust * dampener

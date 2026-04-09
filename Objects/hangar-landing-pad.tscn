@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://btd3f02wh0qeg"]
+
+[ext_resource type="Script" uid="uid://cj5mbj4qv36g7" path="res://Scripts/hangar_landing_pad.gd" id="1_12o3x"]
+[ext_resource type="PackedScene" uid="uid://cjd5o54g6cmpg" path="res://Assets/Models/hangar-pad.glb" id="1_78611"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12o3x"]
+size = Vector3(16, 0.5, 16)
+
+[node name="Landing Pad" type="Node3D" unique_id=817183205]
+script = ExtResource("1_12o3x")
+
+[node name="hangar-pad-visuals" parent="." unique_id=2040493321 instance=ExtResource("1_78611")]
+
+[node name="Area3D" type="Area3D" parent="hangar-pad-visuals" unique_id=512870641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hangar-pad-visuals/Area3D" unique_id=1583055935]
+shape = SubResource("BoxShape3D_12o3x")
+
+[connection signal="body_entered" from="hangar-pad-visuals/Area3D" to="." method="_on_landing_area_3d_body_entered"]
