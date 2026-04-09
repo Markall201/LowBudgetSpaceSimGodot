@@ -1,7 +1,7 @@
 extends Weapon
 class_name ProjectileWeapon
 
-@onready var projectile = preload("res://Objects/Weapons/Projectile.tscn")
+@export var projectile: PackedScene
 @onready var timer:Timer
 
 

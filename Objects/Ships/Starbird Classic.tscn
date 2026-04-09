@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://rjiggh08wu42"]
+
+[ext_resource type="Script" uid="uid://d4ht4wxiwhuhs" path="res://Scripts/Player/ShipModel.gd" id="1_p7t2p"]
+[ext_resource type="PackedScene" uid="uid://cq8lyns0gewpj" path="res://Assets/Models/space brigade starbird classic.glb" id="3_p7t2p"]
+[ext_resource type="Script" uid="uid://cqpfenoeteecp" path="res://Scripts/Player/Hardpoint.gd" id="3_v6tpa"]
+
+[node name="Starbird Classic" type="Node3D" unique_id=1940021653]
+script = ExtResource("1_p7t2p")
+
+[node name="HardpointL" type="Node3D" parent="." unique_id=952017701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+script = ExtResource("3_v6tpa")
+
+[node name="HardpointR" type="Node3D" parent="." unique_id=1752975708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+script = ExtResource("3_v6tpa")
+
+[node name="space brigade starbird classic" parent="." unique_id=1396257480 instance=ExtResource("3_p7t2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21, 0, 0)

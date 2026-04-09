@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxki12x0nxpmf"
-path="res://.godot/imported/hangar-backdrop.glb-a6cd0ca2ec7022c42879838aa6dd934e.scn"
+uid="uid://bdprpr7at70kt"
+path="res://.godot/imported/wallbug-hive-station.glb-ebb87a52529720629a3a6ac8b8b8aaf2.scn"
 
 [deps]
 
-source_file="res://Assets/Models/hangar-backdrop.glb"
-dest_files=["res://.godot/imported/hangar-backdrop.glb-a6cd0ca2ec7022c42879838aa6dd934e.scn"]
+source_file="res://Assets/Models/wallbug-hive-station.glb"
+dest_files=["res://.godot/imported/wallbug-hive-station.glb-ebb87a52529720629a3a6ac8b8b8aaf2.scn"]
 
 [params]
 
@@ -39,7 +39,16 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:Hangar": {
+"PATH:docking-bay": {
+"generate/physics": true
+},
+"PATH:domed-hull": {
+"generate/physics": true
+},
+"PATH:spire": {
+"generate/physics": true
+},
+"PATH:spire-end": {
 "generate/physics": true
 }
 }

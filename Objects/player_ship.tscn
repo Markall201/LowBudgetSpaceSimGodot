@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://c1ukmdoquihnf"]
 
-[ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/Models/wallbug ship.glb" id="1_ltnvr"]
 [ext_resource type="Script" uid="uid://dcxxct3kqc6jx" path="res://Scripts/Player/PlayerShip.gd" id="2_68pkh"]
 [ext_resource type="Material" uid="uid://cbxvl26e45qv5" path="res://Assets/Materials/wireframe_shader_material.tres" id="2_sod33"]
+[ext_resource type="PackedScene" uid="uid://dtby55aaljtd3" path="res://Objects/Ships/starbug.tscn" id="3_lghr6"]
 [ext_resource type="Texture2D" uid="uid://ctqs8rsocie07" path="res://Assets/UI/bar-of-fun-interior.png" id="3_mqikq"]
 [ext_resource type="Script" uid="uid://bsmgrk1n7puro" path="res://Scripts/Player/ShipUI.gd" id="3_nqco7"]
-[ext_resource type="Script" uid="uid://cqpfenoeteecp" path="res://Scripts/Player/Hardpoint.gd" id="4_ckcqw"]
 [ext_resource type="Script" uid="uid://bfw18kpm47wak" path="res://Scripts/Player/WeaponsSystem.gd" id="4_noyhe"]
 [ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="5_6ccp3"]
 [ext_resource type="Script" uid="uid://vpeo8iqj0vwr" path="res://Scripts/Player/ShipCameraController.gd" id="9_5mroa"]
@@ -59,18 +58,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -7.1054274e-15, 0, -4)
 layers = 2
 mesh = SubResource("QuadMesh_noyhe")
 
-[node name="PlayerShipModel" type="Node3D" parent="." unique_id=1599592071]
-
-[node name="WeaponsSystem" type="Node3D" parent="PlayerShipModel" unique_id=1983684041]
-script = ExtResource("4_noyhe")
-
-[node name="Hardpoint" type="Node3D" parent="PlayerShipModel/WeaponsSystem" unique_id=866597410]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -1)
-script = ExtResource("4_ckcqw")
-
-[node name="wallbug ship" parent="PlayerShipModel" unique_id=1509284825 instance=ExtResource("1_ltnvr")]
-transform = Transform3D(0.99991107, -0.013333903, 0, 0.013333903, 0.99991107, 0, 0, 0, 1, 0, -1, -3)
-skeleton = NodePath("../..")
+[node name="PlayerShipModel" parent="." unique_id=1940021653 instance=ExtResource("3_lghr6")]
 
 [node name="PlayerData" type="Node3D" parent="." unique_id=1038798416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08036, 0, 0)
@@ -130,3 +118,6 @@ script = ExtResource("9_5mroa")
 
 [node name="Hyperdrive" type="Node3D" parent="." unique_id=664349613]
 script = ExtResource("10_xqmbi")
+
+[node name="WeaponsSystem" type="Node3D" parent="." unique_id=1983684041]
+script = ExtResource("4_noyhe")

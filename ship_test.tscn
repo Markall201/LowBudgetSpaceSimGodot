@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://j24m6bf3xtgt"]
 
 [ext_resource type="Texture2D" uid="uid://bkjskdmju6t8e" path="res://Assets/Skyboxes/blue-nebula-panorama.png" id="1_13pva"]
+[ext_resource type="Script" uid="uid://o4kvg3626o74" path="res://Scripts/Star System/SystemLoader.gd" id="1_pp1kx"]
 [ext_resource type="PackedScene" uid="uid://7m4dqlk8r5y6" path="res://Objects/SystemObjects/planet.tscn" id="2_vr651"]
 [ext_resource type="Curve" uid="uid://c2gpbjcjln5ht" path="res://Assets/Resource Data/planet_LOD_Curve.tres" id="3_mrcjk"]
+[ext_resource type="Script" uid="uid://cb6twvck50l3y" path="res://Scripts/Star System/StarSystem.gd" id="3_xum18"]
 [ext_resource type="Script" uid="uid://dqpjojp8k1ghw" path="res://Scripts/Procedural Planet Generation/PlanetNoise.gd" id="4_uqdfs"]
 [ext_resource type="Script" uid="uid://bi8oy8he1sf8t" path="res://Scripts/Procedural Planet Generation/PlanetData.gd" id="5_edwk4"]
 [ext_resource type="PackedScene" uid="uid://c1ukmdoquihnf" path="res://Objects/player_ship.tscn" id="5_k5gf6"]
@@ -12,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cq8lyns0gewpj" path="res://Assets/Models/space brigade starbird classic.glb" id="10_18t8f"]
 [ext_resource type="PackedScene" uid="uid://4lld0nvcdfgy" path="res://Assets/Models/wallbug ship.glb" id="11_pe6qr"]
 [ext_resource type="PackedScene" uid="uid://dw2u20gii53r0" path="res://Assets/Models/space brigade star-ranger.glb" id="12_wftjq"]
+[ext_resource type="PackedScene" uid="uid://bdprpr7at70kt" path="res://Assets/Models/wallbug-hive-station.glb" id="13_f7kwh"]
+[ext_resource type="PackedScene" uid="uid://cjd5o54g6cmpg" path="res://Assets/Models/hangar-pad.glb" id="15_wa3b3"]
+[ext_resource type="PackedScene" uid="uid://3jfawtgt2xsg" path="res://Assets/Models/spaceman attempt rig.glb" id="17_m6bar"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_smvli"]
 panorama = ExtResource("1_13pva")
@@ -34,7 +39,7 @@ offsets = PackedFloat32Array(0, 0.0134228, 0.210291, 0.311579, 0.486316, 0.74736
 colors = PackedColorArray(0.505898, 0, 0.250038, 1, 0.954153, 0.861388, 0.134835, 1, 0.612282, 0.205756, 0, 1, 0.319367, 0.375031, 0.391729, 1, 0.332142, 0.362886, 0.39965, 1, 0.763837, 0.776376, 0.794245, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 metadata/_snap_count = 15
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6lmls"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_144sp"]
 resource_local_to_scene = true
 gradient = SubResource("Gradient_4u15d")
 
@@ -77,13 +82,13 @@ void fragment() {
 //}
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_egul7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yajt3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("Shader_o7lr8")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
+shader_parameter/min_height = 499.99997
+shader_parameter/max_height = 579.0189
+shader_parameter/height_colour = SubResource("GradientTexture1D_144sp")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2c5qk"]
 seed = 56
@@ -95,7 +100,7 @@ min_height = 0.2
 amplitude = 0.4
 height_map = SubResource("FastNoiseLite_2c5qk")
 
-[sub_resource type="Resource" id="Resource_8n7bn"]
+[sub_resource type="Resource" id="Resource_x8yq1"]
 resource_local_to_scene = true
 script = ExtResource("5_edwk4")
 atmosphere_type = 1
@@ -104,485 +109,226 @@ resolution = 3
 LODCurve = ExtResource("3_mrcjk")
 radius = 500
 planet_noise = Array[ExtResource("4_uqdfs")]([SubResource("Resource_bjoya")])
-planet_colour = SubResource("GradientTexture1D_6lmls")
-planet_material = SubResource("ShaderMaterial_egul7")
+planet_colour = SubResource("GradientTexture1D_144sp")
+planet_material = SubResource("ShaderMaterial_yajt3")
 
-[sub_resource type="Shader" id="Shader_mdwff"]
-code = "shader_type spatial;
-
-// use uniforms to pass values between code and shaders
-uniform float min_height;
-uniform float max_height;
-// gradient texture to assign colours to planet regions
-uniform sampler2D height_colour;
-
-// variable interpolated between vertices
-varying float height;
-
-void vertex() {
-	// given the origin of the mesh is the centre of the planet,
-	// the height is just the length of the current vertex in local space
-	height = length(VERTEX);
-
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	// linear interpolation of current height between min and max height
-	// gives a value for the current height between 0 and 1
-	float t = (height - min_height)/(max_height - min_height);
-	
-	// sample the height_colour texture - because it's a 1D gradient, always use y=0 and set x = t
-	// get rgb to remove any alpha channel
-	vec3 colour = texture(height_colour, vec2(t, 0.0)).rgb;
-	
-	// set colour
-	ALBEDO = colour;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7kwh"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_mdwff")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_pp1kx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rsbom"]
 _surfaces = [{
 "aabb": AABB(-353.55338, 288.67514, -376.82446, 707.10675, 248.90598, 730.3778),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_f7kwh"),
+"material": SubResource("ShaderMaterial_yajt3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("O0SkwztEpEM7RKRDAAAAANXGsEPVxrBDa1aQQ2tWkENrVpBD1caww9XGsEMAAAAAAAAAADFlBkQAAAAA1cawQ9XGsEMAAAAAa1aQw2tWkENrVpDDAAAAAIhpvEOIabzDa1aQQ2tWkENrVpDDHGc4zsk9jLCPkXTLtimxwHyXBdGaLOrHTkvs2qQrgqvwg+f7NgT3wRikT84eN4jOkUoN4v0jeqjAUWjyoxevpkO7Ot89IOTX")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wa3b3"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8ijfx"]
 data = PackedVector3Array(-353.5534, 353.5534, 0, 0, 537.5811, 0, -328.53308, 328.53308, 328.53308, 0, 537.5811, 0, 0, 353.5534, 353.5534, -328.53308, 328.53308, 328.53308, 0, 537.5811, 0, 353.5534, 353.5534, 0, 0, 353.5534, 353.5534, 353.5534, 353.5534, 0, 288.67508, 288.67508, 288.67508, 0, 353.5534, 353.5534, -288.67508, 288.67508, -288.67508, 0, 376.8245, -376.8245, -353.5534, 353.5534, 0, 0, 376.8245, -376.8245, 0, 537.5811, 0, -353.5534, 353.5534, 0, 0, 376.8245, -376.8245, 288.67508, 288.67508, -288.67508, 0, 537.5811, 0, 288.67508, 288.67508, -288.67508, 353.5534, 353.5534, 0, 0, 537.5811, 0)
 
-[sub_resource type="Shader" id="Shader_xum18"]
-code = "shader_type spatial;
-
-// use uniforms to pass values between code and shaders
-uniform float min_height;
-uniform float max_height;
-// gradient texture to assign colours to planet regions
-uniform sampler2D height_colour;
-
-// variable interpolated between vertices
-varying float height;
-
-void vertex() {
-	// given the origin of the mesh is the centre of the planet,
-	// the height is just the length of the current vertex in local space
-	height = length(VERTEX);
-
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	// linear interpolation of current height between min and max height
-	// gives a value for the current height between 0 and 1
-	float t = (height - min_height)/(max_height - min_height);
-	
-	// sample the height_colour texture - because it's a 1D gradient, always use y=0 and set x = t
-	// get rgb to remove any alpha channel
-	vec3 colour = texture(height_colour, vec2(t, 0.0)).rgb;
-	
-	// set colour
-	ALBEDO = colour;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6bar"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_xum18")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_144sp"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yu3wv"]
 _surfaces = [{
 "aabb": AABB(-353.55338, -502.5753, -398.71936, 713.4407, 213.90015, 752.2727),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_m6bar"),
+"material": SubResource("ShaderMaterial_yajt3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("YSudQ2ErncNhK51DAAAAANXGsMPVxrBDRl6hw0ZeocNGXqFDk/GzQ5Pxs8MAAAAAAAAAAKNJ+8MAAAAA1caww9XGsMMAAAAAa1aQQ2tWkMNrVpDDAAAAABRcx8MUXMfDa1aQw2tWkMNrVpDDC5fwL+sc9qifdAIoUgJ40Nd0UBZDCkLKqq0KI704Uq8Ie70I3QQ4xNVioyUVIIbPprxTI4hP5Ks1pTELHCwQt4VJSSFoN93L")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yajt3"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_htx0v"]
 data = PackedVector3Array(359.8873, -359.8873, 0, 0, -502.5753, 0, 314.3389, -314.3389, 314.3389, 0, -502.5753, 0, 0, -353.5534, 353.5534, 314.3389, -314.3389, 314.3389, 0, -502.5753, 0, -353.5534, -353.5534, 0, 0, -353.5534, 353.5534, -353.5534, -353.5534, 0, -322.73648, -322.73648, 322.73648, 0, -353.5534, 353.5534, 288.67508, -288.67508, -288.67508, 0, -398.7194, -398.7194, 359.8873, -359.8873, 0, 0, -398.7194, -398.7194, 0, -502.5753, 0, 359.8873, -359.8873, 0, 0, -398.7194, -398.7194, -288.67508, -288.67508, -288.67508, 0, -502.5753, 0, -288.67508, -288.67508, -288.67508, -353.5534, -353.5534, 0, 0, -502.5753, 0)
 
-[sub_resource type="Shader" id="Shader_x8yq1"]
-code = "shader_type spatial;
-
-// use uniforms to pass values between code and shaders
-uniform float min_height;
-uniform float max_height;
-// gradient texture to assign colours to planet regions
-uniform sampler2D height_colour;
-
-// variable interpolated between vertices
-varying float height;
-
-void vertex() {
-	// given the origin of the mesh is the centre of the planet,
-	// the height is just the length of the current vertex in local space
-	height = length(VERTEX);
-
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	// linear interpolation of current height between min and max height
-	// gives a value for the current height between 0 and 1
-	float t = (height - min_height)/(max_height - min_height);
-	
-	// sample the height_colour texture - because it's a 1D gradient, always use y=0 and set x = t
-	// get rgb to remove any alpha channel
-	vec3 colour = texture(height_colour, vec2(t, 0.0)).rgb;
-	
-	// set colour
-	ALBEDO = colour;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rsbom"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_x8yq1")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_8ijfx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dvrbo"]
 _surfaces = [{
 "aabb": AABB(-564.9511, -353.55338, -378.3374, 276.27597, 707.10675, 763.6249),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_rsbom"),
+"material": SubResource("ShaderMaterial_yajt3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("O0SkwztEpEM7RKRD1caww9XGsEMAAAAAa1aQw2tWkENrVpDDzKTAwwAAAADMpMBD3zwNxAAAAAAAAAAAMCu9wwAAAAAwK73DRl6hw0ZeocNGXqFD1caww9XGsMMAAAAAa1aQw2tWkMNrVpDDkDUgnzCJgK2iJ1m4yV25rFUe0rXDXoKuKS74bwig7ML4Aat6m3zvwNoO/rFGXfex7x83ax2HaMrbL0JZAXab05IiZ0E/WK/J")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yu3wv"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_na23b"]
 data = PackedVector3Array(-385.28748, 0, 385.28748, -564.9511, 0, 0, -328.53308, 328.53308, 328.53308, -564.9511, 0, 0, -353.5534, 353.5534, 0, -328.53308, 328.53308, 328.53308, -564.9511, 0, 0, -378.3374, 0, -378.3374, -353.5534, 353.5534, 0, -378.3374, 0, -378.3374, -288.67508, 288.67508, -288.67508, -353.5534, 353.5534, 0, -322.73648, -322.73648, 322.73648, -353.5534, -353.5534, 0, -385.28748, 0, 385.28748, -353.5534, -353.5534, 0, -564.9511, 0, 0, -385.28748, 0, 385.28748, -353.5534, -353.5534, 0, -288.67508, -288.67508, -288.67508, -564.9511, 0, 0, -288.67508, -288.67508, -288.67508, -378.3374, 0, -378.3374, -564.9511, 0, 0)
 
-[sub_resource type="Shader" id="Shader_htx0v"]
-code = "shader_type spatial;
-
-// use uniforms to pass values between code and shaders
-uniform float min_height;
-uniform float max_height;
-// gradient texture to assign colours to planet regions
-uniform sampler2D height_colour;
-
-// variable interpolated between vertices
-varying float height;
-
-void vertex() {
-	// given the origin of the mesh is the centre of the planet,
-	// the height is just the length of the current vertex in local space
-	height = length(VERTEX);
-
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	// linear interpolation of current height between min and max height
-	// gives a value for the current height between 0 and 1
-	float t = (height - min_height)/(max_height - min_height);
-	
-	// sample the height_colour texture - because it's a 1D gradient, always use y=0 and set x = t
-	// get rgb to remove any alpha channel
-	vec3 colour = texture(height_colour, vec2(t, 0.0)).rgb;
-	
-	// set colour
-	ALBEDO = colour;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvrbo"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_htx0v")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_na23b"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_u1vnu"]
 _surfaces = [{
 "aabb": AABB(288.67514, -359.8873, -353.55338, 290.34378, 713.4407, 707.10675),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_dvrbo"),
+"material": SubResource("ShaderMaterial_yajt3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("a1aQQ2tWkENrVpDD1cawQ9XGsEMAAAAAa1aQQ2tWkENrVpBD1cawQwAAAADVxrDDNsEQRAAAAAAAAAAA1cawQwAAAADVxrBDa1aQQ2tWkMNrVpDDk/GzQ5Pxs8MAAAAAYSudQ2ErncNhK51D598uwKiZ08y1yNSnNmEWzwXRfJc7Y+rHE/GmSLWenrCQ/a2DM4E0wfPG/ZFfVD6+guguTzKRM7HN2c9HpX1gqnzFnmPyWRmt")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u1vnu"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mj0fk"]
 data = PackedVector3Array(353.5534, 0, -353.5534, 579.01886, 0, 0, 288.67508, 288.67508, -288.67508, 579.01886, 0, 0, 353.5534, 353.5534, 0, 288.67508, 288.67508, -288.67508, 579.01886, 0, 0, 353.5534, 0, 353.5534, 353.5534, 353.5534, 0, 353.5534, 0, 353.5534, 288.67508, 288.67508, 288.67508, 353.5534, 353.5534, 0, 288.67508, -288.67508, -288.67508, 359.8873, -359.8873, 0, 353.5534, 0, -353.5534, 359.8873, -359.8873, 0, 579.01886, 0, 0, 353.5534, 0, -353.5534, 359.8873, -359.8873, 0, 314.3389, -314.3389, 314.3389, 579.01886, 0, 0, 314.3389, -314.3389, 314.3389, 353.5534, 0, 353.5534, 579.01886, 0, 0)
 
-[sub_resource type="Shader" id="Shader_mj0fk"]
-code = "shader_type spatial;
-
-// use uniforms to pass values between code and shaders
-uniform float min_height;
-uniform float max_height;
-// gradient texture to assign colours to planet regions
-uniform sampler2D height_colour;
-
-// variable interpolated between vertices
-varying float height;
-
-void vertex() {
-	// given the origin of the mesh is the centre of the planet,
-	// the height is just the length of the current vertex in local space
-	height = length(VERTEX);
-
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	// linear interpolation of current height between min and max height
-	// gives a value for the current height between 0 and 1
-	float t = (height - min_height)/(max_height - min_height);
-	
-	// sample the height_colour texture - because it's a 1D gradient, always use y=0 and set x = t
-	// get rgb to remove any alpha channel
-	vec3 colour = texture(height_colour, vec2(t, 0.0)).rgb;
-	
-	// set colour
-	ALBEDO = colour;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p563i"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_mj0fk")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_0gwtm"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p563i"]
 _surfaces = [{
 "aabb": AABB(-378.3374, -398.71936, -500, 731.89075, 775.5438, 211.32486),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_p563i"),
+"material": SubResource("ShaderMaterial_yajt3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("a1aQQ2tWkENrVpDD1cawQwAAAADVxrDDa1aQQ2tWkMNrVpDDAAAAAIhpvEOIabzDAAAAAAAAAAAAAPrDAAAAABRcx8MUXMfDa1aQw2tWkENrVpDDMCu9wwAAAAAwK73Da1aQw2tWkMNrVpDDKei74VusuI5T+JskVZ//mYLoUyNUl2CdDh+W9kpSP4kr/3f+VILCgP7moAvdhOaPVR4N4kFJppOKCVPhRV/3kGYYsh0GXU+i")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i18mc"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0gwtm"]
 data = PackedVector3Array(0, 376.8245, -376.8245, 0, 0, -500, 288.67508, 288.67508, -288.67508, 0, 0, -500, 353.5534, 0, -353.5534, 288.67508, 288.67508, -288.67508, 0, 0, -500, 0, -398.7194, -398.7194, 353.5534, 0, -353.5534, 0, -398.7194, -398.7194, 288.67508, -288.67508, -288.67508, 353.5534, 0, -353.5534, -288.67508, 288.67508, -288.67508, -378.3374, 0, -378.3374, 0, 376.8245, -376.8245, -378.3374, 0, -378.3374, 0, 0, -500, 0, 376.8245, -376.8245, -378.3374, 0, -378.3374, -288.67508, -288.67508, -288.67508, 0, 0, -500, -288.67508, -288.67508, -288.67508, 0, -398.7194, -398.7194, 0, 0, -500)
 
-[sub_resource type="Shader" id="Shader_h4gvt"]
-code = "shader_type spatial;
-
-// use uniforms to pass values between code and shaders
-uniform float min_height;
-uniform float max_height;
-// gradient texture to assign colours to planet regions
-uniform sampler2D height_colour;
-
-// variable interpolated between vertices
-varying float height;
-
-void vertex() {
-	// given the origin of the mesh is the centre of the planet,
-	// the height is just the length of the current vertex in local space
-	height = length(VERTEX);
-
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	// linear interpolation of current height between min and max height
-	// gives a value for the current height between 0 and 1
-	float t = (height - min_height)/(max_height - min_height);
-	
-	// sample the height_colour texture - because it's a 1D gradient, always use y=0 and set x = t
-	// get rgb to remove any alpha channel
-	vec3 colour = texture(height_colour, vec2(t, 0.0)).rgb;
-	
-	// set colour
-	ALBEDO = colour;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wsik"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_h4gvt")
-shader_parameter/min_height = 1.0
-shader_parameter/max_height = 1.27799
-shader_parameter/height_colour = SubResource("GradientTexture1D_6lmls")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_n0675"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_i18mc"]
 _surfaces = [{
 "aabb": AABB(-385.28748, -353.55338, 288.67514, 738.8408, 707.10675, 220.39127),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_1wsik"),
+"material": SubResource("ShaderMaterial_yajt3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("YSudQ2ErncNhK51D1cawQwAAAADVxrBDa1aQQ2tWkENrVpBDAAAAANXGsMPVxrBDAAAAAAAAAACAiP5DAAAAANXGsEPVxrBDRl6hw0ZeocNGXqFDzKTAwwAAAADMpMBDO0SkwztEpEM7RKRDepiEZ8ZRIo91oNWOUV9KnXyXfJc7Y8OcJneIX0BayoF+hAuBf3vagjeQGKDnZP+d13Q3a++bjoMJaMZy2p8gjNNtN5shiQyU")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_glxhu"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h4gvt"]
 data = PackedVector3Array(0, -353.5534, 353.5534, 0, 0, 509.06638, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 353.5534, 0, 353.5534, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 0, 353.5534, 353.5534, 353.5534, 0, 353.5534, 0, 353.5534, 353.5534, 288.67508, 288.67508, 288.67508, 353.5534, 0, 353.5534, -322.73648, -322.73648, 322.73648, -385.28748, 0, 385.28748, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, 0, 0, 509.06638, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, -328.53308, 328.53308, 328.53308, 0, 0, 509.06638, -328.53308, 328.53308, 328.53308, 0, 353.5534, 353.5534, 0, 0, 509.06638)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xrtdi"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=743770683]
+script = ExtResource("1_pp1kx")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1210151915]
 environment = SubResource("Environment_qmve8")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1124336281]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Planet2" parent="." instance=ExtResource("2_vr651")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 302.469, 33.7074, 2006.86)
-planet_data = SubResource("Resource_8n7bn")
+[node name="PlayerShip" parent="." unique_id=1118701963 instance=ExtResource("5_k5gf6")]
+transform = Transform3D(1, 2.9802322e-08, -7.450581e-09, 0, 1.0000002, 0, -7.450581e-09, 0, 1, 0, 0, 0)
 
-[node name="MeshUp" parent="Planet2" index="0"]
-mesh = SubResource("ArrayMesh_pp1kx")
-surface_material_override/0 = SubResource("ShaderMaterial_f7kwh")
+[node name="StarSystem" type="Node3D" parent="." unique_id=514230570]
+transform = Transform3D(-0.86602354, -0.43301606, 0.25000072, 0, 0.49999818, 0.86602646, -0.5000033, 0.7499993, -0.4330102, 0, 0, 0)
+script = ExtResource("3_xum18")
+metadata/_custom_type_script = "uid://cb6twvck50l3y"
+
+[node name="Planet2" parent="StarSystem" unique_id=2064772859 instance=ExtResource("2_vr651")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -1265.3818, 1391.0232, -764.1819)
+planet_data = SubResource("Resource_x8yq1")
+
+[node name="MeshUp" parent="StarSystem/Planet2" index="0" unique_id=1677497562]
+material_override = SubResource("ShaderMaterial_yajt3")
+mesh = SubResource("ArrayMesh_rsbom")
+surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
 resolution = 3
-planet_data = SubResource("Resource_8n7bn")
+planet_data = SubResource("Resource_x8yq1")
 
-[node name="CollisionShape3D" parent="Planet2/MeshUp/MeshUp_col10" index="0"]
-shape = SubResource("ConcavePolygonShape3D_wa3b3")
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshUp/MeshUp_col11" index="0"]
+shape = SubResource("ConcavePolygonShape3D_8ijfx")
 
-[node name="MeshDown" parent="Planet2" index="1"]
-mesh = SubResource("ArrayMesh_144sp")
-surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
+[node name="MeshDown" parent="StarSystem/Planet2" index="1" unique_id=1772494147]
+material_override = SubResource("ShaderMaterial_yajt3")
+mesh = SubResource("ArrayMesh_yu3wv")
+surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
 resolution = 3
-planet_data = SubResource("Resource_8n7bn")
+planet_data = SubResource("Resource_x8yq1")
 
-[node name="CollisionShape3D" parent="Planet2/MeshDown/MeshDown_col10" index="0"]
-shape = SubResource("ConcavePolygonShape3D_yajt3")
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshDown/MeshDown_col11" index="0"]
+shape = SubResource("ConcavePolygonShape3D_htx0v")
 
-[node name="MeshLeft" parent="Planet2" index="2"]
-mesh = SubResource("ArrayMesh_8ijfx")
-surface_material_override/0 = SubResource("ShaderMaterial_rsbom")
+[node name="MeshLeft" parent="StarSystem/Planet2" index="2" unique_id=819523580]
+material_override = SubResource("ShaderMaterial_yajt3")
+mesh = SubResource("ArrayMesh_dvrbo")
+surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
 resolution = 3
-planet_data = SubResource("Resource_8n7bn")
+planet_data = SubResource("Resource_x8yq1")
 
-[node name="CollisionShape3D" parent="Planet2/MeshLeft/MeshLeft_col10" index="0"]
-shape = SubResource("ConcavePolygonShape3D_yu3wv")
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshLeft/MeshLeft_col11" index="0"]
+shape = SubResource("ConcavePolygonShape3D_na23b")
 
-[node name="MeshRight" parent="Planet2" index="3"]
-mesh = SubResource("ArrayMesh_na23b")
-surface_material_override/0 = SubResource("ShaderMaterial_dvrbo")
+[node name="MeshRight" parent="StarSystem/Planet2" index="3" unique_id=358085502]
+material_override = SubResource("ShaderMaterial_yajt3")
+mesh = SubResource("ArrayMesh_u1vnu")
+surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
 resolution = 3
-planet_data = SubResource("Resource_8n7bn")
+planet_data = SubResource("Resource_x8yq1")
 
-[node name="CollisionShape3D" parent="Planet2/MeshRight/MeshRight_col10" index="0"]
-shape = SubResource("ConcavePolygonShape3D_u1vnu")
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshRight/MeshRight_col11" index="0"]
+shape = SubResource("ConcavePolygonShape3D_mj0fk")
 
-[node name="MeshFront" parent="Planet2" index="4"]
-mesh = SubResource("ArrayMesh_0gwtm")
-surface_material_override/0 = SubResource("ShaderMaterial_p563i")
+[node name="MeshFront" parent="StarSystem/Planet2" index="4" unique_id=281704493]
+material_override = SubResource("ShaderMaterial_yajt3")
+mesh = SubResource("ArrayMesh_p563i")
+surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
 resolution = 3
-planet_data = SubResource("Resource_8n7bn")
+planet_data = SubResource("Resource_x8yq1")
 
-[node name="CollisionShape3D" parent="Planet2/MeshFront/MeshFront_col10" index="0"]
-shape = SubResource("ConcavePolygonShape3D_i18mc")
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshFront/MeshFront_col11" index="0"]
+shape = SubResource("ConcavePolygonShape3D_0gwtm")
 
-[node name="MeshBack" parent="Planet2" index="5"]
-mesh = SubResource("ArrayMesh_n0675")
-surface_material_override/0 = SubResource("ShaderMaterial_1wsik")
+[node name="MeshBack" parent="StarSystem/Planet2" index="5" unique_id=902113054]
+material_override = SubResource("ShaderMaterial_yajt3")
+mesh = SubResource("ArrayMesh_i18mc")
+surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
 resolution = 3
-planet_data = SubResource("Resource_8n7bn")
+planet_data = SubResource("Resource_x8yq1")
 
-[node name="CollisionShape3D" parent="Planet2/MeshBack/MeshBack_col10" index="0"]
-shape = SubResource("ConcavePolygonShape3D_glxhu")
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshBack/MeshBack_col11" index="0"]
+shape = SubResource("ConcavePolygonShape3D_h4gvt")
 
-[node name="Station" parent="." instance=ExtResource("7_3pfx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -423.03503, 15, 641)
+[node name="Station" parent="StarSystem" unique_id=508279563 instance=ExtResource("7_3pfx5")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, 45.8562, 671.4305, -370.32822)
 
-[node name="PlayerShip" parent="." instance=ExtResource("5_k5gf6")]
-
-[node name="playerscalecapsule" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318.90958, -69.6179, 658.06525)
+[node name="playerscalecapsule" type="MeshInstance3D" parent="StarSystem" unique_id=1295178799]
+transform = Transform3D(-0.86602354, -8.142145e-08, -0.5000033, -0.43301606, 0.49999833, 0.7499993, 0.25000072, 0.8660267, -0.4330102, -357.00015, 1119.3915, -327.6593)
 mesh = SubResource("CapsuleMesh_xrtdi")
 skeleton = NodePath("../basic station")
 
-[node name="basic station" parent="." instance=ExtResource("8_akawr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 317.29172, -72.6272, 644)
+[node name="basic station" parent="StarSystem" unique_id=1064089019 instance=ExtResource("8_akawr")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -596.7842, 309.29367, -262.43246)
 
-[node name="space brigade starbird 2" parent="." instance=ExtResource("9_2bue7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 356.07043, -73.25452, 682.18414)
+[node name="wallbug-hive-station" parent="StarSystem" unique_id=1945358894 instance=ExtResource("13_f7kwh")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -170.03629, 1254.5237, -345.38464)
 
-[node name="space brigade starbird classic" parent="." instance=ExtResource("10_18t8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.37195, -72.9859, 692.40314)
+[node name="space brigade starbird 2" parent="StarSystem" unique_id=1694736367 instance=ExtResource("9_2bue7")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -649.4597, 320.8263, -269.8152)
 
-[node name="wallbug ship" parent="." instance=ExtResource("11_pe6qr")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 358.9606, -72.8342, 689.08295)
+[node name="space brigade starbird classic" parent="StarSystem" unique_id=1601120488 instance=ExtResource("10_18t8f")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -649.63416, 331.09238, -275.43213)
 
-[node name="space brigade star-ranger" parent="." instance=ExtResource("12_wftjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 356.41092, -68.81696, 644.5393)
+[node name="wallbug ship" parent="StarSystem" unique_id=5102393 instance=ExtResource("11_pe6qr")]
+transform = Transform3D(0.50000334, -1.4901161e-08, -0.86602354, -0.7499993, 0.4999982, -0.4330161, 0.4330102, 0.8660265, 0.25000075, -655.41205, 324.95905, -271.71588)
+skeleton = NodePath("../..")
 
-[editable path="Planet2"]
+[node name="space brigade star-ranger" parent="StarSystem" unique_id=1327914088 instance=ExtResource("12_wftjq")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -630.932, 294.664, -249.58644)
+
+[node name="hangar-pad" parent="StarSystem" unique_id=2040493321 instance=ExtResource("15_wa3b3")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -373.37762, 1132.0994, -335.24225)
+
+[node name="spaceman attempt rig" parent="StarSystem" unique_id=1935214652 instance=ExtResource("17_m6bar")]
+transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -359.53503, 1116.8284, -327.55545)
+
+[editable path="StarSystem/Planet2"]

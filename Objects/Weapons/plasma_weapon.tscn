@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://dauwqtfe7p5r4"]
+[gd_scene format=4 uid="uid://csmx54yonv1uu"]
 
-[ext_resource type="Script" uid="uid://ce5hebynsjykr" path="res://Scripts/Weapons/ProjectileWeapon.gd" id="1_wf2lq"]
-[ext_resource type="PackedScene" uid="uid://bwx1020360q0d" path="res://Objects/Weapons/Projectile.tscn" id="2_vbjmx"]
+[ext_resource type="Script" uid="uid://ce5hebynsjykr" path="res://Scripts/Weapons/ProjectileWeapon.gd" id="1_dw1jr"]
+[ext_resource type="PackedScene" uid="uid://dos5q0mqjrup1" path="res://Objects/Weapons/ProjectilePlasmaOrb.tscn" id="2_vg622"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nslhi"]
 resource_name = "Material.001"
@@ -43,9 +43,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b1lay")
 
 [node name="ProjectileWeapon" type="Node3D" unique_id=922363930]
-script = ExtResource("1_wf2lq")
-projectile = ExtResource("2_vbjmx")
-refire_rate = 10.0
+script = ExtResource("1_dw1jr")
+projectile = ExtResource("2_vg622")
+damage = 5.0
+refire_rate = 0.3
 
 [node name="WeaponModel" type="MeshInstance3D" parent="." unique_id=1892266058]
 transform = Transform3D(-0.2, 0, -3.774895e-08, 0, 0.2, 0, 3.019916e-08, 0, -0.25, 0, -0.64366275, 0)

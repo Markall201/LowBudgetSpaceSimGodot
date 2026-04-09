@@ -7,15 +7,21 @@ class_name Weapon
 # child classes will need to define _on_fire()
 @export var damage:float = 1.0
 @export var refire_rate:float = 1.0
-# WeaponsSystem - currently parent of all hardpoints
-@onready var weaponsSystem: WeaponsSystem = $"../.."
-
-# WeaponsSystem - currently parent of all hardpoints
+# WeaponsSystem - reworked from being parent of all hardpoints
+# now PlayerShipModel is the parent of all hardpoints
+# PlayerShip is its parent
+# and WeaponsSystem is another child of PlayerShip
+var weaponsSystem: WeaponsSystem
+# WeaponBarrel - weapon emitter
 @onready var weaponBarrel: Node3D = $"WeaponModel/WeaponBarrel"
 
 var firing:bool = false
 
 func _ready():
+	pass
+
+func _on_init(ws: WeaponsSystem):
+	weaponsSystem = ws
 	weaponsSystem.fire_weapons.connect(_on_fire)
 	weaponsSystem.stop_firing_weapons.connect(_on_stop_firing)
 

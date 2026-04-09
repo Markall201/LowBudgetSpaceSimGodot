@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Projectile
 
 @export var damage:int = 0
 

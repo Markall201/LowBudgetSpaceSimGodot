@@ -52,6 +52,37 @@ var glide: Vector3 = Vector3.ZERO
 var mouse_control_toggle: bool = true
 
 
+@onready var weapons_system: WeaponsSystem = $WeaponsSystem
+
+var ship_model: ShipModel:
+	set(val):
+		ship_model = val
+		weapons_system.player_ship_model =  val
+		
+
+
+# search the child objects for a ShipModel and return it if found
+func find_ship_model():
+	for child in get_children():
+		var ship_model_child := child as ShipModel
+		if ship_model_child is ShipModel:
+			return ship_model_child
+	return null 
+	
+# functionality to swap ships
+# swap the current ShipModel for a new ShipModel
+func replace_ship_model(new_ship_model: ShipModel):
+	ship_model.queue_free()
+	add_child(new_ship_model)
+	ship_model = new_ship_model
+	
+	
+# functionality to swap ships
+# swap the current ShipModel from an uninstantiated ShipModel scene
+func replace_ship_model_from_packed_scene(new_ship_model_scene: PackedScene):
+	var new_ship_model:ShipModel = new_ship_model_scene.instantiate()
+	replace_ship_model(new_ship_model)
+
 # boost tank logic
 # (near copy and paste from Unity project)
 func handle_boosting(delta):
@@ -222,6 +253,10 @@ func handle_mouse_control():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	ship_model = find_ship_model()
+
+	var starbird: PackedScene = load("res://Objects/Ships/Starbird Classic.tscn")
+	replace_ship_model_from_packed_scene(starbird)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
