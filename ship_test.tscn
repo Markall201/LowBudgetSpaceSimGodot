@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bdprpr7at70kt" path="res://Assets/Models/wallbug-hive-station.glb" id="13_f7kwh"]
 [ext_resource type="PackedScene" uid="uid://cjd5o54g6cmpg" path="res://Assets/Models/hangar-pad.glb" id="15_wa3b3"]
 [ext_resource type="PackedScene" uid="uid://3jfawtgt2xsg" path="res://Assets/Models/spaceman attempt rig.glb" id="17_m6bar"]
+[ext_resource type="PackedScene" uid="uid://c104a0qeqe0oq" path="res://Assets/Models/orthani-fighter.glb" id="18_144sp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_smvli"]
 panorama = ExtResource("1_13pva")
@@ -39,7 +40,7 @@ offsets = PackedFloat32Array(0, 0.0134228, 0.210291, 0.311579, 0.486316, 0.74736
 colors = PackedColorArray(0.505898, 0, 0.250038, 1, 0.954153, 0.861388, 0.134835, 1, 0.612282, 0.205756, 0, 1, 0.319367, 0.375031, 0.391729, 1, 0.332142, 0.362886, 0.39965, 1, 0.763837, 0.776376, 0.794245, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 metadata/_snap_count = 15
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_144sp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m6bar"]
 resource_local_to_scene = true
 gradient = SubResource("Gradient_4u15d")
 
@@ -82,13 +83,13 @@ void fragment() {
 //}
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yajt3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_144sp"]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("Shader_o7lr8")
 shader_parameter/min_height = 499.99997
 shader_parameter/max_height = 579.0189
-shader_parameter/height_colour = SubResource("GradientTexture1D_144sp")
+shader_parameter/height_colour = SubResource("GradientTexture1D_m6bar")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2c5qk"]
 seed = 56
@@ -100,7 +101,7 @@ min_height = 0.2
 amplitude = 0.4
 height_map = SubResource("FastNoiseLite_2c5qk")
 
-[sub_resource type="Resource" id="Resource_x8yq1"]
+[sub_resource type="Resource" id="Resource_yajt3"]
 resource_local_to_scene = true
 script = ExtResource("5_edwk4")
 atmosphere_type = 1
@@ -109,109 +110,109 @@ resolution = 3
 LODCurve = ExtResource("3_mrcjk")
 radius = 500
 planet_noise = Array[ExtResource("4_uqdfs")]([SubResource("Resource_bjoya")])
-planet_colour = SubResource("GradientTexture1D_144sp")
-planet_material = SubResource("ShaderMaterial_yajt3")
+planet_colour = SubResource("GradientTexture1D_m6bar")
+planet_material = SubResource("ShaderMaterial_144sp")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rsbom"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_x8yq1"]
 _surfaces = [{
 "aabb": AABB(-353.55338, 288.67514, -376.82446, 707.10675, 248.90598, 730.3778),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_yajt3"),
+"material": SubResource("ShaderMaterial_144sp"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("O0SkwztEpEM7RKRDAAAAANXGsEPVxrBDa1aQQ2tWkENrVpBD1caww9XGsEMAAAAAAAAAADFlBkQAAAAA1cawQ9XGsEMAAAAAa1aQw2tWkENrVpDDAAAAAIhpvEOIabzDa1aQQ2tWkENrVpDDHGc4zsk9jLCPkXTLtimxwHyXBdGaLOrHTkvs2qQrgqvwg+f7NgT3wRikT84eN4jOkUoN4v0jeqjAUWjyoxevpkO7Ot89IOTX")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8ijfx"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rsbom"]
 data = PackedVector3Array(-353.5534, 353.5534, 0, 0, 537.5811, 0, -328.53308, 328.53308, 328.53308, 0, 537.5811, 0, 0, 353.5534, 353.5534, -328.53308, 328.53308, 328.53308, 0, 537.5811, 0, 353.5534, 353.5534, 0, 0, 353.5534, 353.5534, 353.5534, 353.5534, 0, 288.67508, 288.67508, 288.67508, 0, 353.5534, 353.5534, -288.67508, 288.67508, -288.67508, 0, 376.8245, -376.8245, -353.5534, 353.5534, 0, 0, 376.8245, -376.8245, 0, 537.5811, 0, -353.5534, 353.5534, 0, 0, 376.8245, -376.8245, 288.67508, 288.67508, -288.67508, 0, 537.5811, 0, 288.67508, 288.67508, -288.67508, 353.5534, 353.5534, 0, 0, 537.5811, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yu3wv"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_8ijfx"]
 _surfaces = [{
 "aabb": AABB(-353.55338, -502.5753, -398.71936, 713.4407, 213.90015, 752.2727),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_yajt3"),
+"material": SubResource("ShaderMaterial_144sp"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("YSudQ2ErncNhK51DAAAAANXGsMPVxrBDRl6hw0ZeocNGXqFDk/GzQ5Pxs8MAAAAAAAAAAKNJ+8MAAAAA1caww9XGsMMAAAAAa1aQQ2tWkMNrVpDDAAAAABRcx8MUXMfDa1aQw2tWkMNrVpDDC5fwL+sc9qifdAIoUgJ40Nd0UBZDCkLKqq0KI704Uq8Ie70I3QQ4xNVioyUVIIbPprxTI4hP5Ks1pTELHCwQt4VJSSFoN93L")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_htx0v"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yu3wv"]
 data = PackedVector3Array(359.8873, -359.8873, 0, 0, -502.5753, 0, 314.3389, -314.3389, 314.3389, 0, -502.5753, 0, 0, -353.5534, 353.5534, 314.3389, -314.3389, 314.3389, 0, -502.5753, 0, -353.5534, -353.5534, 0, 0, -353.5534, 353.5534, -353.5534, -353.5534, 0, -322.73648, -322.73648, 322.73648, 0, -353.5534, 353.5534, 288.67508, -288.67508, -288.67508, 0, -398.7194, -398.7194, 359.8873, -359.8873, 0, 0, -398.7194, -398.7194, 0, -502.5753, 0, 359.8873, -359.8873, 0, 0, -398.7194, -398.7194, -288.67508, -288.67508, -288.67508, 0, -502.5753, 0, -288.67508, -288.67508, -288.67508, -353.5534, -353.5534, 0, 0, -502.5753, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dvrbo"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_htx0v"]
 _surfaces = [{
 "aabb": AABB(-564.9511, -353.55338, -378.3374, 276.27597, 707.10675, 763.6249),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_yajt3"),
+"material": SubResource("ShaderMaterial_144sp"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("O0SkwztEpEM7RKRD1caww9XGsEMAAAAAa1aQw2tWkENrVpDDzKTAwwAAAADMpMBD3zwNxAAAAAAAAAAAMCu9wwAAAAAwK73DRl6hw0ZeocNGXqFD1caww9XGsMMAAAAAa1aQw2tWkMNrVpDDkDUgnzCJgK2iJ1m4yV25rFUe0rXDXoKuKS74bwig7ML4Aat6m3zvwNoO/rFGXfex7x83ax2HaMrbL0JZAXab05IiZ0E/WK/J")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_na23b"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dvrbo"]
 data = PackedVector3Array(-385.28748, 0, 385.28748, -564.9511, 0, 0, -328.53308, 328.53308, 328.53308, -564.9511, 0, 0, -353.5534, 353.5534, 0, -328.53308, 328.53308, 328.53308, -564.9511, 0, 0, -378.3374, 0, -378.3374, -353.5534, 353.5534, 0, -378.3374, 0, -378.3374, -288.67508, 288.67508, -288.67508, -353.5534, 353.5534, 0, -322.73648, -322.73648, 322.73648, -353.5534, -353.5534, 0, -385.28748, 0, 385.28748, -353.5534, -353.5534, 0, -564.9511, 0, 0, -385.28748, 0, 385.28748, -353.5534, -353.5534, 0, -288.67508, -288.67508, -288.67508, -564.9511, 0, 0, -288.67508, -288.67508, -288.67508, -378.3374, 0, -378.3374, -564.9511, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_u1vnu"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_na23b"]
 _surfaces = [{
 "aabb": AABB(288.67514, -359.8873, -353.55338, 290.34378, 713.4407, 707.10675),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_yajt3"),
+"material": SubResource("ShaderMaterial_144sp"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("a1aQQ2tWkENrVpDD1cawQ9XGsEMAAAAAa1aQQ2tWkENrVpBD1cawQwAAAADVxrDDNsEQRAAAAAAAAAAA1cawQwAAAADVxrBDa1aQQ2tWkMNrVpDDk/GzQ5Pxs8MAAAAAYSudQ2ErncNhK51D598uwKiZ08y1yNSnNmEWzwXRfJc7Y+rHE/GmSLWenrCQ/a2DM4E0wfPG/ZFfVD6+guguTzKRM7HN2c9HpX1gqnzFnmPyWRmt")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mj0fk"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u1vnu"]
 data = PackedVector3Array(353.5534, 0, -353.5534, 579.01886, 0, 0, 288.67508, 288.67508, -288.67508, 579.01886, 0, 0, 353.5534, 353.5534, 0, 288.67508, 288.67508, -288.67508, 579.01886, 0, 0, 353.5534, 0, 353.5534, 353.5534, 353.5534, 0, 353.5534, 0, 353.5534, 288.67508, 288.67508, 288.67508, 353.5534, 353.5534, 0, 288.67508, -288.67508, -288.67508, 359.8873, -359.8873, 0, 353.5534, 0, -353.5534, 359.8873, -359.8873, 0, 579.01886, 0, 0, 353.5534, 0, -353.5534, 359.8873, -359.8873, 0, 314.3389, -314.3389, 314.3389, 579.01886, 0, 0, 314.3389, -314.3389, 314.3389, 353.5534, 0, 353.5534, 579.01886, 0, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_p563i"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_mj0fk"]
 _surfaces = [{
 "aabb": AABB(-378.3374, -398.71936, -500, 731.89075, 775.5438, 211.32486),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_yajt3"),
+"material": SubResource("ShaderMaterial_144sp"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("a1aQQ2tWkENrVpDD1cawQwAAAADVxrDDa1aQQ2tWkMNrVpDDAAAAAIhpvEOIabzDAAAAAAAAAAAAAPrDAAAAABRcx8MUXMfDa1aQw2tWkENrVpDDMCu9wwAAAAAwK73Da1aQw2tWkMNrVpDDKei74VusuI5T+JskVZ//mYLoUyNUl2CdDh+W9kpSP4kr/3f+VILCgP7moAvdhOaPVR4N4kFJppOKCVPhRV/3kGYYsh0GXU+i")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0gwtm"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p563i"]
 data = PackedVector3Array(0, 376.8245, -376.8245, 0, 0, -500, 288.67508, 288.67508, -288.67508, 0, 0, -500, 353.5534, 0, -353.5534, 288.67508, 288.67508, -288.67508, 0, 0, -500, 0, -398.7194, -398.7194, 353.5534, 0, -353.5534, 0, -398.7194, -398.7194, 288.67508, -288.67508, -288.67508, 353.5534, 0, -353.5534, -288.67508, 288.67508, -288.67508, -378.3374, 0, -378.3374, 0, 376.8245, -376.8245, -378.3374, 0, -378.3374, 0, 0, -500, 0, 376.8245, -376.8245, -378.3374, 0, -378.3374, -288.67508, -288.67508, -288.67508, 0, 0, -500, -288.67508, -288.67508, -288.67508, 0, -398.7194, -398.7194, 0, 0, -500)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_i18mc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0gwtm"]
 _surfaces = [{
 "aabb": AABB(-385.28748, -353.55338, 288.67514, 738.8408, 707.10675, 220.39127),
 "attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
 "format": 34359742487,
 "index_count": 24,
 "index_data": PackedByteArray("AwAEAAAABAABAAAABAAFAAEABQACAAEABgAHAAMABwAEAAMABwAIAAQACAAFAAQA"),
-"material": SubResource("ShaderMaterial_yajt3"),
+"material": SubResource("ShaderMaterial_144sp"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 9,
 "vertex_data": PackedByteArray("YSudQ2ErncNhK51D1cawQwAAAADVxrBDa1aQQ2tWkENrVpBDAAAAANXGsMPVxrBDAAAAAAAAAACAiP5DAAAAANXGsEPVxrBDRl6hw0ZeocNGXqFDzKTAwwAAAADMpMBDO0SkwztEpEM7RKRDepiEZ8ZRIo91oNWOUV9KnXyXfJc7Y8OcJneIX0BayoF+hAuBf3vagjeQGKDnZP+d13Q3a++bjoMJaMZy2p8gjNNtN5shiQyU")
 }]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h4gvt"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i18mc"]
 data = PackedVector3Array(0, -353.5534, 353.5534, 0, 0, 509.06638, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 353.5534, 0, 353.5534, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 0, 353.5534, 353.5534, 353.5534, 0, 353.5534, 0, 353.5534, 353.5534, 288.67508, 288.67508, 288.67508, 353.5534, 0, 353.5534, -322.73648, -322.73648, 322.73648, -385.28748, 0, 385.28748, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, 0, 0, 509.06638, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, -328.53308, 328.53308, 328.53308, 0, 0, 509.06638, -328.53308, 328.53308, 328.53308, 0, 353.5534, 353.5534, 0, 0, 509.06638)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xrtdi"]
@@ -236,67 +237,67 @@ metadata/_custom_type_script = "uid://cb6twvck50l3y"
 
 [node name="Planet2" parent="StarSystem" unique_id=2064772859 instance=ExtResource("2_vr651")]
 transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -1265.3818, 1391.0232, -764.1819)
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="MeshUp" parent="StarSystem/Planet2" index="0" unique_id=1677497562]
-material_override = SubResource("ShaderMaterial_yajt3")
-mesh = SubResource("ArrayMesh_rsbom")
-surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
+material_override = SubResource("ShaderMaterial_144sp")
+mesh = SubResource("ArrayMesh_x8yq1")
+surface_material_override/0 = SubResource("ShaderMaterial_144sp")
 resolution = 3
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshUp/MeshUp_col11" index="0"]
-shape = SubResource("ConcavePolygonShape3D_8ijfx")
+shape = SubResource("ConcavePolygonShape3D_rsbom")
 
 [node name="MeshDown" parent="StarSystem/Planet2" index="1" unique_id=1772494147]
-material_override = SubResource("ShaderMaterial_yajt3")
-mesh = SubResource("ArrayMesh_yu3wv")
-surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
+material_override = SubResource("ShaderMaterial_144sp")
+mesh = SubResource("ArrayMesh_8ijfx")
+surface_material_override/0 = SubResource("ShaderMaterial_144sp")
 resolution = 3
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshDown/MeshDown_col11" index="0"]
-shape = SubResource("ConcavePolygonShape3D_htx0v")
+shape = SubResource("ConcavePolygonShape3D_yu3wv")
 
 [node name="MeshLeft" parent="StarSystem/Planet2" index="2" unique_id=819523580]
-material_override = SubResource("ShaderMaterial_yajt3")
-mesh = SubResource("ArrayMesh_dvrbo")
-surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
+material_override = SubResource("ShaderMaterial_144sp")
+mesh = SubResource("ArrayMesh_htx0v")
+surface_material_override/0 = SubResource("ShaderMaterial_144sp")
 resolution = 3
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshLeft/MeshLeft_col11" index="0"]
-shape = SubResource("ConcavePolygonShape3D_na23b")
+shape = SubResource("ConcavePolygonShape3D_dvrbo")
 
 [node name="MeshRight" parent="StarSystem/Planet2" index="3" unique_id=358085502]
-material_override = SubResource("ShaderMaterial_yajt3")
-mesh = SubResource("ArrayMesh_u1vnu")
-surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
+material_override = SubResource("ShaderMaterial_144sp")
+mesh = SubResource("ArrayMesh_na23b")
+surface_material_override/0 = SubResource("ShaderMaterial_144sp")
 resolution = 3
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshRight/MeshRight_col11" index="0"]
-shape = SubResource("ConcavePolygonShape3D_mj0fk")
+shape = SubResource("ConcavePolygonShape3D_u1vnu")
 
 [node name="MeshFront" parent="StarSystem/Planet2" index="4" unique_id=281704493]
-material_override = SubResource("ShaderMaterial_yajt3")
-mesh = SubResource("ArrayMesh_p563i")
-surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
+material_override = SubResource("ShaderMaterial_144sp")
+mesh = SubResource("ArrayMesh_mj0fk")
+surface_material_override/0 = SubResource("ShaderMaterial_144sp")
 resolution = 3
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshFront/MeshFront_col11" index="0"]
-shape = SubResource("ConcavePolygonShape3D_0gwtm")
+shape = SubResource("ConcavePolygonShape3D_p563i")
 
 [node name="MeshBack" parent="StarSystem/Planet2" index="5" unique_id=902113054]
-material_override = SubResource("ShaderMaterial_yajt3")
-mesh = SubResource("ArrayMesh_i18mc")
-surface_material_override/0 = SubResource("ShaderMaterial_yajt3")
+material_override = SubResource("ShaderMaterial_144sp")
+mesh = SubResource("ArrayMesh_0gwtm")
+surface_material_override/0 = SubResource("ShaderMaterial_144sp")
 resolution = 3
-planet_data = SubResource("Resource_x8yq1")
+planet_data = SubResource("Resource_yajt3")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshBack/MeshBack_col11" index="0"]
-shape = SubResource("ConcavePolygonShape3D_h4gvt")
+shape = SubResource("ConcavePolygonShape3D_i18mc")
 
 [node name="Station" parent="StarSystem" unique_id=508279563 instance=ExtResource("7_3pfx5")]
 transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, 45.8562, 671.4305, -370.32822)
@@ -330,5 +331,8 @@ transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.
 
 [node name="spaceman attempt rig" parent="StarSystem" unique_id=1935214652 instance=ExtResource("17_m6bar")]
 transform = Transform3D(-0.86602354, -1.4901161e-08, -0.5000033, -0.43301606, 0.4999982, 0.7499993, 0.25000072, 0.8660265, -0.4330102, -359.53503, 1116.8284, -327.55545)
+
+[node name="orthani-fighter" parent="." unique_id=1909583580 instance=ExtResource("18_144sp")]
+transform = Transform3D(0.13279265, 0, 0.9911438, 0, 1, 0, -0.9911438, 0, 0.13279265, -285.37082, 276.72977, 1052.8396)
 
 [editable path="StarSystem/Planet2"]

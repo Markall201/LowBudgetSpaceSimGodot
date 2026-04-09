@@ -118,6 +118,8 @@ func handle_throttle(delta):
 	elif (Input.is_action_pressed("Throttle Down") && current_throttle > min_throttle && is_controllable):
 				current_throttle -= (throttle_change_rate * delta)
 				#print(current_throttle)
+	if Input.is_action_pressed("Throttle Zero"):
+		current_throttle = 0.0
 				
 var mouse_input:Vector2 = Vector2.ZERO
 				
