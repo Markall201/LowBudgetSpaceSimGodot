@@ -1,0 +1,2 @@
+extends PlanetPOISpawner
+class_name PlanetFloraSpawner

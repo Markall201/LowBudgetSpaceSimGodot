@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://5kxvweykrssn"]
+
+[ext_resource type="PackedScene" uid="uid://cxyw5oju6n02n" path="res://Assets/Models/Palm Tree.glb" id="1_a48od"]
+
+[node name="Node3D" type="Node3D" unique_id=608340458]
+
+[node name="Palm Tree" parent="." unique_id=1560895924 instance=ExtResource("1_a48od")]

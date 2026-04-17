@@ -178,7 +178,7 @@ func point_on_cube_to_point_on_sphere(p:Vector3):
 		
 	
 # once we have a sphere, use this method to create heightmap-based
-func calculate_vertex_point_on_planet(planet: PlanetData, pointOnUnitSphere: Vector3) -> Vector3:
+static func calculate_vertex_point_on_planet(planet: PlanetData, pointOnUnitSphere: Vector3) -> Vector3:
 	# loop through all PlanetNoise objects
 	var elevation:float = 0.0
 	# for noise masking, use a layer
