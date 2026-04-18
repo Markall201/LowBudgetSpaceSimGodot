@@ -30,11 +30,11 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1588031911]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=358576205]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=533849194]
 z_index = 10
 anchors_preset = 6
 anchor_left = 1.0
@@ -49,14 +49,14 @@ grow_vertical = 2
 theme = SubResource("Theme_j5xfp")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8gt82")
 
-[node name="Control" type="Control" parent="CanvasLayer/Panel"]
+[node name="Control" type="Control" parent="CanvasLayer/Panel" unique_id=1298751919]
 unique_name_in_owner = true
 anchors_preset = 0
 size_flags_horizontal = 8
 script = ExtResource("2_jg22p")
 metadata/_edit_use_anchors_ = true
 
-[node name="System Label" type="Label" parent="CanvasLayer/Panel/Control"]
+[node name="System Label" type="Label" parent="CanvasLayer/Panel/Control" unique_id=1989418221]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -66,7 +66,7 @@ offset_bottom = 43.0
 text = "TEST SYSTEM"
 autowrap_mode = 2
 
-[node name="System Stars" type="Label" parent="CanvasLayer/Panel/Control"]
+[node name="System Stars" type="Label" parent="CanvasLayer/Panel/Control" unique_id=1281669541]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -75,7 +75,7 @@ offset_right = 178.0
 offset_bottom = 103.0
 text = "NUMBER OF STARS:"
 
-[node name="System Planets" type="Label" parent="CanvasLayer/Panel/Control"]
+[node name="System Planets" type="Label" parent="CanvasLayer/Panel/Control" unique_id=1999452928]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -84,7 +84,7 @@ offset_right = 192.0
 offset_bottom = 163.0
 text = "NUMBER OF PLANETS:   "
 
-[node name="System Coords" type="Label" parent="CanvasLayer/Panel/Control"]
+[node name="System Coords" type="Label" parent="CanvasLayer/Panel/Control" unique_id=999967755]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -94,7 +94,7 @@ offset_bottom = 223.0
 text = "COORDINATES: "
 autowrap_mode = 2
 
-[node name="System Seed" type="Label" parent="CanvasLayer/Panel/Control"]
+[node name="System Seed" type="Label" parent="CanvasLayer/Panel/Control" unique_id=1724868263]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -103,7 +103,7 @@ offset_right = 178.0
 offset_bottom = 283.0
 text = "SYSTEM SEED: "
 
-[node name="System Faction" type="Label" parent="CanvasLayer/Panel/Control"]
+[node name="System Faction" type="Label" parent="CanvasLayer/Panel/Control" unique_id=2038558045]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -112,21 +112,19 @@ offset_right = 178.0
 offset_bottom = 343.0
 text = "FACTION: "
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CanvasLayer" unique_id=889694615]
 environment = SubResource("Environment_c7pah")
 
-[node name="GalMapCameraController" type="Node3D" parent="CanvasLayer"]
+[node name="GalMapCameraController" type="Node3D" parent="CanvasLayer" unique_id=1351446554]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15, 200.308, 0)
 script = ExtResource("3_cn1xk")
 
-[node name="Camera3D" type="Camera3D" parent="CanvasLayer/GalMapCameraController"]
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/GalMapCameraController" unique_id=76062528]
 cull_mask = 16
 
-[node name="Galaxy" parent="CanvasLayer" instance=ExtResource("1_kbsw4")]
+[node name="Galaxy" parent="CanvasLayer" unique_id=707910041 instance=ExtResource("1_kbsw4")]
 numberOfSystems = 2000
 
-[node name="SystemPlaceholder" parent="CanvasLayer" instance=ExtResource("4_1v4nl")]
+[node name="SystemPlaceholder" parent="CanvasLayer" unique_id=1067525649 instance=ExtResource("4_1v4nl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
 visible = false
-
-[connection signal="highlight" from="CanvasLayer/SystemPlaceholder" to="CanvasLayer/Panel/Control" method="_on_system_placeholder_highlight"]

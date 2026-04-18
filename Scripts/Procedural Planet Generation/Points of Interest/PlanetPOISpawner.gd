@@ -38,7 +38,7 @@ func _ready():
 func align_with_local_up(POIInstance: Node3D, planet: Planet):
 	# get the direction vector for each point of interest from the planet's centre to find the up direction
 	var direction_up:Vector3 = (planet.global_position - POIInstance.global_position).normalized()
-	print(str(direction_up))
+	#print(str(direction_up))
 	#POIInstance.set_rotation(rotation)
 
 	# use transforms to align the point of interest with the local up direction
