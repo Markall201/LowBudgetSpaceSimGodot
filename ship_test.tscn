@@ -28,8 +28,10 @@ sky = SubResource("Sky_cd76q")
 tonemap_mode = 1
 glow_enabled = true
 fog_sky_affect = 0.5
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+volumetric_fog_density = 0.0642
+volumetric_fog_albedo = Color(0, 0.5084346, 0.688062, 1)
+volumetric_fog_ambient_inject = 0.5
+volumetric_fog_sky_affect = 0.8
 
 [sub_resource type="Gradient" id="Gradient_4u15d"]
 interpolation_mode = 2
@@ -212,6 +214,11 @@ _surfaces = [{
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p563i"]
 data = PackedVector3Array(0, -353.5534, 353.5534, 0, 0, 509.06638, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 353.5534, 0, 353.5534, 314.3389, -314.3389, 314.3389, 0, 0, 509.06638, 0, 353.5534, 353.5534, 353.5534, 0, 353.5534, 0, 353.5534, 353.5534, 288.67508, 288.67508, 288.67508, 353.5534, 0, 353.5534, -322.73648, -322.73648, 322.73648, -385.28748, 0, 385.28748, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, 0, 0, 509.06638, 0, -353.5534, 353.5534, -385.28748, 0, 385.28748, -328.53308, 328.53308, 328.53308, 0, 0, 509.06638, -328.53308, 328.53308, 328.53308, 0, 353.5534, 353.5534, 0, 0, 509.06638)
 
+[sub_resource type="FogMaterial" id="FogMaterial_wa3b3"]
+density = -1.0
+albedo = Color(0.08529679, 0.44493672, 0.6406685, 1)
+edge_fade = 0.75785834
+
 [node name="Node3D" type="Node3D" unique_id=743770683]
 script = ExtResource("1_pp1kx")
 
@@ -224,9 +231,6 @@ shadow_enabled = true
 
 [node name="PlayerShip" parent="." unique_id=1118701963 instance=ExtResource("5_k5gf6")]
 transform = Transform3D(1, 2.9802322e-08, -7.450581e-09, 0, 1.0000002, 0, -7.450581e-09, 0, 1, 0, 0, 0)
-max_boost_amount = 500.0
-boost_deprecation_rate = 0.0
-boost_multiplier = 10.0
 
 [node name="StarSystem" type="Node3D" parent="." unique_id=514230570]
 script = ExtResource("3_xum18")
@@ -297,6 +301,9 @@ planet_data = SubResource("Resource_m6bar")
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshBack/MeshBack_col11" index="0"]
 shape = SubResource("ConcavePolygonShape3D_p563i")
 
+[node name="PlanetFloraSpawner" parent="StarSystem/Planet2" index="7" unique_id=971205350]
+seed = 500
+
 [node name="Station" parent="StarSystem" unique_id=508279563 instance=ExtResource("7_3pfx5")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -279.29688, -9.086609, 715.5246)
 
@@ -318,5 +325,12 @@ transform = Transform3D(0.9777066, -0.009653643, 0.20975369, 0.015704453, 0.9995
 
 [node name="wallbug-hive-station" parent="StarSystem" unique_id=1500170836 instance=ExtResource("15_wa3b3")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -228.17696, 288.43735, 1259.6713)
+
+[node name="FogVolume" type="FogVolume" parent="StarSystem" unique_id=1947094248]
+transform = Transform3D(0.97770655, -0.009653681, 0.20975403, 0.015704323, 0.9995067, -0.027200522, -0.20938793, 0.029888641, 0.9773759, 519.3586, 133.98132, 940.51935)
+visible = false
+layers = 7
+size = Vector3(5000, 4000, 3928.34)
+material = SubResource("FogMaterial_wa3b3")
 
 [editable path="StarSystem/Planet2"]
