@@ -224,6 +224,9 @@ shadow_enabled = true
 
 [node name="PlayerShip" parent="." unique_id=1118701963 instance=ExtResource("5_k5gf6")]
 transform = Transform3D(1, 2.9802322e-08, -7.450581e-09, 0, 1.0000002, 0, -7.450581e-09, 0, 1, 0, 0, 0)
+max_boost_amount = 500.0
+boost_deprecation_rate = 0.0
+boost_multiplier = 10.0
 
 [node name="StarSystem" type="Node3D" parent="." unique_id=514230570]
 script = ExtResource("3_xum18")
@@ -293,6 +296,9 @@ planet_data = SubResource("Resource_m6bar")
 
 [node name="CollisionShape3D" parent="StarSystem/Planet2/MeshBack/MeshBack_col11" index="0"]
 shape = SubResource("ConcavePolygonShape3D_p563i")
+
+[node name="PlanetFloraSpawner" parent="StarSystem/Planet2" index="7" unique_id=971205350]
+number_of_instances = null
 
 [node name="Station" parent="StarSystem" unique_id=508279563 instance=ExtResource("7_3pfx5")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -279.29688, -9.086609, 715.5246)

@@ -137,9 +137,9 @@ normal = Vector3(0, 1, 0)
 resolution = 7
 planet_data = SubResource("Resource_v7hk1")
 
-[node name="MeshUp_col" type="StaticBody3D" parent="MeshUp" unique_id=59229827]
+[node name="MeshUp_col2" type="StaticBody3D" parent="MeshUp" unique_id=392241060]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshUp/MeshUp_col" unique_id=1240137375]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshUp/MeshUp_col2" unique_id=1914353865]
 shape = SubResource("ConcavePolygonShape3D_rachy")
 
 [node name="MeshDown" type="MeshInstance3D" parent="." unique_id=1772494147]
@@ -151,9 +151,9 @@ normal = Vector3(0, -1, 0)
 resolution = 7
 planet_data = SubResource("Resource_v7hk1")
 
-[node name="MeshDown_col" type="StaticBody3D" parent="MeshDown" unique_id=1480633374]
+[node name="MeshDown_col2" type="StaticBody3D" parent="MeshDown" unique_id=2116993407]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshDown/MeshDown_col" unique_id=1864997035]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshDown/MeshDown_col2" unique_id=2101717477]
 shape = SubResource("ConcavePolygonShape3D_y0fmq")
 
 [node name="MeshLeft" type="MeshInstance3D" parent="." unique_id=819523580]
@@ -165,9 +165,9 @@ normal = Vector3(-1, 0, 0)
 resolution = 7
 planet_data = SubResource("Resource_v7hk1")
 
-[node name="MeshLeft_col" type="StaticBody3D" parent="MeshLeft" unique_id=2119207546]
+[node name="MeshLeft_col2" type="StaticBody3D" parent="MeshLeft" unique_id=1521319219]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshLeft/MeshLeft_col" unique_id=1191277068]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshLeft/MeshLeft_col2" unique_id=550684372]
 shape = SubResource("ConcavePolygonShape3D_gfws5")
 
 [node name="MeshRight" type="MeshInstance3D" parent="." unique_id=358085502]
@@ -179,9 +179,9 @@ normal = Vector3(1, 0, 0)
 resolution = 7
 planet_data = SubResource("Resource_v7hk1")
 
-[node name="MeshRight_col" type="StaticBody3D" parent="MeshRight" unique_id=1175841192]
+[node name="MeshRight_col2" type="StaticBody3D" parent="MeshRight" unique_id=953233919]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshRight/MeshRight_col" unique_id=1467963674]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshRight/MeshRight_col2" unique_id=1107898711]
 shape = SubResource("ConcavePolygonShape3D_8ka3g")
 
 [node name="MeshFront" type="MeshInstance3D" parent="." unique_id=281704493]
@@ -193,9 +193,9 @@ normal = Vector3(0, 0, -1)
 resolution = 7
 planet_data = SubResource("Resource_v7hk1")
 
-[node name="MeshFront_col" type="StaticBody3D" parent="MeshFront" unique_id=2075623163]
+[node name="MeshFront_col2" type="StaticBody3D" parent="MeshFront" unique_id=270366743]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFront/MeshFront_col" unique_id=1442788824]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFront/MeshFront_col2" unique_id=496656105]
 shape = SubResource("ConcavePolygonShape3D_5jgop")
 
 [node name="MeshBack" type="MeshInstance3D" parent="." unique_id=902113054]
@@ -207,9 +207,9 @@ normal = Vector3(0, 0, 1)
 resolution = 7
 planet_data = SubResource("Resource_v7hk1")
 
-[node name="MeshBack_col" type="StaticBody3D" parent="MeshBack" unique_id=1880192807]
+[node name="MeshBack_col2" type="StaticBody3D" parent="MeshBack" unique_id=428427228]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshBack/MeshBack_col" unique_id=169480316]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshBack/MeshBack_col2" unique_id=524035840]
 shape = SubResource("ConcavePolygonShape3D_gyprp")
 
 [node name="SelectableObject" type="Node3D" parent="." unique_id=350471106]
@@ -217,4 +217,5 @@ script = ExtResource("9_iaekc")
 
 [node name="PlanetFloraSpawner" type="Node3D" parent="." unique_id=971205350]
 script = ExtResource("10_s115o")
+seed = 500
 POI_template = ExtResource("11_j7ffv")
