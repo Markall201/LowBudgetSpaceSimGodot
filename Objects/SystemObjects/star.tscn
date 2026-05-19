@@ -33,3 +33,4 @@ distance_fade_shadow = 1000.0
 distance_fade_length = 300000.0
 omni_range = 100000000.0
 omni_attenuation = 0.0
+omni_shadow_mode = 0

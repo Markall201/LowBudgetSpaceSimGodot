@@ -4,6 +4,17 @@ class_name Station
 signal init_landing_pads(station)
 
 @export var station_name:String
+@export var station_description: String
+
+@export var faction: String
+
+enum State {
+	Active, Closed, Damaged, Offline
+}
+@export var state: State
+
+@export var missions: Array[Mission]
+
 
 func _ready():
 	# find the landing pads on the station

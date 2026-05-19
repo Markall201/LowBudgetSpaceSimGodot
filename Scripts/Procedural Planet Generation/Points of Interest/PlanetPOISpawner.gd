@@ -33,7 +33,6 @@ func create_instance(rng: RandomNumberGenerator):
 func _ready():
 	generate()
 	
-	
 	# Credit: thanks to https://kidscancode.org/godot_recipes/3.x/3d/3d_align_surface/index.html
 func align_with_local_up(POIInstance: Node3D, planet: Planet):
 	# get the direction vector for each point of interest from the planet's centre to find the up direction
