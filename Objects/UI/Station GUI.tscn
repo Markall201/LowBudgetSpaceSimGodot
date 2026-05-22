@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ds0xnyocqmp0d"]
+
+[ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="1_f0b4i"]
+[ext_resource type="Texture2D" uid="uid://ckhwbatpes727" path="res://Assets/UI/starbird-icon-opaque.png" id="2_iouyx"]
+[ext_resource type="Texture2D" uid="uid://bjeta5pxlvc5e" path="res://Assets/UI/briefcase-icon.png" id="3_y18df"]
+
+[node name="Station GUI" type="Control" unique_id=2141289788]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Navbar" type="Control" parent="." unique_id=2120713058]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="NavbarBorder" type="NinePatchRect" parent="Navbar" unique_id=557175985]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_f0b4i")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
+
+[node name="NavBarButtonsHBox" type="HBoxContainer" parent="Navbar" unique_id=1454061647]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Button-Hangar" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1929743493]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_iouyx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button-Missions" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1390500622]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("3_y18df")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button-Trade" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=253875564]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Market"
+
+[node name="Button-Outfitting" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2132481938]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+text = "Outfitting
+"
+
+[node name="Button-Trade3" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2106651368]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Shipyard
+"

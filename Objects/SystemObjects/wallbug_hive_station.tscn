@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdprpr7at70kt" path="res://Assets/Models/wallbug-hive-station.glb" id="1_le3fh"]
 [ext_resource type="PackedScene" uid="uid://btd3f02wh0qeg" path="res://Objects/hangar-landing-pad.tscn" id="2_gu4du"]
 [ext_resource type="PackedScene" uid="uid://3jfawtgt2xsg" path="res://Assets/Models/spaceman attempt rig.glb" id="3_51l0k"]
+[ext_resource type="PackedScene" uid="uid://ds0xnyocqmp0d" path="res://Objects/UI/Station GUI.tscn" id="5_51l0k"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xrtdi"]
 
@@ -24,3 +25,6 @@ transform = Transform3D(0.9777066, -0.009653643, 0.20975369, 0.015704451, 0.9995
 
 [node name="Landing Pad" parent="." unique_id=817183205 instance=ExtResource("2_gu4du")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 228.03061, -53.50403, -44.41394)
+
+[node name="Station GUI" parent="." unique_id=572868693 instance=ExtResource("5_51l0k")]
+visible = false

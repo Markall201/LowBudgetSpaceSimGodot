@@ -29,6 +29,7 @@ sky = SubResource("Sky_cd76q")
 tonemap_mode = 1
 glow_enabled = true
 fog_sky_affect = 0.5
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.0642
 volumetric_fog_albedo = Color(0, 0.5084346, 0.688062, 1)
 volumetric_fog_ambient_inject = 0.5
@@ -330,7 +331,6 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -228.17696, 288.43735
 
 [node name="FogVolume" type="FogVolume" parent="StarSystem" unique_id=1947094248]
 transform = Transform3D(0.97770655, -0.009653681, 0.20975403, 0.015704323, 0.9995067, -0.027200522, -0.20938793, 0.029888641, 0.9773759, 519.3586, 133.98132, 940.51935)
-visible = false
 layers = 7
 size = Vector3(5000, 4000, 3928.34)
 material = SubResource("FogMaterial_wa3b3")
