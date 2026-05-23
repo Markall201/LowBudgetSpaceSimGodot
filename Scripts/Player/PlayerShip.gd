@@ -88,19 +88,23 @@ func replace_ship_model_from_packed_scene(new_ship_model_scene: PackedScene):
 	replace_ship_model(new_ship_model)
 
 var currently_docked_at :Station = null
+var currently_docked_at_pad :HangarLandingPad = null
 
-func dock(station:Station=null):
-	if (station != null):
-		currently_docked_at = station
-		print("docked at: " + station.station_name)
+func dock(pad:HangarLandingPad=null):
+	if (pad != null):
+		currently_docked_at = pad.parent_station
+		currently_docked_at_pad = pad
+		print("docked at: " + currently_docked_at.station_name)
 	else:
 		print("docked")
 	power_down()
 	
 # if we're undocking, tell the station
 func undock():
-	if (currently_docked_at != null):
-		currently_docked_at.undock()
+	if (currently_docked_at_pad != null):
+		currently_docked_at_pad.ship_undock()
+		currently_docked_at_pad = null
+	currently_docked_at = null
 	
 
 func power_down():

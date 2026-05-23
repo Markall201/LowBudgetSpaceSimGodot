@@ -17,4 +17,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hangar-pad-visuals/Area3D" unique_id=1583055935]
 shape = SubResource("BoxShape3D_12o3x")
 
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=324326799]
+node_a = NodePath("../hangar-pad-visuals/Pad/StaticBody3D")
+
 [connection signal="body_entered" from="hangar-pad-visuals/Area3D" to="." method="_on_landing_area_3d_body_entered"]
+
+[editable path="hangar-pad-visuals"]
