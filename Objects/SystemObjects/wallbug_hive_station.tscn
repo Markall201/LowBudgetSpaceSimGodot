@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vkc4imw0t7ue"]
 
-[ext_resource type="Script" uid="uid://dlpe2bgq85obp" path="res://Scripts/Station.gd" id="1_gu4du"]
+[ext_resource type="Script" uid="uid://dlpe2bgq85obp" path="res://Scripts/Station/Station.gd" id="1_gu4du"]
 [ext_resource type="PackedScene" uid="uid://bdprpr7at70kt" path="res://Assets/Models/wallbug-hive-station.glb" id="1_le3fh"]
 [ext_resource type="PackedScene" uid="uid://btd3f02wh0qeg" path="res://Objects/hangar-landing-pad.tscn" id="2_gu4du"]
 [ext_resource type="PackedScene" uid="uid://3jfawtgt2xsg" path="res://Assets/Models/spaceman attempt rig.glb" id="3_51l0k"]

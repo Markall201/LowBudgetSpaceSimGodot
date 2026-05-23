@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://ds0xnyocqmp0d"]
 
 [ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="1_f0b4i"]
+[ext_resource type="Script" uid="uid://cfm7t5qbdeevl" path="res://Scripts/Station/StationGUI.gd" id="1_fbkba"]
 [ext_resource type="Texture2D" uid="uid://ckhwbatpes727" path="res://Assets/UI/starbird-icon-opaque.png" id="2_iouyx"]
+[ext_resource type="ButtonGroup" uid="uid://duf5cftblwbol" path="res://Objects/UI/station_button_group.tres" id="2_ycri8"]
 [ext_resource type="Texture2D" uid="uid://bjeta5pxlvc5e" path="res://Assets/UI/briefcase-icon.png" id="3_y18df"]
+[ext_resource type="Texture2D" uid="uid://i85cs132e7xd" path="res://Assets/UI/cargo-icon.png" id="4_3bswt"]
+[ext_resource type="Texture2D" uid="uid://bxbg5f1cm7tj1" path="res://Assets/UI/outfitting-icon.png" id="5_ma3gh"]
+[ext_resource type="Texture2D" uid="uid://y3wmflvfgmnb" path="res://Assets/UI/shipyard-icon.png" id="6_1twmt"]
 
 [node name="Station GUI" type="Control" unique_id=2141289788]
 layout_mode = 3
@@ -11,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fbkba")
 
 [node name="Navbar" type="Control" parent="." unique_id=2120713058]
 layout_mode = 1
@@ -43,6 +49,11 @@ theme_override_constants/separation = 0
 [node name="Button-Hangar" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1929743493]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+tooltip_text = "Hangar
+Return to your ship."
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_ycri8")
 icon = ExtResource("2_iouyx")
 icon_alignment = 1
 expand_icon = true
@@ -50,6 +61,10 @@ expand_icon = true
 [node name="Button-Missions" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1390500622]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+tooltip_text = "Station Concourse
+Talk to Contacts and access the Mission Board."
+toggle_mode = true
+button_group = ExtResource("2_ycri8")
 icon = ExtResource("3_y18df")
 icon_alignment = 1
 expand_icon = true
@@ -57,17 +72,39 @@ expand_icon = true
 [node name="Button-Trade" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=253875564]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-text = "Market"
+tooltip_text = "Commodities Market
+Buy and sell cargo."
+toggle_mode = true
+button_group = ExtResource("2_ycri8")
+icon = ExtResource("4_3bswt")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button-Outfitting" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2132481938]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+tooltip_text = "Outfitting
+All things ship equipment."
 theme_override_constants/h_separation = 0
-text = "Outfitting
+toggle_mode = true
+button_group = ExtResource("2_ycri8")
+text = "
 "
+icon = ExtResource("5_ma3gh")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Button-Trade3" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2106651368]
+[node name="Button- Shipyard" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2106651368]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-text = "Shipyard
+tooltip_text = "Shipyard
+Browse available ships."
+toggle_mode = true
+button_group = ExtResource("2_ycri8")
+text = "
 "
+icon = ExtResource("6_1twmt")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

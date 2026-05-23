@@ -14,7 +14,8 @@ enum State {
 @export var state: State
 
 @export var missions: Array[Mission]
-
+# GUI is hosted by the station
+@onready var station_gui: Control = $"Station GUI"
 
 func _ready():
 	# find the landing pads on the station
@@ -27,3 +28,8 @@ func _ready():
 				self.init_landing_pads.connect(pad._on_init)
 	# connect the weapons to this WeaponsSystem
 	init_landing_pads.emit(self)
+	
+	
+# when the player ship undocks, hide the client's station GUI
+func undock():
+	station_gui.hide()

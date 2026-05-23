@@ -11,8 +11,7 @@ func _on_landing_area_3d_body_entered(body: Node3D) -> void:
 	var ship := body as PlayerShip
 	if ship is PlayerShip:
 		if (ship.is_landing_gear_deployed):
-			print("Now docked at: " + str(parent_station.station_name))
-			ship.dock()
+			ship.dock(parent_station)
 			station_gui.show()
 			
 

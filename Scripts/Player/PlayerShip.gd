@@ -87,10 +87,20 @@ func replace_ship_model_from_packed_scene(new_ship_model_scene: PackedScene):
 	var new_ship_model:ShipModel = new_ship_model_scene.instantiate()
 	replace_ship_model(new_ship_model)
 
+var currently_docked_at :Station = null
 
-func dock():
+func dock(station:Station=null):
+	if (station != null):
+		currently_docked_at = station
+		print("docked at: " + station.station_name)
+	else:
+		print("docked")
 	power_down()
-	print("docked")
+	
+# if we're undocking, tell the station
+func undock():
+	if (currently_docked_at != null):
+		currently_docked_at.undock()
 	
 
 func power_down():
@@ -189,6 +199,7 @@ func _input(event):
 	elif (event != null):
 		# if deactivated, use Translate Up to fire up engines
 		if (Input.is_action_pressed("Translate Up") && !is_controllable):
+			undock()
 			power_up()
 	#print("pitch: " + str(pitch1D))
 	#print("yaw: " + str(yaw1D))
