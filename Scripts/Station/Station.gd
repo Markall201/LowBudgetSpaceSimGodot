@@ -17,6 +17,8 @@ enum State {
 # GUI is hosted by the station
 @onready var station_gui: Control = $"Station GUI"
 
+@export var Market: Market
+
 func _ready():
 	# find the landing pads on the station
 	for child in get_children():
