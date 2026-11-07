@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ddah63o0x561o"]
 
 [ext_resource type="Texture2D" uid="uid://b38quwsr7tqfw" path="res://Assets/UI/bar-of-fun-border.png" id="1_yhrv5"]
-[ext_resource type="Script" uid="uid://06slnwqek3hw" path="res://Scripts/Station/StationPrimaryScreen.gd" id="2_v1fnd"]
+[ext_resource type="Script" uid="uid://clhxwi32mpyi8" path="res://Scripts/Station/Shipyard.gd" id="2_v1fnd"]
+[ext_resource type="PackedScene" uid="uid://rjiggh08wu42" path="res://Objects/Ships/Starbird Classic.tscn" id="3_rra3u"]
 
 [node name="Shipyard" type="NinePatchRect" unique_id=1559954364]
 custom_minimum_size = Vector2(500, 500)
@@ -22,11 +23,21 @@ patch_margin_top = 40
 patch_margin_right = 40
 patch_margin_bottom = 40
 script = ExtResource("2_v1fnd")
+ships_for_sale = Array[Resource]([ExtResource("3_rra3u")])
 
 [node name="ItemList" type="ItemList" parent="." unique_id=849642963]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -400.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SelectedShipView" type="Container" parent="." unique_id=638446523]
+layout_mode = 0
+offset_left = 400.0
+offset_right = 800.0
+offset_bottom = 500.0
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_list_item_selected"]

@@ -9,13 +9,14 @@ class_name ShipModel
 # TO DO: more detailed colliders, for now ships just use BoxShape3D
 
 # Ship low level information
+@export var ship_model_name:String = "Starbug"
 
 @export var forward_thrust: float = 100.0
 @export var up_thrust: float = 50.0
 @export var strafe_thrust: float = 50.0
 
 @export var yaw_torque: float = 20.0
-@export var pitch_torque: float = 20.0
+@export var pitch_torque: float = 25.0
 @export var roll_torque: float = 50.0
 
 @export var max_boost_amount: float = 5.0

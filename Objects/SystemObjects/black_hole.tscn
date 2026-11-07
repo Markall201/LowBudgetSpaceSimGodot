@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://barjt10kr8dtm"]
+
+[ext_resource type="Script" uid="uid://cyaju4ab0e40y" path="res://Scripts/Star System/Star.gd" id="1_t7tne"]
+[ext_resource type="Material" uid="uid://d1t46a2eh74wv" path="res://Assets/Materials/star_material.tres" id="2_5opk4"]
+[ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="3_5opk4"]
+[ext_resource type="Shader" uid="uid://d14jkv45q0fhf" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_clouds.gdshader" id="4_d24ci"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f0xqt"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gmgkl"]
+material = ExtResource("2_5opk4")
+
+[node name="BlackHole" type="Node3D" unique_id=459382873]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
+script = ExtResource("1_t7tne")
+radius = 300.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=377583422]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=222374135]
+shape = SubResource("SphereShape3D_f0xqt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=1133247969]
+material_override = ExtResource("2_5opk4")
+mesh = SubResource("SphereMesh_gmgkl")
+skeleton = NodePath("../../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=879174131]
+process_mode = 4
+visible = false
+light_volumetric_fog_energy = 50.0
+light_size = 1.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+distance_fade_begin = 1000.0
+distance_fade_shadow = 1000.0
+distance_fade_length = 300000.0
+omni_range = 100000000.0
+omni_attenuation = 0.0
+omni_shadow_mode = 0
+
+[node name="PlanetAthmosphere" parent="." unique_id=163855059 instance=ExtResource("3_5opk4")]
+planet_radius = 300.0
+atmosphere_height = 500.0
+custom_shader = ExtResource("4_d24ci")
+shader_params/u_atmosphere_modulate = Color(0, 0, 0, 1)
+shader_params/u_cloud_density_scale = 50.0
+shader_params/u_cloud_bottom = 0.2
+shader_params/u_cloud_top = 0.5
+shader_params/u_cloud_blend = 0.5
+shader_params/u_cloud_shape_texture = null
+shader_params/u_cloud_shape_invert = 0.0
+shader_params/u_cloud_coverage_bias = 0.0
+shader_params/u_cloud_shape_factor = 0.8
+shader_params/u_cloud_shape_scale = 1.0
+shader_params/u_cloud_coverage_cubemap = null

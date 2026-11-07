@@ -11,7 +11,7 @@ class_name PlayerShip
 @export var strafe_thrust: float = 50.0
 
 @export var yaw_torque: float = 20.0
-@export var pitch_torque: float = 20.0
+@export var pitch_torque: float = 25.0
 @export var roll_torque: float = 50.0
 
 @export var current_speed: float
@@ -41,7 +41,7 @@ var engines_online: bool = false
 # multipliers to scale (down) acceleration and torque rotation
 # set to 1 for no effect
 var dampener: float = 0.05
-var rotation_dampener: float = 0.005
+var rotation_dampener: float = 0.02
 
 var thrustGlideReduction: float = 0.111
 
