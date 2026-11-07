@@ -1,7 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd2qx8kqldnwb"]
+[gd_scene format=3 uid="uid://cd2qx8kqldnwb"]
 
-[ext_resource type="Script" path="res://Scripts/Galaxy Map/galaxy.gd" id="1_of44j"]
+[ext_resource type="Script" uid="uid://mk52jf7hlwnj" path="res://Scripts/Galaxy Map/galaxy_procedurally_generated.gd" id="1_1jr7r"]
 
-[node name="Galaxy" type="Node3D"]
-script = ExtResource("1_of44j")
+[node name="Galaxy" type="Node3D" unique_id=167297084]
+script = ExtResource("1_1jr7r")
+numberOfSystems = 2000
 galaxyRadius = 100

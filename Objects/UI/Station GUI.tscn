@@ -46,7 +46,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 
-[node name="Button-Hangar" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1929743493]
+[node name="Button - Hangar" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1929743493]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 tooltip_text = "Hangar
@@ -58,7 +58,7 @@ icon = ExtResource("2_iouyx")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button-Missions" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1390500622]
+[node name="Button - Missions" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=1390500622]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 tooltip_text = "Station Concourse
@@ -69,7 +69,7 @@ icon = ExtResource("3_y18df")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button-Trade" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=253875564]
+[node name="Button - Trade" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=253875564]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 tooltip_text = "Commodities Market
@@ -80,7 +80,7 @@ icon = ExtResource("4_3bswt")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button-Outfitting" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2132481938]
+[node name="Button - Outfitting" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2132481938]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 tooltip_text = "Outfitting
@@ -94,7 +94,7 @@ icon = ExtResource("5_ma3gh")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button- Shipyard" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2106651368]
+[node name="Button - Shipyard" type="Button" parent="Navbar/NavBarButtonsHBox" unique_id=2106651368]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 tooltip_text = "Shipyard
@@ -106,5 +106,20 @@ text = "
 icon = ExtResource("6_1twmt")
 icon_alignment = 1
 expand_icon = true
+
+[node name="StationPrimaryScreensContainer" type="Control" parent="." unique_id=537191984]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -204.0
+offset_right = 400.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

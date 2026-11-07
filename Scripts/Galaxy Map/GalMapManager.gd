@@ -6,11 +6,29 @@ extends Control
 @onready var system_seed = %"System Seed"
 @onready var system_faction = %"System Faction"
 
+@onready var galaxy_spawner: CanvasLayer = $"../.."
+
+@onready var galaxy: Galaxy = null;
+
+# galaxy is now loaded from scene instead
+# "res://Objects/galaxy.tscn" - procedurally generating galaxy scene
+#"res://SystemsData/Galaxy.scn" - custom galaxy scene
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setLabelsEmpty()
+	#load_galaxy_from_scene("res://Objects/galaxy.tscn")
+	load_galaxy_from_scene("res://SystemsData/Galaxy.scn")
 
+
+
+
+func load_galaxy_from_scene(filePath: String):
+	if (galaxy == null):
+		galaxy = load(filePath).instantiate()
+		galaxy_spawner.add_child.call_deferred(galaxy)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

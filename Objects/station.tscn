@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c2sv8itb6oxj2" path="res://Assets/Models/star dock.glb" id="1_yvek3"]
 
-[node name="Station" type="Node3D"]
+[node name="Station" type="Node3D" unique_id=1533238330]
 
-[node name="station visuals" type="Node3D" parent="."]
+[node name="station visuals" type="Node3D" parent="." unique_id=747821374]
 
-[node name="star dock" parent="station visuals" instance=ExtResource("1_yvek3")]
+[node name="star dock" parent="station visuals" unique_id=1782173971 instance=ExtResource("1_yvek3")]

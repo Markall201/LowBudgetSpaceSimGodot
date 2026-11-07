@@ -55,14 +55,36 @@ var mouse_control_toggle: bool = true
 
 
 @onready var weapons_system: WeaponsSystem = $WeaponsSystem
-
+@onready var ship_ui = $"Ship UI"
 @export var is_landing_gear_deployed: bool = true
+
+# when switching ships, inherit the new ship's stats
+func set_base_stats_from_ship_model(ship_model:ShipModel):
+	forward_thrust = ship_model.forward_thrust
+	up_thrust = ship_model.up_thrust
+	strafe_thrust = ship_model.strafe_thrust
+
+	yaw_torque = ship_model.yaw_torque
+	pitch_torque = ship_model.pitch_torque
+	roll_torque = ship_model.roll_torque
+
+	max_boost_amount = ship_model.max_boost_amount
+	boost_deprecation_rate = ship_model.boost_deprecation_rate
+	boost_recharge_rate = ship_model.boost_deprecation_rate
+
+	boost_multiplier = ship_model.boost_multiplier
+
+# ship hull stats
+
+@export var base_hull: int = 250
+@export var base_shielding: int = 150
 
 var ship_model: ShipModel:
 	set(val):
 		ship_model = val
+		# point weapon system to new ship model
 		weapons_system.player_ship_model =  val
-		
+		set_base_stats_from_ship_model(ship_model)		
 
 
 # search the child objects for a ShipModel and return it if found
@@ -110,10 +132,12 @@ func undock():
 func power_down():
 	is_controllable = false
 	current_throttle = 0.0
+	ship_ui.hide()
 	
 func power_up():
 	is_controllable = true
 	current_throttle = 0.0
+	ship_ui.show()
 
 # boost tank logic
 # (near copy and paste from Unity project)

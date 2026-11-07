@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb0iihk7h0oxx"]
+[gd_scene format=3 uid="uid://cb0iihk7h0oxx"]
 
 [ext_resource type="Script" uid="uid://cy3njc68akiyv" path="res://Scripts/Galaxy Map/SystemPlaceholder.gd" id="1_uw4cy"]
 
@@ -11,22 +11,22 @@ material = SubResource("StandardMaterial3D_gpoly")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tnmwi"]
 
-[node name="SystemPlaceholder" type="Node3D"]
+[node name="SystemPlaceholder" type="Node3D" unique_id=1136915731]
 script = ExtResource("1_uw4cy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1975623937]
 layers = 16
 mesh = SubResource("SphereMesh_bncv7")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=813664566]
 layers = 16
 omni_range = 25.0
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1979636415]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=346096290]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_tnmwi")
 

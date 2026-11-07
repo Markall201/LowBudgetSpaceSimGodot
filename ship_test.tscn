@@ -29,8 +29,10 @@ sky = SubResource("Sky_cd76q")
 tonemap_mode = 1
 glow_enabled = true
 fog_sky_affect = 0.5
-volumetric_fog_density = 0.0642
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0, 0.5084346, 0.688062, 1)
+volumetric_fog_length = 256.0
 volumetric_fog_ambient_inject = 0.5
 volumetric_fog_sky_affect = 0.8
 
@@ -250,7 +252,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
 resolution = 3
 planet_data = SubResource("Resource_144sp")
 
-[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshUp/MeshUp_col11" index="0"]
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshUp/MeshUp_col" index="0"]
 shape = SubResource("ConcavePolygonShape3D_x8yq1")
 
 [node name="MeshDown" parent="StarSystem/Planet2" index="1" unique_id=1772494147]
@@ -260,7 +262,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
 resolution = 3
 planet_data = SubResource("Resource_144sp")
 
-[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshDown/MeshDown_col11" index="0"]
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshDown/MeshDown_col" index="0"]
 shape = SubResource("ConcavePolygonShape3D_8ijfx")
 
 [node name="MeshLeft" parent="StarSystem/Planet2" index="2" unique_id=819523580]
@@ -270,7 +272,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
 resolution = 3
 planet_data = SubResource("Resource_144sp")
 
-[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshLeft/MeshLeft_col11" index="0"]
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshLeft/MeshLeft_col" index="0"]
 shape = SubResource("ConcavePolygonShape3D_htx0v")
 
 [node name="MeshRight" parent="StarSystem/Planet2" index="3" unique_id=358085502]
@@ -280,7 +282,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
 resolution = 3
 planet_data = SubResource("Resource_144sp")
 
-[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshRight/MeshRight_col11" index="0"]
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshRight/MeshRight_col" index="0"]
 shape = SubResource("ConcavePolygonShape3D_na23b")
 
 [node name="MeshFront" parent="StarSystem/Planet2" index="4" unique_id=281704493]
@@ -290,7 +292,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
 resolution = 3
 planet_data = SubResource("Resource_144sp")
 
-[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshFront/MeshFront_col11" index="0"]
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshFront/MeshFront_col" index="0"]
 shape = SubResource("ConcavePolygonShape3D_mj0fk")
 
 [node name="MeshBack" parent="StarSystem/Planet2" index="5" unique_id=902113054]
@@ -300,7 +302,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m6bar")
 resolution = 3
 planet_data = SubResource("Resource_144sp")
 
-[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshBack/MeshBack_col11" index="0"]
+[node name="CollisionShape3D" parent="StarSystem/Planet2/MeshBack/MeshBack_col" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0gwtm")
 
 [node name="PlanetFloraSpawner" parent="StarSystem/Planet2" index="7" unique_id=971205350]

@@ -115,4 +115,4 @@ func to_dictionary():
 
 # string converter
 func _to_string():
-	return seed
+	return str(seed)

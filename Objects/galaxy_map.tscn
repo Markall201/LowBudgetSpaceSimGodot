@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b618swd7oamxh"]
 
-[ext_resource type="PackedScene" uid="uid://cd2qx8kqldnwb" path="res://Objects/galaxy.tscn" id="1_kbsw4"]
 [ext_resource type="FontFile" uid="uid://780aih6mfcg" path="res://Assets/Fonts/Oxanium-VariableFont_wght.ttf" id="1_ubgmd"]
 [ext_resource type="Script" uid="uid://uhxxdy4g6f5a" path="res://Scripts/Galaxy Map/GalMapManager.gd" id="2_jg22p"]
 [ext_resource type="Script" uid="uid://viah3csy45i5" path="res://Scripts/FreeLookCamera.gd" id="3_cn1xk"]
@@ -29,6 +28,7 @@ sky = SubResource("Sky_w0fkf")
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+volumetric_fog_length = 256.0
 
 [node name="Main" type="Node3D" unique_id=1588031911]
 
@@ -121,9 +121,6 @@ script = ExtResource("3_cn1xk")
 
 [node name="Camera3D" type="Camera3D" parent="CanvasLayer/GalMapCameraController" unique_id=76062528]
 cull_mask = 16
-
-[node name="Galaxy" parent="CanvasLayer" unique_id=707910041 instance=ExtResource("1_kbsw4")]
-numberOfSystems = 2000
 
 [node name="SystemPlaceholder" parent="CanvasLayer" unique_id=1067525649 instance=ExtResource("4_1v4nl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
