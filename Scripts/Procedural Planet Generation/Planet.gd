@@ -2,7 +2,7 @@
 extends Node3D
 class_name Planet
 
-
+var planet_atmosphere: Node3D
 	
 @export var planet_data:PlanetData:
 	set(val):
@@ -71,6 +71,13 @@ func on_data_changed():
 			if face is TerrainFace:
 				face.construct_mesh(planet_data)
 				#face.update_textures(planet_data)
+	update_planet_atmosphere()
+	
+func update_planet_atmosphere():
+	planet_atmosphere = $PlanetAthmosphere
+	planet_atmosphere.planet_radius = planet_data.radius
+	planet_atmosphere.atmosphere_height = planet_data.atmosphere_height
+	
 				
 # dictionary converter function
 func to_dictionary():

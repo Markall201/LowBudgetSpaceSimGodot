@@ -106,11 +106,12 @@ func generate_planet_data():
 		planet.planet_data.planet_noise = new_planet_noise
 		
 		planet.planet_data.seed = rng.randi()
+		var radius =  rng.randi_range(planet_min_size, planet_max_size)
 		#planet.planet_data.radius = rng.randi_range(50, 75)
-		planet.planet_data.radius = rng.randi_range(planet_min_size, planet_max_size)
+		planet.planet_data.radius = radius
 		# set planet type
 		planet.planet_data.planet_type = rng.randi_range(0, 7)
-		
+		planet.planet_data.atmosphere_height = radius
 		# set planet colour
 		planet.planet_data.terrain_type = rng.randi_range(0, 4)
 		planet.planet_data.on_data_changed()

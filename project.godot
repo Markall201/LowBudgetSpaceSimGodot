@@ -19,6 +19,10 @@ run/main_scene="uid://j24m6bf3xtgt"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.atmosphere/tools/plugin.cfg")
+
 [filesystem]
 
 import/fbx/enabled=false
